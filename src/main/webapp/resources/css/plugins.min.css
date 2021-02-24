@@ -26,10 +26,10 @@
 				18. Color Picker
  				
  				
- 
-*********************************
+ */
+/**********************************
 		1. Bootstrap DatePicker
-**********************************
+***********************************/
 .datepicker .active,
 .datepicker .active:hover,
 .datepicker .selected,
@@ -100,9 +100,9 @@
     content: ""
 }
 
-**********************************
+/***********************************
 	2. Bootstrap Daterangepicker
-***********************************
+************************************/
 
 .daterangepicker {
     margin-top: 4px
@@ -181,9 +181,9 @@
     content: ""
 }
 
-**********************************
+/***********************************
 	3. Bootstrap  Datetimepicker
-***********************************
+************************************/
 
 .datetimepicker table td {
     color: #000;
@@ -208,15 +208,15 @@
     content: ""
 }
 
- change z-index when opened in modal 
+/* change z-index when opened in modal */
 .modal-open .colorpicker,
 .modal-open .datepicker,
 .modal-open .daterangepicker {
     z-index: 10055 !important
 }
-**********************************
+/***********************************
 	4. Bootstrap Colorpicker
-***********************************
+************************************/
 .colorpicker.dropdown-menu,
 .daterangepicker.dropdown-menu,
 .datetimepicker.dropdown-menu {
@@ -260,9 +260,9 @@
     overflow: hidden
 }
 
-**********************************
+/***********************************
 	5. Bootstrap Modal
-**********************************
+***********************************/
 
 .modal {
     -webkit-border-radius: 2px;
@@ -318,9 +318,9 @@
 }
 
 
-**********************************
+/***********************************
 	6. Bootstrap Select
-**********************************
+***********************************/
 
 .bootstrap-select .btn {
     border-color: #c2cad8
@@ -386,9 +386,9 @@
     z-index: 9999 !important
 }
 
-*******************************************
+/********************************************
 	7. Color variants
-********************************************
+*********************************************/
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
     color: #fff;
@@ -719,9 +719,9 @@
         stroke-dashoffset: 0
     }
 }
---------------------------------------------------
+/*--------------------------------------------------
     8. Animated Pie Chart
-----------------------------------------------------
+----------------------------------------------------*/
 .animated-pie-chart,
 .columnLine {
     width: 100%;
@@ -874,9 +874,9 @@
     background-image: none;
     filter: none
 }
-***********************************
+/************************************
 	9. Data tables
-************************************
+*************************************/
 .table-checkable tr>td:first-child,
 .table-checkable tr>th:first-child {
     text-align: center;
@@ -1084,9 +1084,9 @@ div.dt-button:last-child {
     margin-left: 0;
     margin-right: -1px
 }
-******************************
+/*******************************
 	10. Dropzone
-*******************************
+********************************/
 .dropzone {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -1108,9 +1108,9 @@ div.dt-button:last-child {
 .fancybox-opened {
     z-index: 100001
 }
-******************************
+/*******************************
 	11. Spinner
-*******************************
+********************************/
 .spinner-buttons.btn-group-vertical .btn {
     text-align: center;
     margin: 0;
@@ -1128,9 +1128,9 @@ div.dt-button:last-child {
     border-radius: 0 0 2px
 }
 
-**********************************************
+/***********************************************
 	12. Fullcalendar
-**********************************************
+***********************************************/
 
 .external-event {
     display: inline-block;
@@ -1146,9 +1146,9 @@ div.dt-button:last-child {
     height: auto !important
 }
 
-*********************************************
+/**********************************************
 	13. Google Maps
-*********************************************
+**********************************************/
 
 .gmaps {
     height: 300px;
@@ -1222,9 +1222,9 @@ div.dt-button:last-child {
     background-image: none !important
 }
 
-************************************
+/*************************************
 				14. Vector Map
-****************************************
+*****************************************/
 
 .jqvmap-zoomin,
 .jqvmap-zoomout {
@@ -1237,9 +1237,9 @@ div.dt-button:last-child {
     overflow: hidden;
     height: 300px
 }
-************************************
+/*************************************
 				15. Morris Chart
-****************************************
+*****************************************/
 .morris-hover.morris-default-style .morris-hover-row-label {
     text-align: left;
     font-weight: 400;
@@ -1268,9 +1268,9 @@ iframe[src="about:blank"] {
     display: none
 }
 
-**********************************
+/***********************************
 			16. Select2
-**********************************
+***********************************/
 
 .select2-container--bootstrap .select2-search--dropdown .select2-search__field,
 .select2-container--bootstrap .select2-selection,
@@ -1356,9 +1356,9 @@ iframe[src="about:blank"] {
 .select2-selection__choice .select2-selection__choice__remove {
     font-weight: 400 !important
 }
-**********************************
+/***********************************
 	17. iCheck
-**********************************
+***********************************/
 
 .icheck-list>label {
     display: block;
@@ -1400,10 +1400,10 @@ pre[class*=language-] code {
     box-shadow: none !important;
     border: 0 !important
 }
-**********************************
+/***********************************
 			18. Color Picker
-**********************************
+***********************************/
 .colorpicker.dropdown-menu, .daterangepicker.dropdown-menu, .datetimepicker.dropdown-menu {
     padding: 5px;
     right: auto!important;
-}*/
+}

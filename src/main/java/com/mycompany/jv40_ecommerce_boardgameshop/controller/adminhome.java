@@ -20,7 +20,8 @@ public class adminhome {
     
     @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public String adminhomepage(){
-        return "customer-page";
+        return "adminhomepage";
     }
     
+
 }

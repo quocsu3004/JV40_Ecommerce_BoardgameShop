@@ -20,5 +20,7 @@
         <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet" type="text/css" />
         <link href="<c:url value="/resources/css/responsive.css"/>" rel="stylesheet" type="text/css" />
         <link href="<c:url value="/resources/css/theme-color.css"/>" rel="stylesheet" type="text/css" />
-	<!-- favicon -->
+	<!-- data tables -->
+        <link href="<c:url value="/resources/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css"/>" rel="stylesheet" type="text/css"/>
+        <!-- favicon -->
     <link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"/>"/>

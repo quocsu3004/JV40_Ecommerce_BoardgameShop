@@ -222,124 +222,143 @@
 <!-- end header -->
 <!-- start page container -->
 
-    <!-- start sidebar menu -->
-    <div class="sidebar-container">
-        <div class="sidemenu-container navbar-collapse collapse fixed-menu">
-            <div id="remove-scroll">
-                <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <li class="sidebar-toggler-wrapper hide">
-                        <div class="sidebar-toggler">
-                            <span></span>
+
+
+
+
+<!-- start sidebar menu -->
+<div class="sidebar-container">
+    <div class="sidemenu-container navbar-collapse collapse fixed-menu">
+        <div id="remove-scroll">
+            <ul class="sidemenu page-header-fixed p-t-20" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+                <li class="sidebar-toggler-wrapper hide">
+                    <div class="sidebar-toggler">
+                        <span></span>
+                    </div>
+                </li>
+                <li class="sidebar-user-panel">
+                    <div class="user-panel">
+                        <div class="row">
+                            <div class="sidebar-userpic">
+                                <img src="<c:url value="/resources/img/dp.jpg"/>" class="img-responsive" alt=""> </div>
                         </div>
-                    </li>
-                    <li class="sidebar-user-panel">
-                        <div class="user-panel">
-                            <div class="row">
-                                <div class="sidebar-userpic">
-                                    <img src="<c:url value="/resources/img/dp.jpg"/>" class="img-responsive" alt=""> </div>
-                            </div>
-                            <div class="profile-usertitle">
-                                <div class="sidebar-userpic-name"> John Deo </div>
-                                <div class="profile-usertitle-job"> Manager </div>
-                            </div>
-                            <div class="sidebar-userpic-btn">
-                                <a class="tooltips" href="user_profile.html" data-placement="top" data-original-title="Profile">
-                                    <i class="material-icons">person_outline</i>
-                                </a>
-                                <a class="tooltips" href="email_inbox.html" data-placement="top" data-original-title="Mail">
-                                    <i class="material-icons">mail_outline</i>
-                                </a>
-                                <a class="tooltips" href="chat.html" data-placement="top" data-original-title="Chat">
-                                    <i class="material-icons">chat</i>
-                                </a>
-                                <a class="tooltips" href="login.html" data-placement="top" data-original-title="Logout">
-                                    <i class="material-icons">input</i>
-                                </a>
-                            </div>
+                        <div class="profile-usertitle">
+                            <div class="sidebar-userpic-name"> John Deo </div>
+                            <div class="profile-usertitle-job"> Manager </div>
                         </div>
-                    </li>
-                    <li class="menu-heading">
-                        <span>--------Main Menu--------</span>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle">
-                            <i class="material-icons">business_center</i>
-                            <span class="title">Order</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="new_booking.html" class="nav-link ">
-                                    <span class="title">New Order</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="view_booking.html" class="nav-link ">
-                                    <span class="title">View Order</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="edit_booking.html" class="nav-link ">
-                                    <span class="title">Edit Order</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link nav-toggle">
-                            <i class="material-icons">vpn_key</i>
-                            <span class="title">Product</span>
-                            <span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="add_room.html" class="nav-link ">
-                                    <span class="title">Add Product</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="all_rooms.html" class="nav-link ">
-                                    <span class="title">View Product </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="edit_room.html" class="nav-link ">
-                                    <span class="title">Edit Product</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link nav-toggle">
-                            <i class="material-icons">group</i>
-                            <span class="title">Staff</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item">
-                                <a href="add_staff.html" class="nav-link ">
-                                    <span class="title">Add Staff Details</span>
-                                </a>
-                            </li>
-                            <li class="nav-item active">
-                                <a href="all_staffs.html" class="nav-link ">
-                                    <span class="title">View All Staffs</span>
-                                    <span class="selected"></span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="edit_staff.html" class="nav-link ">
-                                    <span class="title">Edit Staff Details</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                        <div class="sidebar-userpic-btn">
+                            <a class="tooltips" href="user_profile.html" data-placement="top" data-original-title="Profile">
+                                <i class="material-icons">person_outline</i>
+                            </a>
+                            <a class="tooltips" href="email_inbox.html" data-placement="top" data-original-title="Mail">
+                                <i class="material-icons">mail_outline</i>
+                            </a>
+                            <a class="tooltips" href="chat.html" data-placement="top" data-original-title="Chat">
+                                <i class="material-icons">chat</i>
+                            </a>
+                            <a class="tooltips" href="login.html" data-placement="top" data-original-title="Logout">
+                                <i class="material-icons">input</i>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li class="menu-heading">
+                    <span>--------Main Menu--------</span>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">business_center</i>
+                        <span class="title">Order</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <span class="title">New Order</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <span class="title">View Order</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href=#" class="nav-link ">
+                                <span class="title">Edit Order</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">vpn_key</i>
+                        <span class="title">Product</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="add_room.html" class="nav-link ">
+                                <span class="title">Add Product</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="all_rooms.html" class="nav-link ">
+                                <span class="title">View Product </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="edit_room.html" class="nav-link ">
+                                <span class="title">Edit Product</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">group</i>
+                        <span class="title">Customer</span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="add_staff.html" class="nav-link ">
+                                <span class="title">View Customer Details</span>
+                            </a>
+                        </li>                    
+                    </ul>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">group</i>
+                        <span class="title">Staff</span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="add_staff.html" class="nav-link ">
+                                <span class="title">Add Staff Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="all_staffs.html" class="nav-link ">
+                                <span class="title">View All Staffs</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="edit_staff.html" class="nav-link ">
+                                <span class="title">Edit Staff Details</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 
 
-    <!-- end sidebar menu -->
+<!-- end sidebar menu -->

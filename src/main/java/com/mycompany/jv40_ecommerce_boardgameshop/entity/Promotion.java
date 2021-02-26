@@ -7,13 +7,19 @@ package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
 import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,7 +52,7 @@ public class Promotion {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
-    
+        
     private int discount;
     
     @Column(nullable = false)
@@ -55,6 +61,12 @@ public class Promotion {
     
     private String description;
 
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "product_promotion",
+            joinColumns = {@JoinColumn(name = "promotion_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")} )
+    private Set<Product> product;
+    
     public Promotion() {
     }
 
@@ -120,6 +132,14 @@ public class Promotion {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Set<Product> product) {
+        this.product = product;
     }
     
     

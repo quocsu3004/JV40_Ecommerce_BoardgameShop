@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +28,14 @@ public class CartDetail {
     private double price;
     
     private double discount;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
+    
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cartId;
 
     public CartDetail() {
     }
@@ -53,6 +63,23 @@ public class CartDetail {
     public void setDiscount(double discount) {
         this.discount = discount;
     }
+
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
+
+    public Cart getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Cart cartId) {
+        this.cartId = cartId;
+    }
+    
     
     
 }

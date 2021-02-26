@@ -52,6 +52,14 @@ public class Image {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
     
     
 }

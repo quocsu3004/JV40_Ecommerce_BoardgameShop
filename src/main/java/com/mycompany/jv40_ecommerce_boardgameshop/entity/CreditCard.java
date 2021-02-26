@@ -7,16 +7,22 @@ package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.CreditCardStatus;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Payload;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -50,6 +56,9 @@ public class CreditCard {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CreditCardStatus status;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "creditCardId")
+    private List<Payment> payment;
 
     public CreditCard() {
     }
@@ -108,6 +117,14 @@ public class CreditCard {
 
     public void setStatus(CreditCardStatus status) {
         this.status = status;
+    }
+
+    public List<Payment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(List<Payment> payment) {
+        this.payment = payment;
     }
     
     

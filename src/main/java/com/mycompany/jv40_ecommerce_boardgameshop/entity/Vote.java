@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,6 +28,14 @@ public class Vote {
     
     @Column(length = 1)
     private String vote;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
+    
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account accountId;
 
     public Vote() {
     }

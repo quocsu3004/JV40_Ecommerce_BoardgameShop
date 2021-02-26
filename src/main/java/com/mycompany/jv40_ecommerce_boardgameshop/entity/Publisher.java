@@ -50,6 +50,14 @@ public class Publisher {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Set<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Set<Product> product) {
+        this.product = product;
+    }
     
     
 }

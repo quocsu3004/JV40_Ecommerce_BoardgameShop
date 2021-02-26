@@ -41,7 +41,7 @@ public class JPAConfig {
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(
                 new String[]{
-                    "com.mycompany.spring_mvc_project_final.entities"
+                    "com.mycompany.jv40_ecommerce_boardgameshop.entity"
                 });
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

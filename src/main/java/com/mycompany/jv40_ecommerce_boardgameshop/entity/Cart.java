@@ -7,17 +7,22 @@ package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.CartStatus;
 import java.util.Date;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
@@ -40,6 +45,16 @@ public class Cart extends Personal{
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CartStatus status;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "cartId")
+    private Set<Payment> payment;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "cartId")
+    private Set<CartDetail> cartDetail;
+    
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account accountId;
 
     public Cart() {
     }
@@ -66,6 +81,30 @@ public class Cart extends Personal{
 
     public void setStatus(CartStatus status) {
         this.status = status;
+    }
+
+    public Set<Payment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Set<Payment> payment) {
+        this.payment = payment;
+    }
+
+    public Set<CartDetail> getCartDetail() {
+        return cartDetail;
+    }
+
+    public void setCartDetail(Set<CartDetail> cartDetail) {
+        this.cartDetail = cartDetail;
+    }
+
+    public Account getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Account accountId) {
+        this.accountId = accountId;
     }
 
     

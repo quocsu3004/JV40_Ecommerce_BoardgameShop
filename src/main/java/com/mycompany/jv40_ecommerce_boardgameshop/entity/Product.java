@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +18,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -57,11 +60,26 @@ public class Product {
     private Publisher publisherId;
     
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "productId")
-    private Set<Image> images;
+    private Set<Image> image;
     
     @ManyToOne
     @JoinColumn(name = "product_id" )
     private Category categoryId;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "productId")
+    private List<CartDetail> cartDetail;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "productId")
+    private List<Comment> comment;
+    
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "productId")
+    private List<Vote> vote;
+    
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "product_promotion",
+            joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "promotion_id")} )
+    private Set<Promotion> promotion;
 
     public Product() {
     }
@@ -120,6 +138,62 @@ public class Product {
 
     public void setStatus(ProductStatus status) {
         this.status = status;
+    }
+
+    public Publisher getPublisherId() {
+        return publisherId;
+    }
+
+    public void setPublisherId(Publisher publisherId) {
+        this.publisherId = publisherId;
+    }
+
+    public Set<Image> getImage() {
+        return image;
+    }
+
+    public void setImage(Set<Image> image) {
+        this.image = image;
+    }
+
+    public Category getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Category categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public List<CartDetail> getCartDetail() {
+        return cartDetail;
+    }
+
+    public void setCartDetail(List<CartDetail> cartDetail) {
+        this.cartDetail = cartDetail;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
+    }
+
+    public List<Vote> getVote() {
+        return vote;
+    }
+
+    public void setVote(List<Vote> vote) {
+        this.vote = vote;
+    }
+
+    public Set<Promotion> getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(Set<Promotion> promotion) {
+        this.promotion = promotion;
     }
     
     

@@ -71,6 +71,14 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
     
     
 }

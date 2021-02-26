@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +38,14 @@ public class Comment {
     
     @Column(length = 1000)
     private String content;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
+    
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account accountId;
 
     public Comment() {
     }
@@ -62,6 +72,22 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Product getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
+
+    public Account getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Account accountId) {
+        this.accountId = accountId;
     }
     
     

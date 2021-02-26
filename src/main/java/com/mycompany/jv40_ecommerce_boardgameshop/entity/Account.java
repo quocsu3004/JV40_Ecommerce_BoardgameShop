@@ -5,7 +5,11 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.enums.AccountStatus;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,42 +21,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class OrderDetail {
+public class Account extends Personal{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    private double price;
+    @Column(length = 100)
+    private String password;
     
-    private double discount;
-
-    public OrderDetail() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status;
     
-    
+    @Column(length = 2)
+    private String vote;
 }

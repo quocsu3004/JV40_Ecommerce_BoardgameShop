@@ -5,13 +5,14 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.enums.AccountRoleStatus;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,23 +21,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Image {
+public class AccountRole {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @Column(length = 100)
-    private String name;
+    private String role;
     
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product productId;
-    
-    public Image() {
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AccountRoleStatus status;
+
+    public AccountRole() {
     }
-  
-    
+
     public int getId() {
         return id;
     }
@@ -45,13 +44,20 @@ public class Image {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String role) {
+        this.role = role;
     }
-    
-    
+
+    public AccountRoleStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AccountRoleStatus status) {
+        this.status = status;
+    }
+       
 }

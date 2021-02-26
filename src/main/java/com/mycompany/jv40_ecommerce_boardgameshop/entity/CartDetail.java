@@ -5,13 +5,10 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,23 +17,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Image {
+public class CartDetail {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @Column(length = 100)
-    private String name;
+    private double price;
     
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product productId;
-    
-    public Image() {
+    private double discount;
+
+    public CartDetail() {
     }
-  
-    
+
     public int getId() {
         return id;
     }
@@ -45,12 +38,20 @@ public class Image {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public double getPrice() {
+        return price;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
     
     

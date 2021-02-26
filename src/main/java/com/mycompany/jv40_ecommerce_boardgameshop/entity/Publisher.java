@@ -5,10 +5,14 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +28,9 @@ public class Publisher {
     private int id;
     
     private String name;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "publisherId", cascade = CascadeType.ALL)
+    private Set<Product> product;
 
     public Publisher() {
     }

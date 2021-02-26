@@ -6,14 +6,21 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 /**
@@ -44,6 +51,17 @@ public class Product {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
+    
+    @ManyToOne
+    @JoinColumn(name = "publisher_id") 
+    private Publisher publisherId;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "productId")
+    private Set<Image> images;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id" )
+    private Category categoryId;
 
     public Product() {
     }

@@ -1,6 +1,38 @@
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.java
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\adminhome.java
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityWebApplicationInitializer.java
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\AppInitializer.java
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityConfig.java
-E:\Java Spring Framework Beginning\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\JPAConfig.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityConfig.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Payment.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\CreditCardStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\PaymentStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\HomeController.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\UserRoleRepository.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\UserController.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\UserDetailsServiceImpl.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Account.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\UserRoleEntity.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\CartDetail.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\PromotionStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Vote.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Cart.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\CreditCard.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\UserStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Personal.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\adminhome.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\UserRepository.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\JPAConfig.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Category.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Publisher.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\UserEntity.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\ProductStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Product.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\CartStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityWebApplicationInitializer.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Promotion.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\Gender.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Image.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\Comment.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\AppInitializer.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entities\AccountRole.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\Role.java
+C:\Users\THAI\OneDrive\Documents\NetBeansProjects\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountRoleStatus.java

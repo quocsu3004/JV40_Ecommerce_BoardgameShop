@@ -28,7 +28,7 @@ public class JPAConfig {
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/jv40_ecommerce_boardgameshop?characterEncoding=UTF-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/jv40_ecommerce_boardgameshop?serverTimezone=UTC");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 

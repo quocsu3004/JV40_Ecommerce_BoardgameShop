@@ -26,6 +26,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\enums\PromotionStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\AccountRole.class
+com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\CreditCardStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\Gender.class

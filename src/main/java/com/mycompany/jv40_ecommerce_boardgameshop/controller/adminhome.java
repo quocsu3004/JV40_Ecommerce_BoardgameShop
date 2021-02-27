@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/admin")
 public class adminhome {
     
-//    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-//    public String adminhomepage(){
-//        return "adminhomepage";
-//    }
-//    
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
+    public String adminhomepage(){
+        return "admin/adminhomepage";
+    }
+    
 
 }

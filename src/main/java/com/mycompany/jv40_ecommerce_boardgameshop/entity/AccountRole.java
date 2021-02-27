@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.AccountRoleStatus;
+import com.mycompany.jv40_ecommerce_boardgameshop.enums.Role;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,8 +33,10 @@ public class AccountRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String role;
+    
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -68,14 +71,15 @@ public class AccountRole {
         this.id = id;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
+    
     public AccountRoleStatus getStatus() {
         return status;
     }

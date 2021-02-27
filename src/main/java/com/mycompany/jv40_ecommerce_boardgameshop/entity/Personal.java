@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,10 +26,8 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author Admin
  */
-@Entity
-@Table
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Personal {
+@MappedSuperclass
+public class Personal {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

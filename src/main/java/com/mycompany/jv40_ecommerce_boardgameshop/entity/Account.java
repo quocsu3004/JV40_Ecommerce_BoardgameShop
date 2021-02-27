@@ -124,6 +124,14 @@ public class Account extends Personal{
         this.vote = vote;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     
 }

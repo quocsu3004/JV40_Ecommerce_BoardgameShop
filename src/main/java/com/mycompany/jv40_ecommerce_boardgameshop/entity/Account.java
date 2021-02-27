@@ -36,6 +36,9 @@ public class Account extends Personal{
     private int id;
     
     @Column(length = 100)
+    private String email;
+    
+    @Column(length = 100)
     private String password;
     
     @Column(nullable = false)

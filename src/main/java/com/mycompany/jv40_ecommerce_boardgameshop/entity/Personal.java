@@ -40,8 +40,6 @@ public abstract class Personal {
     @Column(name = "phone_number", length = 12)
     private String phoneNumber;
     
-    @Column(length = 100)
-    private String email;
     
     @Column(length = 1000)
     private String address;
@@ -82,13 +80,6 @@ public abstract class Personal {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getAddress() {
         return address;

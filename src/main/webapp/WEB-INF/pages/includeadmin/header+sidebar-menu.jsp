@@ -7,7 +7,7 @@
         <!-- logo start -->
         <div class="page-logo">
             <a href="index.html">
-                <img alt="" src="<c:url value="/resources/img/logo.png"/>">
+                <img alt="" src="<c:url value="/resources-management/img/logo.png"/>">
                 <span class="logo-default" >Hippo</span> </a>
         </div>
         <!-- logo end -->
@@ -240,7 +240,7 @@
                     <div class="user-panel">
                         <div class="row">
                             <div class="sidebar-userpic">
-                                <img src="<c:url value="/resources/img/dp.jpg"/>" class="img-responsive" alt=""> </div>
+                                <img src="<c:url value="/resources-management/img/dp.jpg"/>" class="img-responsive" alt=""> </div>
                         </div>
                         <div class="profile-usertitle">
                             <div class="sidebar-userpic-name"> John Deo </div>

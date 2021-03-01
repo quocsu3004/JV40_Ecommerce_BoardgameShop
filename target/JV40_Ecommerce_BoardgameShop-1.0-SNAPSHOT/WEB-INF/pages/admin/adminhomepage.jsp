@@ -15,14 +15,14 @@
         <meta name="description" content="Ivietech final project" />
         <meta name="author" content="Maru" />
         <title>Board game Shop</title>
-        <jsp:include page="include/css.jsp" />
+        <jsp:include page="../includeadmin/css.jsp" />
     </head>
     <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
         <div class="page-wrapper">  
             <!-- start page container -->    
             <div class="page-container">
                 <!-- start header + sidebar menu -->    
-                <jsp:include page="include/header+sidebar-menu.jsp" />
+                <jsp:include page="../includeadmin/header+sidebar-menu.jsp" />
                 <!-- end header + sidebar menu --> 
                 <!-- start page content -->
                 <div class="page-content-wrapper">
@@ -121,7 +121,7 @@
                     </div>
                 </div>           
                 <!-- start footer -->
-                <jsp:include page="include/footer.jsp" />
+                <jsp:include page="../includeadmin/footer.jsp" />
                      <!-- end footer -->
             </div>
         </div>
@@ -129,7 +129,7 @@
 
         <!-- end page container -->
         <!-- start js include path -->
-        <jsp:include page="include/js.jsp" />
+        <jsp:include page="../includeadmin/js.jsp" />
         <!-- end js include path -->
     </body>
 </html>

@@ -303,7 +303,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="all_rooms.html" class="nav-link ">
+                            <a href="<c:url value="/admin/viewproduct" />" class="nav-link ">
                                 <span class="title">View Product </span>
                             </a>
                         </li>

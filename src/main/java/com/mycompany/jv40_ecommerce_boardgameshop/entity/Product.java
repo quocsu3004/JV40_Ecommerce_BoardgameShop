@@ -48,7 +48,7 @@ public class Product {
     @Column(name = "total_player", length = 2)
     private String totalPlayer;
     
-    @Column(length = 2)
+    @Column(length = 3)
     private String age;
     
     @Column(nullable = false)

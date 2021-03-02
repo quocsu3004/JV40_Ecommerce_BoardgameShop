@@ -11,6 +11,9 @@ package com.mycompany.jv40_ecommerce_boardgameshop.enums;
  */
 public enum ProductStatus {
     ACTIVE,
-    UNACTIVE;
+    UNACTIVE,
+    INSTOCK,
+    OUTSTOCK
+    ;
     
 }

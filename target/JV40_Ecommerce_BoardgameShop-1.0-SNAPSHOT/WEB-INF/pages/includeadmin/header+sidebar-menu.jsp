@@ -6,7 +6,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="<c:url value="/home" />"">
                 <img alt="" src="<c:url value="/resources-management/img/logo.png"/>">
                 <span class="logo-default" >Hippo</span> </a>
         </div>

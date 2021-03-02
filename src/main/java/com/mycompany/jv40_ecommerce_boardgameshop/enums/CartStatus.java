@@ -11,5 +11,8 @@ package com.mycompany.jv40_ecommerce_boardgameshop.enums;
  */
 public enum CartStatus {
     CREATED,
-    NONE;
+    CONFIRM,
+    SHIPPING,
+    COMPLETED,
+    CANCEL
 }

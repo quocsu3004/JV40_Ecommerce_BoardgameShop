@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -23,6 +24,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -63,7 +66,7 @@ public class Product {
     private Set<Image> image;
     
     @ManyToOne
-    @JoinColumn(name = "product_id" )
+    @JoinColumn(name = "category_id" )
     private Category categoryId;
     
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "productId")
@@ -80,6 +83,10 @@ public class Product {
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "promotion_id")} )
     private Set<Promotion> promotion;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
 
     public Product() {
     }

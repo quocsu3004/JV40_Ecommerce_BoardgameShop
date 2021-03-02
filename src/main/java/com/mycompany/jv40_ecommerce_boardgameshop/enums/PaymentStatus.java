@@ -10,7 +10,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.enums;
  * @author Admin
  */
 public enum PaymentStatus {
-    CREATED,
-    FAILED,
-    PENDING;
+    PAID,
+    UNPAID,
+    REFUND
 }

@@ -6,10 +6,10 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
-import com.mycompany.jv40_ecommerce_boardgameshop.repository.ProductReposity;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.mycompany.jv40_ecommerce_boardgameshop.repository.ProductReposity;
 
 /**
  *
@@ -25,4 +25,7 @@ public class ProductService {
         return (List<Product>) productReposity.findAll();
     }
     
+    public void saveProduct(Product product){
+        productReposity.save(product);
+    }
 }

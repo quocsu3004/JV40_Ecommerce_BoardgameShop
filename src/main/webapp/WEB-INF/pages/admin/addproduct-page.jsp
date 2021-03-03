@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@page import="com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
@@ -46,21 +47,21 @@
                                     <div class="card-head">
                                         <header>Add New Product</header>
                                     </div>
-                                    <mvc:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/${action} "
-                                              method="post" modelAttribute="product"  >
+                                    <mvc:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/${action} "
+                                              method="post" modelAttribute="product">
                                         <div class="card-body row">
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input class = "mdl-textfield__input" type = "text" id = "Name" value="${product.name}">
-                                                    <label class = "mdl-textfield__label">Name</label>
+                                                    <input name="name"  class = "mdl-textfield__input" type = "text" id = "name" value="${product.name}">
+                                                    <label class = "mdl-textfield__label" for="name">Name</label>
                                                 </div>
                                             </div>
 
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text" 
+                                                    <input class = "mdl-textfield__input" type = "text" name="price"
                                                            pattern = "-?[0-9]*(\.[0-9]+)?" id = "price" value="${product.price}">
                                                     <label class = "mdl-textfield__label" for = "price">Price</label>
                                                     <span class = "mdl-textfield__error">Price is required!</span>
@@ -69,7 +70,7 @@
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text" 
+                                                    <input class = "mdl-textfield__input" type = "text"  name="quantity"
                                                            pattern = "-?[0-9]*(\.[0-9]+)?" id = "quantity" value="${product.quantity}">
                                                     <label class = "mdl-textfield__label" for = "quantity">Quantity</label>
                                                     <span class = "mdl-textfield__error">Quantity is required!</span>
@@ -78,7 +79,7 @@
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text" id = "Age" value="${product.age}">
+                                                    <input class = "mdl-textfield__input" type = "text" name="age" id = "age" value="${product.age}">
                                                     <label class = "mdl-textfield__label">Age</label>
                                                 </div>
                                             </div>
@@ -91,7 +92,7 @@
                                             <div class="col-lg-6 p-t-20">
                                                 <div class="form-group">
                                                     <label>Category</label>
-                                                    <select name="category" class="form-control">
+                                                    <select name="categoryId.id" class="form-control">
                                                         <c:forEach var="c" items="${category}">                                
                                                             <option value="${c.id}">${c.name}</option> 
                                                         </c:forEach>
@@ -102,29 +103,30 @@
                                             <div class="col-lg-6 p-t-20">
                                                 <div class="form-group">
                                                     <label>Category</label>
-                                                    <select name="publisher" class="form-control">
-                                                        <c:forEach var="c" items="${publisher}">                                
-                                                            <option value="${c.id}">${c.name}</option> 
+                                                    <select name="publisherId.id" class="form-control">
+                                                        <c:forEach var="p" items="${publisher}">                                
+                                                            <option value="${p.id}">${p.name}</option> 
                                                         </c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 p-t-20">
                                                 <div class="form-group">
-                                                    <label>Status</label>
-                                                    <select name="status" class="form-control">   
-                                                        <c:forEach var="ps" items="${productStatus}">
-                                                            <option>${ps}</option>   
-                                                                </c:forEach>
+                                                    <label for="productstatus">Status</label>
+                                                    <select name="productStatus" v class="form-control">   
+                                                        <c:forEach  var="c" items="${productStatus}">                                
+                                                            <option value="${c}">${c}</option> 
+                                                        </c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
 
 
                                             <div class="col-lg-12 p-t-20 text-center"> 
-                                                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
-                                                <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Cancel</button>
+                                                <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+                                                <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
                                             </div> 
+
                                         </div>
                                     </mvc:form>
                                 </div>
@@ -133,6 +135,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- start footer -->
             <jsp:include page="../includeadmin/footer.jsp" />
             <!-- end footer -->

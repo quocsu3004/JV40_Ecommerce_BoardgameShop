@@ -27,6 +27,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,10 +61,10 @@ public class ProductController {
 
     @RequestMapping("/addproduct")
     public String addNewProduct(Model model) {
+        model.addAttribute("product", new Product());
         model.addAttribute("category", categoryService.getListCategory());
         model.addAttribute("publisher", publisherService.getListPublisher());
-        model.addAttribute("product", new Product());
-        model.addAttribute("image", new Image());
+        model.addAttribute("productStatus", ProductStatus.values()); 
         model.addAttribute("action", "add");
         return "admin/addproduct-page";
     }
@@ -76,29 +77,39 @@ public class ProductController {
             HttpServletRequest servletRequest) {
 
         //Save some parts product
-        productService.saveProduct(product);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("category", categoryService.getListCategory());
+            model.addAttribute("publisher", publisherService.getListPublisher());
+            model.addAttribute("productStatus", ProductStatus.values());
+            return "admin/addproduct-page"; 
+        } else {
+//            ProductStatus productStatus = ProductStatus.valueOf(status);
+//            product.setStatus(productStatus);
+            productService.saveProduct(product);      
 
-        //Upload and save image to database
-        String path = servletRequest.getServletContext().getRealPath("/") + "resources-management/img/product-img";
+            //Upload and save image to database
 
-        String pathImageInProject = "C:\\Project\\JV40_Ecommerce_BoardgameShop\\src\\main\\webapp\\resources-management\\img\\product-img";
-        String pathImageInSnapshot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
+            String pathImageInProject = "C:\\Project\\JV40_Ecommerce_BoardgameShop\\src\\main\\webapp\\resources-management\\img\\product-img";
+            String pathImageInSnapshot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
 
-        for (MultipartFile file : files) {
-            Image image = new Image();
-            image.setName(file.getOriginalFilename());
-            image.setProductId(product);
-            imageService.save(image);
+            for (MultipartFile file : files) {
+                Image image = new Image();
+                image.setName(file.getOriginalFilename());
+                image.setProductId(product);
+                imageService.save(image);
 
-            Path sourcesPath = Paths.get(pathImageInSnapshot + file.getOriginalFilename());
-            Path targetsPath = Paths.get(pathImageInProject + file.getOriginalFilename());
-            try {
-                Files.copy(sourcesPath, targetsPath);
-            } catch (IOException ex) {
-                Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+                Path sourcesPath = Paths.get(pathImageInSnapshot + file.getOriginalFilename());
+                Path targetsPath = Paths.get(pathImageInProject + file.getOriginalFilename());
+                try {
+                    Files.copy(sourcesPath, targetsPath);
+                } catch (IOException ex) {
+                    Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-        return "redirect:/viewproduct";
+        return "redirect:/admin/viewproduct";
     }
+    
+   
 
 }

@@ -82,11 +82,10 @@
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
                                                 <thead>
                                                     <tr>
-                                                        <th class="center"></th>
+                                                        
                                                         <th class="center"> Name </th>
                                                         <th class="center"> Image </th>
-                                                        <th class="center"> Players </th>
-                                                        <th class="center"> Age </th>
+                                                        <th class="center"> Created Date </th>
                                                         <th class="center"> Price </th>
                                                         <th class="center"> Quantity </th>
                                                         <th class="center"> Status </th>
@@ -96,27 +95,21 @@
                                                 <tbody>
                                                     <c:forEach items="${product}" var="p">
                                                         <tr class="odd gradeX">
-                                                            <td class="user-circle-img">
-                                                                <img src="<c:url value= "/resources-management/img/user/user1.jpg"/>" alt="">
-                                                            </td>
+                                                            
                                                             <td class="center">${p.name}</td>
                                                             <td class="center">
                                                                 <c:forEach items="${p.image}" var="i">
                                                                     <img width="100" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
                                                                 </c:forEach>
                                                             </td>
-                                                            <td class="center">${p.totalPlayer}</td>
-                                                            <td class="center">${p.age}</td>
+                                                            <td class="center">${p.createDate}</td>
                                                             <td class="center">${p.price}</td>
                                                             <td class="center">${p.quantity}</td>
                                                             <td class="center"><b>${p.status}</b></td>
                                                             <td class="center">
                                                                 <a href="<c:url value="/admin/editproduct/${p.id}" />"" class="btn btn-tbl-edit btn-xs">
                                                                     <i class="fa fa-pencil"></i>
-                                                                </a>
-                                                                <button class="btn btn-tbl-delete btn-xs">
-                                                                    <i class="fa fa-trash-o "></i>
-                                                                </button>
+                                                                </a>                                  
                                                             </td>
                                                         </tr>
                                                     </c:forEach>

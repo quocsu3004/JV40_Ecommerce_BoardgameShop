@@ -7,6 +7,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Image;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
+import com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CategoryService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ImageService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,4 +100,5 @@ public class ProductController {
         }
         return "redirect:/viewproduct";
     }
+
 }

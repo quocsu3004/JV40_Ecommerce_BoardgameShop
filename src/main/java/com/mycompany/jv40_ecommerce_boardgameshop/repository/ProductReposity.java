@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.repository;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductReposity extends CrudRepository<Product, Integer>{
     
-    
+  
+   
     
 }

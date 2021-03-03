@@ -14,6 +14,13 @@
 <script src="<c:url value="/resources-management/js/theme-color.js"/>" ></script>
 <!-- material -->
 <script src="<c:url value="/resources-management/plugins/material/material.min.js"/>"></script>
+<script src="<c:url value="/resources-management/js/pages/material_select/getmdl-select.js"/>" ></script>
+<script  src="<c:url value="/resources-management/plugins/material-datetimepicker/moment-with-locales.min.js"/>"></script>
+<script  src="<c:url value="/resources-management/plugins/material-datetimepicker/bootstrap-material-datetimepicker.js"/>"></script>
+<script  src="<c:url value="/resources-management/plugins/material-datetimepicker/datetimepicker.js"/>"></script>
+<!-- dropzone -->
+<script src="<c:url value="/resources-management/plugins/dropzone/dropzone.js"/>" ></script>
+<script src="<c:url value="/resources-management/plugins/dropzone/dropzone-call.js"/>" ></script>
 <!-- animation -->
 <script src="<c:url value="/resources-management/js/pages/ui/animations.js"/>" ></script>
 <!-- morris chart -->

@@ -6,7 +6,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="<c:url value="/home" />"">
+            <a href="<c:url value="/admin/" />"">
                 <img alt="" src="<c:url value="/resources-management/img/logo.png"/>">
                 <span class="logo-default" >Hippo</span> </a>
         </div>
@@ -298,7 +298,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="add_room.html" class="nav-link ">
+                            <a href="<c:url value="/admin/addproduct" />" class="nav-link ">
                                 <span class="title">Add Product</span>
                             </a>
                         </li>

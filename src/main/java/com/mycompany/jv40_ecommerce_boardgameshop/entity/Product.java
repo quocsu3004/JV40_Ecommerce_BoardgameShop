@@ -202,6 +202,14 @@ public class Product {
     public void setPromotion(Set<Promotion> promotion) {
         this.promotion = promotion;
     }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
     
     
 }

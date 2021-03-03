@@ -39,7 +39,7 @@ public class Cart extends Personal{
 
     @Column(name = "order_Date")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM)DD")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orderDate;
 
     @Column(nullable = false)

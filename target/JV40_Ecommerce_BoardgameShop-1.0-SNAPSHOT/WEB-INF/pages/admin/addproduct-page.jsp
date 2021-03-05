@@ -48,16 +48,25 @@
                                         <header>Add New Product</header>
                                     </div>
                                     <mvc:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/${action} "
-                                              method="post" modelAttribute="product">
+                                              method="POST" modelAttribute="product">                                 
+
                                         <div class="card-body row">
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="name"  class = "mdl-textfield__input" type = "text" id = "name" value="${product.name}">
+                                                    <input name="name"  class = "mdl-textfield__input" type = "text" name = "name" value="${product.name}" />
                                                     <label class = "mdl-textfield__label" for="name">Name</label>
                                                 </div>
                                             </div>
 
+
+
+                                            <div class="col-lg-6 p-t-20"> 
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <input name="totalPlayer"  class = "mdl-textfield__input" type = "text" id = "totalPlayer" value="${product.totalPlayer}">
+                                                    <label class = "mdl-textfield__label" for="totalPlayer">Total Player</label>
+                                                </div>
+                                            </div>
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
@@ -102,31 +111,19 @@
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class="form-group">
-                                                    <label>Category</label>
-                                                    <select name="publisherId.id" class="form-control">
+                                                    <label for="publisherId">Publisher</label>
+                                                    <select name="publisherId" class="form-control">
                                                         <c:forEach var="p" items="${publisher}">                                
                                                             <option value="${p.id}">${p.name}</option> 
                                                         </c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 p-t-20">
-                                                <div class="form-group">
-                                                    <label for="productstatus">Status</label>
-                                                    <select name="productStatus" v class="form-control">   
-                                                        <c:forEach  var="c" items="${productStatus}">                                
-                                                            <option value="${c}">${c}</option> 
-                                                        </c:forEach>
-                                                    </select>
-                                                </div>
-                                            </div>
-
 
                                             <div class="col-lg-12 p-t-20 text-center"> 
                                                 <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
                                                 <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
                                             </div> 
-
                                         </div>
                                     </mvc:form>
                                 </div>

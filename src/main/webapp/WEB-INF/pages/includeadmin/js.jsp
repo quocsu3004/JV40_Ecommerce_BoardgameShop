@@ -30,5 +30,5 @@
 <!-- data tables -->
 <script src="<c:url value="/resources-management/plugins/datatables/jquery.dataTables.min.js"/>" ></script>
 <script src="<c:url value="/resources-management/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js"/>" ></script>
-<script src="<c:url value="/resources-management/js/pages/table/table_data.js"/>" ></script>
+<!--<script src="<c:url value="/resources-management/js/pages/table/table_data.js"/>" ></script>-->
 <!-- end js include path -->

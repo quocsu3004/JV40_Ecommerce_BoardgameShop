@@ -18,7 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackages = {"com.mycompany.spring_mvc_project_final"})
+@ComponentScan(basePackages = {"com.mycompany.jv40_ecommerce_boardgameshop"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired

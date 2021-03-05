@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -63,32 +64,22 @@ public class ProductController {
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("category", categoryService.getListCategory());
-        model.addAttribute("publisher", publisherService.getListPublisher());
-        model.addAttribute("productStatus", ProductStatus.values()); 
+        model.addAttribute("publisher", publisherService.getListPublisher());    
         model.addAttribute("action", "add");
         return "admin/addproduct-page";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String resultaction(Model model,
-            @Valid @ModelAttribute("product") Product product,
-            BindingResult bindingResult,
+            @ModelAttribute("product") Product product,
             @RequestParam("file") List<MultipartFile> files,
             HttpServletRequest servletRequest) {
-
-        //Save some parts product
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("category", categoryService.getListCategory());
-            model.addAttribute("publisher", publisherService.getListPublisher());
-            model.addAttribute("productStatus", ProductStatus.values());
-            return "admin/addproduct-page"; 
-        } else {
-//            ProductStatus productStatus = ProductStatus.valueOf(status);
-//            product.setStatus(productStatus);
-            productService.saveProduct(product);      
+            //Save some parts product
+            // set default status is active
+            product.setStatus(ProductStatus.ACTIVE);
+            productService.saveProduct(product);
 
             //Upload and save image to database
-
             String pathImageInProject = "C:\\Project\\JV40_Ecommerce_BoardgameShop\\src\\main\\webapp\\resources-management\\img\\product-img";
             String pathImageInSnapshot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
 
@@ -106,10 +97,8 @@ public class ProductController {
                     Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }
+        
         return "redirect:/admin/viewproduct";
     }
-    
-   
 
 }

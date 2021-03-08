@@ -47,24 +47,40 @@
                                     <div class="card-head">
                                         <header>Add New Product</header>
                                     </div>
-                                    <form:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/${action} "
+                                    <form:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/product/${action} "
                                                method="POST" modelAttribute="product">                                 
 
                                         <div class="card-body row">
-
+                                            
+                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                                <c:if test="${action == 'edit'}">
+                                                <form:input path="id" value="${product.id}" />
+                                                </c:if>
+                                            </div>
+                                            
+                                            <div class="col-lg-6 p-t-20" hidden="">  
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <form:input path="createDate" type="datetime" class = "mdl-textfield__input" value="${product.createDate}" />
+                                                    <form:errors path="createDate" cssStyle="color:red;" />
+                                                    <label class = "mdl-textfield__label" for="createDate">Create Date</label>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="name" class = "mdl-textfield__input" type = "text" value="${product.name}"  />
+                                                    <form:input path="name" class = "mdl-textfield__input" value="${product.name}" />
+                                                    <form:errors path="name" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for="name">Name</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text" name="price"
-                                                           pattern = "-?[0-9]*(\.[0-9]+)?" id = "price" value="${product.price}">
+                                                    <form:input class = "mdl-textfield__input"  path="price"
+                                                                 value="${product.price}"/>
+                                                    <form:errors path="price" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for = "price">Price</label>
-                                                    <span class = "mdl-textfield__error">Price is required!</span>
+                                                    
                                                 </div>
                                             </div>
 
@@ -72,88 +88,105 @@
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "number"  name="quantity"
-                                                           pattern = "-?[0-9]*(\.[0-9]+)?" id = "quantity" value="${product.quantity}">
+                                                    <form:input class = "mdl-textfield__input" path="quantity"
+                                                                 id = "quantity" value="${product.quantity}"/>
+                                                    <form:errors path="quantity" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for = "quantity">Quantity</label>
-                                                    <span class = "mdl-textfield__error">Quantity is required!</span>
+                                                    
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="totalplayer"  class = "mdl-textfield__input" type = "text"  value="${product.totalPlayer}">
+                                                    <form:input path="totalPlayer"  class = "mdl-textfield__input"  value="${product.totalPlayer}"/>
+                                                    <form:errors path="totalPlayer" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for="totalPlayer">Total Player</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text" name="age" id = "age" value="${product.age}">
+                                                    <form:input class = "mdl-textfield__input"  path="age" value="${product.age}"/>
+                                                    <form:errors path="age" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label">Age</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20">
-                                                <div>
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <label for="publisherId">Publisher</label>
-                                                    <select name="publisherId.id" class="form-control">
+                                                    <form:select path="publisherId" >
                                                         <c:forEach var="p" items="${publisher}">         
                                                             <c:if test="${product.publisherId.id == p.id}" >
-                                                            <option value="${p.id}" selected="">${p.name}</option> 
+                                                                <form:option value="${p.id}" selected="">${p.name}</form:option>                                                               
                                                             </c:if>
                                                             <c:if test="${product.publisherId.id != p.id}" >
-                                                            <option value="${p.id}" >${p.name}</option> 
+                                                                <form:option value="${p.id}" >${p.name}</form:option> 
                                                             </c:if>
                                                         </c:forEach>
-                                                    </select>
+                                                    </form:select>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20">
-                                                <div>
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <label for="file">Product Images: </label> 
                                                     <input type="file" name="file" accept="image/png, image/jpg" multiple class="form-control"/>
+
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20">
-                                                <div >
-                                                    <label>Category</label>
-                                                    <select name="categoryId.id" class="form-control">
-                                                        <c:forEach var="c" items="${category}">                                
-                                                            <c:if test="${product.categoryId.id == c.id}">
-                                                                <option value="${c.id}" selected="">${c.name}</option>
-                                                            </c:if>
-                                                            <c:if test="${product.categoryId.id != c.id}">
-                                                                <option value="${c.id}">${c.name}</option>
-                                                            </c:if>
-                                                        </c:forEach>
-                                                    </select>
+                                                <div class="col-lg-6 p-t-20">
+                                                    <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                        <label>Category</label>
+                                                        <form:select path="categoryId" >
+                                                            <c:forEach var="c" items="${category}">                                
+                                                                <c:if test="${product.categoryId.id == c.id}">
+                                                                    <form:option value="${c.id}" selected="">${c.name}</form:option>
+                                                                </c:if>
+                                                                <c:if test="${product.categoryId.id != c.id}">
+                                                                    <form:option value="${c.id}">${c.name}</form:option>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-6 p-t-20">
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                    <form:label path="status">Product Status</form:label>
+                                                    <form:select path="status" class="form-control">  
+                                                        <c:forEach var="s" items="${productStatus}">
+
+                                                            <form:option value="${s}"  > ${s} </form:option> 
+
+                                                        </c:forEach> 
+                                                    </form:select>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-12 p-t-20 text-center"> 
-                                                <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
-                                                <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
-                                            </div> 
+                                                <div class="col-lg-12 p-t-20 text-center"> 
+                                                    <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+                                                    <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
+                                                </div> 
 
-                                        </div>
-                                    </form:form> 
+                                            </div>
+                                        </form:form> 
+                                    </div>
                                 </div>
-                            </div>
-                        </div> 
+                            </div> 
+                        </div>
                     </div>
                 </div>
+
+                <!-- start footer -->
+                <jsp:include page="../includeadmin/footer.jsp" />
+                <!-- end footer -->
             </div>
 
-            <!-- start footer -->
-            <jsp:include page="../includeadmin/footer.jsp" />
-            <!-- end footer -->
-        </div>
-
-        <!-- end page content -->
-        <!-- start js include path -->
-        <jsp:include page="../includeadmin/js.jsp" />
-        <!-- end js include path -->
+            <!-- end page content -->
+            <!-- start js include path -->
+            <jsp:include page="../includeadmin/js.jsp" />
+            <!-- end js include path -->
     </body>
 </html>

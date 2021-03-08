@@ -314,12 +314,11 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
                         <i class="material-icons">group</i>
                         <span class="title">Customer</span>
-                        <span class="selected"></span>
-                        <span class="arrow open"></span>
+                        <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
@@ -329,12 +328,30 @@
                         </li>                    
                     </ul>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
-                        <i class="material-icons">group</i>
+                        <i class="material-icons">star_border</i>
+                        <span class="title">Promotion</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="<c:url value="/admin/addpromotion"/>" class="nav-link ">
+                                <span class="title">New Promotion</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<c:url value="/admin/promotion"/>" class="nav-link ">
+                                <span class="title">View Promotion</span>
+                            </a>
+                        </li>                      
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">person_outline</i>
                         <span class="title">Staff</span>
-                        <span class="selected"></span>
-                        <span class="arrow open"></span>
+                        <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
@@ -345,7 +362,6 @@
                         <li class="nav-item active">
                             <a href="all_staffs.html" class="nav-link ">
                                 <span class="title">View All Staffs</span>
-                                <span class="selected"></span>
                             </a>
                         </li>
                         <li class="nav-item">

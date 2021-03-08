@@ -9,6 +9,7 @@ import ch.qos.logback.core.joran.action.ActionUtil;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Image;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus;
+import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CategoryService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ImageService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
@@ -62,7 +63,7 @@ public class ProductController {
 
     @Autowired
     private ImageService imageService;
-    
+
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         StringTrimmerEditor stringTrimerEditor = new StringTrimmerEditor(true);
@@ -79,30 +80,40 @@ public class ProductController {
     public String addNewProduct(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("category", categoryService.getListCategory());
-        model.addAttribute("publisher", publisherService.getListPublisher());    
+        model.addAttribute("publisher", publisherService.getListPublisher());
+        model.addAttribute("productStatus", ProductStatus.values());
         model.addAttribute("action", "add");
         return "admin/addproduct-page";
     }
-    
+
     @RequestMapping("/editproduct/{id}")
     public String editOldProduct(Model model, @PathVariable("id") int id) {
         model.addAttribute("product", productService.findProductById(id));
         model.addAttribute("category", categoryService.getListCategory());
-        model.addAttribute("publisher", publisherService.getListPublisher());    
+        model.addAttribute("publisher", publisherService.getListPublisher());
+        model.addAttribute("productStatus", ProductStatus.values());
         model.addAttribute("action", "edit");
         return "admin/addproduct-page";
     }
-    
 
-    @RequestMapping(value = "/{action}", method = RequestMethod.POST)
-    public String resultaction(Model model,
-            @ModelAttribute("product") Product product,
+    @RequestMapping(value = "/product/{action}", method = RequestMethod.POST)
+    public String resultaction(Model model, @Valid
+            @ModelAttribute("product") Product product, BindingResult bindingResult,
             @RequestParam("file") List<MultipartFile> files,
             HttpServletRequest servletRequest) {
+        //Check Valid
+        if (bindingResult.hasErrors()) {
+             model.addAttribute("product", productService.findProductById(product.getId()));
+            model.addAttribute("category", categoryService.getListCategory());
+            model.addAttribute("publisher", publisherService.getListPublisher());
+            model.addAttribute("action", "add");
+            return "admin/addproduct-page";
+        } else {
             //Save some parts product
-            // set default status is active          
-            product.setCreateDate(Date.from(Instant.now()));
+            // set default status is active  
+            
             product.setStatus(ProductStatus.ACTIVE);
+            product.setCreateDate(Date.from(Instant.now()));           
             productService.saveProduct(product);
 
             //Upload and save image to database
@@ -123,7 +134,7 @@ public class ProductController {
                     Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        
+        }
         return "redirect:/admin/viewproduct";
     }
 

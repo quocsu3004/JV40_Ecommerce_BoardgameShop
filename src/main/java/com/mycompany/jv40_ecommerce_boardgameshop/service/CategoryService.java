@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.CategoryRepository;
+import java.util.Optional;
 
 /**
  *
@@ -25,4 +26,12 @@ public class CategoryService {
         return (List<Category>) categoryRepository.findAll();
     }
     
+    public Category getCategoryById(int id){
+        Optional<Category> optional = categoryRepository.findById(id);
+        if(optional.isPresent()){
+            return optional.get();
+        }
+        return new Category();
+    }
+
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.ProductReposity;
+import java.util.Optional;
 
 /**
  *
@@ -29,5 +30,12 @@ public class ProductService {
         productReposity.save(product);
     }
     
-    
+    public Product findProductById(int id){
+      Optional<Product> opt =  productReposity.findById(id);
+      if(opt.isPresent()){
+          return opt.get();
+      }else{
+          return new Product();
+      }
+    }
 }

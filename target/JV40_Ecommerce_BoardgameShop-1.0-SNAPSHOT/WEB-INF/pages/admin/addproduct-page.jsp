@@ -4,10 +4,10 @@
     Author     : Admin
 --%>
 
-<%@page import="com.mycompany.jv40_ecommerce_boardgameshop.enums.ProductStatus"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,24 +47,15 @@
                                     <div class="card-head">
                                         <header>Add New Product</header>
                                     </div>
-                                    <mvc:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/${action} "
-                                              method="POST" modelAttribute="product">                                 
+                                    <form:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/${action} "
+                                               method="POST" modelAttribute="product">                                 
 
                                         <div class="card-body row">
 
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="name"  class = "mdl-textfield__input" type = "text" name = "name" value="${product.name}" />
+                                                    <input name="name" class = "mdl-textfield__input" type = "text" value="${product.name}"  />
                                                     <label class = "mdl-textfield__label" for="name">Name</label>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="col-lg-6 p-t-20"> 
-                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="totalPlayer"  class = "mdl-textfield__input" type = "text" id = "totalPlayer" value="${product.totalPlayer}">
-                                                    <label class = "mdl-textfield__label" for="totalPlayer">Total Player</label>
                                                 </div>
                                             </div>
 
@@ -77,12 +68,21 @@
                                                 </div>
                                             </div>
 
+
+
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" type = "text"  name="quantity"
+                                                    <input class = "mdl-textfield__input" type = "number"  name="quantity"
                                                            pattern = "-?[0-9]*(\.[0-9]+)?" id = "quantity" value="${product.quantity}">
                                                     <label class = "mdl-textfield__label" for = "quantity">Quantity</label>
                                                     <span class = "mdl-textfield__error">Quantity is required!</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 p-t-20"> 
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <input name="totalplayer"  class = "mdl-textfield__input" type = "text"  value="${product.totalPlayer}">
+                                                    <label class = "mdl-textfield__label" for="totalPlayer">Total Player</label>
                                                 </div>
                                             </div>
 
@@ -92,29 +92,41 @@
                                                     <label class = "mdl-textfield__label">Age</label>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6 p-t-20">
-                                                <div class="form-group">
-                                                    <label for="file">Product Images: </label> 
-                                                    <input type="file" name="file" accept="image/png, image/jpg" multiple class="form-control"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 p-t-20">
-                                                <div class="form-group">
-                                                    <label>Category</label>
-                                                    <select name="categoryId.id" class="form-control">
-                                                        <c:forEach var="c" items="${category}">                                
-                                                            <option value="${c.id}">${c.name}</option> 
+                                                <div>
+                                                    <label for="publisherId">Publisher</label>
+                                                    <select name="publisherId.id" class="form-control">
+                                                        <c:forEach var="p" items="${publisher}">         
+                                                            <c:if test="${product.publisherId.id == p.id}" >
+                                                            <option value="${p.id}" selected="">${p.name}</option> 
+                                                            </c:if>
+                                                            <c:if test="${product.publisherId.id != p.id}" >
+                                                            <option value="${p.id}" >${p.name}</option> 
+                                                            </c:if>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20">
-                                                <div class="form-group">
-                                                    <label for="publisherId">Publisher</label>
-                                                    <select name="publisherId" class="form-control">
-                                                        <c:forEach var="p" items="${publisher}">                                
-                                                            <option value="${p.id}">${p.name}</option> 
+                                                <div>
+                                                    <label for="file">Product Images: </label> 
+                                                    <input type="file" name="file" accept="image/png, image/jpg" multiple class="form-control"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 p-t-20">
+                                                <div >
+                                                    <label>Category</label>
+                                                    <select name="categoryId.id" class="form-control">
+                                                        <c:forEach var="c" items="${category}">                                
+                                                            <c:if test="${product.categoryId.id == c.id}">
+                                                                <option value="${c.id}" selected="">${c.name}</option>
+                                                            </c:if>
+                                                            <c:if test="${product.categoryId.id != c.id}">
+                                                                <option value="${c.id}">${c.name}</option>
+                                                            </c:if>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -124,8 +136,9 @@
                                                 <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
                                                 <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
                                             </div> 
+
                                         </div>
-                                    </mvc:form>
+                                    </form:form> 
                                 </div>
                             </div>
                         </div> 

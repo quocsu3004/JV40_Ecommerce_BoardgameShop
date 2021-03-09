@@ -9,6 +9,7 @@ import com.mycompany.jv40_ecommerce_boardgameshop.entity.Image;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.ImageRepository;
+import java.util.List;
 
 /**
  *
@@ -22,5 +23,9 @@ public class ImageService {
     
     public void save(Image image){
         imageRepository.save(image);
+    }
+    
+    public List<Image> getListImageName(String name){
+        return imageRepository.findByNameLike(name);
     }
 }

@@ -14,6 +14,7 @@ import com.mycompany.jv40_ecommerce_boardgameshop.service.CategoryService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ImageService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.PublisherService;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -93,48 +94,130 @@ public class ProductController {
         model.addAttribute("publisher", publisherService.getListPublisher());
         model.addAttribute("productStatus", ProductStatus.values());
         model.addAttribute("action", "edit");
-        return "admin/addproduct-page";
+        return "admin/editproduct-page";
     }
 
-    @RequestMapping(value = "/product/{action}", method = RequestMethod.POST)
-    public String resultaction(Model model, @Valid
-            @ModelAttribute("product") Product product, BindingResult bindingResult,
+    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
+    public String resultAddAction(Model model, @Valid
+            @ModelAttribute("product") Product product, 
+            BindingResult bindingResult,
             @RequestParam("file") List<MultipartFile> files,
             HttpServletRequest servletRequest) {
         //Check Valid
-        if (bindingResult.hasErrors()) {
-             model.addAttribute("product", productService.findProductById(product.getId()));
-            model.addAttribute("category", categoryService.getListCategory());
-            model.addAttribute("publisher", publisherService.getListPublisher());
-            model.addAttribute("action", "add");
-            return "admin/addproduct-page";
-        } else {
+         
+        
             //Save some parts product
             // set default status is active  
-            
-            product.setStatus(ProductStatus.ACTIVE);
-            product.setCreateDate(Date.from(Instant.now()));           
+            product.setCreateDate(Date.from(Instant.now()));
             productService.saveProduct(product);
 
             //Upload and save image to database
             String pathImageInProject = "C:\\Project\\JV40_Ecommerce_BoardgameShop\\src\\main\\webapp\\resources-management\\img\\product-img";
-            String pathImageInSnapshot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
+            String pathImageInSnapShot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
 
             for (MultipartFile file : files) {
-                Image image = new Image();
-                image.setName(file.getOriginalFilename());
-                image.setProductId(product);
-                imageService.save(image);
+                Image imageEntity = new Image();
+                String originalFileName = file.getOriginalFilename();
+                if (!"".equals(originalFileName)) {
+                    String newFileName = "";
 
-                Path sourcesPath = Paths.get(pathImageInSnapshot + file.getOriginalFilename());
-                Path targetsPath = Paths.get(pathImageInProject + file.getOriginalFilename());
-                try {
-                    Files.copy(sourcesPath, targetsPath);
-                } catch (IOException ex) {
-                    Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+                    //check image name exists or not
+                    if (imageService.getListImageName(originalFileName).isEmpty()) {
+                        newFileName = originalFileName;
+                    } else {
+                        boolean cont = true;
+                        do {
+                            newFileName = originalFileName;
+                            if (imageService.getListImageName(newFileName).isEmpty()) {
+                                cont = false;
+                            }
+                        } while (cont);
+                    }
+
+                    File imageFile = new File(pathImageInSnapShot, newFileName);
+
+                    try {
+                        file.transferTo(imageFile);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    imageEntity.setName(newFileName);
+                    imageEntity.setProductId(product);
+                    imageService.save(imageEntity);
+
+                    Path sourcePath = Paths.get(pathImageInSnapShot + newFileName);
+                    Path targetPath = Paths.get(pathImageInProject + newFileName);
+                    try {
+                        Files.copy(sourcePath, targetPath);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
-        }
+        return "redirect:/admin/viewproduct";
+    }
+    
+    @RequestMapping(value = "/product/edit", method = RequestMethod.POST)
+    public String resultEditAction(Model model, @Valid
+            @ModelAttribute("product") Product product, 
+            BindingResult bindingResult,
+            @RequestParam("file") List<MultipartFile> files,
+            HttpServletRequest servletRequest) {
+        //Check Valid
+         
+        
+            //Save some parts product
+            // set default status is active  
+
+            productService.saveProduct(product);
+
+            //Upload and save image to database
+            String pathImageInProject = "C:\\Project\\JV40_Ecommerce_BoardgameShop\\src\\main\\webapp\\resources-management\\img\\product-img";
+            String pathImageInSnapShot = servletRequest.getServletContext().getRealPath("/resources-management/img/product-img");
+
+            for (MultipartFile file : files) {
+                Image imageEntity = new Image();
+                String originalFileName = file.getOriginalFilename();
+                if (!"".equals(originalFileName)) {
+                    String newFileName = "";
+
+                    //check image name exists or not
+                    if (imageService.getListImageName(originalFileName).isEmpty()) {
+                        newFileName = originalFileName;
+                    } else {
+                        boolean cont = true;
+                        do {
+                            newFileName = originalFileName;
+                            if (imageService.getListImageName(newFileName).isEmpty()) {
+                                cont = false;
+                            }
+                        } while (cont);
+                    }
+
+                    File imageFile = new File(pathImageInSnapShot, newFileName);
+
+                    try {
+                        file.transferTo(imageFile);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    imageEntity.setName(newFileName);
+                    imageEntity.setProductId(product);
+                    imageService.save(imageEntity);
+
+                    Path sourcePath = Paths.get(pathImageInSnapShot + newFileName);
+                    Path targetPath = Paths.get(pathImageInProject + newFileName);
+                    try {
+                        Files.copy(sourcePath, targetPath);
+
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
         return "redirect:/admin/viewproduct";
     }
 

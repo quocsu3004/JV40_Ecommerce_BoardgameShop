@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.repository;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Image;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ImageRepository extends CrudRepository<Image, Integer>{
-    
+     List<Image> findByNameLike(String imageName);
 }

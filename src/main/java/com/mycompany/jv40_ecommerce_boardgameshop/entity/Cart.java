@@ -55,6 +55,9 @@ public class Cart extends Personal{
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account accountId;
+    
+    @Column(name = "total_price")
+    private double totalPrice;
 
     public Cart() {
     }
@@ -105,6 +108,14 @@ public class Cart extends Personal{
 
     public void setAccountId(Account accountId) {
         this.accountId = accountId;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     

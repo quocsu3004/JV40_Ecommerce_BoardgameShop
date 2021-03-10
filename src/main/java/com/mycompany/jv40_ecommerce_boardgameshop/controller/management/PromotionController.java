@@ -39,7 +39,7 @@ public class PromotionController {
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
         model.addAttribute("promotion", promotionService.viewPromotion());
-        return "admin/promotion-page";
+        return "admin/promotion/promotion-page";
     }
 
     @RequestMapping("/editpromotion/{id}")
@@ -47,7 +47,7 @@ public class PromotionController {
         model.addAttribute("promotion", promotionService.findPromotionById(id));
         model.addAttribute("promotionStatus", PromotionStatus.values());
         model.addAttribute("action", "edit");
-        return "admin/promotion-edit";
+        return "admin/promotion/promotion-edit";
     }
     
     @RequestMapping(value= "/addpromotion", method = RequestMethod.POST )
@@ -55,7 +55,7 @@ public class PromotionController {
         model.addAttribute("product", productService.getProduct());
         model.addAttribute("promotion", new Promotion());
         model.addAttribute("action", "add");
-        return "admin/promotion-add";
+        return "admin/promotion/promotion-add";
     }
 
     @RequestMapping(value = "promotion/{action}", method = RequestMethod.POST)

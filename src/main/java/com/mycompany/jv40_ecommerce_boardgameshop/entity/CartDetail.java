@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class CartDetail {
+public class CartDetail  {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +36,9 @@ public class CartDetail {
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cartId;
-
+    
+     private int quantity;
+    
     public CartDetail() {
     }
 
@@ -78,6 +80,14 @@ public class CartDetail {
 
     public void setCartId(Cart cartId) {
         this.cartId = cartId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
     

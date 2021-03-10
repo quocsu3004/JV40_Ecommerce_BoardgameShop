@@ -74,7 +74,7 @@ public class ProductController {
     @RequestMapping(value = "/viewproduct", method = RequestMethod.GET)
     public String productViewPage(Model model) {
         model.addAttribute("product", productService.getProduct());
-        return "admin/viewproduct";
+        return "admin/product/viewproduct";
     }
 
     @RequestMapping("/addproduct")
@@ -84,7 +84,7 @@ public class ProductController {
         model.addAttribute("publisher", publisherService.getListPublisher());
         model.addAttribute("productStatus", ProductStatus.values());
         model.addAttribute("action", "add");
-        return "admin/addproduct-page";
+        return "admin/product/addproduct-page";
     }
 
     @RequestMapping("/editproduct/{id}")
@@ -94,7 +94,7 @@ public class ProductController {
         model.addAttribute("publisher", publisherService.getListPublisher());
         model.addAttribute("productStatus", ProductStatus.values());
         model.addAttribute("action", "edit");
-        return "admin/editproduct-page";
+        return "admin/product/editproduct-page";
     }
 
     @RequestMapping(value = "/product/add", method = RequestMethod.POST)

@@ -279,15 +279,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link ">
+                            <a href="<c:url value="/admin/vieworder" />" class="nav-link ">
                                 <span class="title">View Order</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href=#" class="nav-link ">
-                                <span class="title">Edit Order</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -307,11 +303,7 @@
                                 <span class="title">View Product </span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="edit_room.html" class="nav-link ">
-                                <span class="title">Edit Product</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li class="nav-item">

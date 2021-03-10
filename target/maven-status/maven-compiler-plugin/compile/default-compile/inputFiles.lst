@@ -16,6 +16,8 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Cart.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\AccountRole.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\management\ProductController.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\management\OrderController.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\CartDetailService.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Payment.java
@@ -23,6 +25,7 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Publisher.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CategoryRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\management\PromotionController.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CartRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Comment.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\JPAConfig.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\Gender.java
@@ -34,6 +37,8 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Personal.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\PaymentStatus.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\CartService.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CartDetailRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\CartDetail.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\CreditCardStatus.java

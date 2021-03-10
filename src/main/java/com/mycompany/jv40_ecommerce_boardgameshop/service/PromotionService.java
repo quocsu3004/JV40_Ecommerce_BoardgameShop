@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.PromotionRepository;
 import java.util.List;
@@ -37,5 +38,9 @@ public class PromotionService {
     
     public void save(Promotion promotion){
         promotionRepository.save(promotion);
+    }
+    
+    public List<Product> findProductByPromotionId(int id){
+        return promotionRepository.findByIdLike(id);
     }
 }

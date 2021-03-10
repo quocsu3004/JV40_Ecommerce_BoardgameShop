@@ -84,7 +84,7 @@
                                                     <tr>
                                                         
                                                         <th class="center"> Name </th>
-                                                        
+<!--                                                        <th class="center"> Product Apply </th>-->
                                                         <th class="center"> Discount </th>
                                                         <th class="center"> Start Date </th>
                                                         <th class="center"> End Date </th>
@@ -98,6 +98,7 @@
                                                         <tr class="odd gradeX">
                                                             
                                                             <td class="center">${pr.name}</td>
+<!--                                                            <td class="center"></td>-->
                                                             <td class="center">${pr.discount}%</td>                                                                                   
                                                             <td class="center">${pr.startDate}</td>
                                                             <td class="center">${pr.endDate}</td>                 

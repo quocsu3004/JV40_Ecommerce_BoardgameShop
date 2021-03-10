@@ -7,6 +7,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
+import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.PromotionService;
 import javax.faces.annotation.RequestMap;
 import javax.validation.Valid;
@@ -31,11 +32,13 @@ public class PromotionController {
 
     @Autowired
     private PromotionService promotionService;
+    
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
         model.addAttribute("promotion", promotionService.viewPromotion());
-
         return "admin/promotion-page";
     }
 
@@ -46,6 +49,14 @@ public class PromotionController {
         model.addAttribute("action", "edit");
         return "admin/promotion-edit";
     }
+    
+    @RequestMapping(value= "/addpromotion", method = RequestMethod.POST )
+    public String AddPromotion(Model model){
+        model.addAttribute("product", productService.getProduct());
+        model.addAttribute("promotion", new Promotion());
+        model.addAttribute("action", "add");
+        return "admin/promotion-add";
+    }
 
     @RequestMapping(value = "promotion/{action}", method = RequestMethod.POST)
     public String resultChangeStatusPromotion(Model model,
@@ -54,7 +65,7 @@ public class PromotionController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("promotion", promotionService.findPromotionById(promotion.getId()));
             model.addAttribute("promotionStatus", PromotionStatus.values());
-            model.addAttribute("action", "edit");
+            model.addAttribute("action", "{action}");
             return "admin/promotion-edit";
         } else {
 

@@ -10,8 +10,13 @@ import com.mycompany.jv40_ecommerce_boardgameshop.enums.CartStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.Gender;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CartDetailService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CartService;
+import com.mycompany.jv40_ecommerce_boardgameshop.utils.OrderExcelExporter;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -36,7 +41,7 @@ public class OrderController {
     public void initBinder(WebDataBinder binder) {
         StringTrimmerEditor stringTrimerEditor = new StringTrimmerEditor(true);
         binder.registerCustomEditor(String.class, stringTrimerEditor);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         sdf.setLenient(true);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
@@ -70,6 +75,24 @@ public class OrderController {
         cart.setGender(Gender.valueOf(cart.getGender().toString().toUpperCase()));
         cartService.save(cart);
         return "redirect:/admin/vieworder";
+    }
+    
+    @RequestMapping("/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException{
+        response.setContentType("application/octet-stream");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDate = dateFormat.format(new Date());
+        
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=orders_" + currentDate + ".xlsx";
+        response.setHeader(headerKey, headerValue);
+        
+        List<Cart> listCarts = cartService.getListCarts();
+        
+        OrderExcelExporter excelExporter = new OrderExcelExporter(listCarts);
+        
+        excelExporter.export(response);
+        
     }
 
 }

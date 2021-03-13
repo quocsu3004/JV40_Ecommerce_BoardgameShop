@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.CartRepository;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,11 @@ public class CartService  {
         }
     }
     
+    
     public void save(Cart cart){
         cartRepository.save(cart);
     }
+
+   
+    
 }

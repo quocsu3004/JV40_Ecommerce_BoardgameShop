@@ -5,7 +5,10 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.repository;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +17,8 @@ import org.springframework.stereotype.Repository;
  * @author Admin
  */
 @Repository
-public interface CartDetailRepository extends CrudRepository<CartDetail, Integer>{
-    
+public interface CartDetailRepository extends CrudRepository<CartDetail, Integer> {
+
+ List<CartDetail> findByCartIdLike(Cart cart);
+
 }

@@ -51,7 +51,7 @@
                                             <div class="col-md-6 col-sm-6 col-6">
                                                 <div class="btn-group">
                                                     <a href="<c:url value="/admin/addproduct" />" id="addRow" class="btn btn-info">
-                                                    Add New Product <i class="fa fa-plus"></i>
+                                                        Add New Product <i class="fa fa-plus"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -81,26 +81,31 @@
                                                         <th class="center"> Order Date </th>
                                                         <th class="center"> Total Price </th>
                                                         <th class="center"> Status </th>
+                                                        <th class="center"> View Details </th>
                                                         <th class="center"> Action </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                <c:forEach items="${cart}" var="c">
-                                                    <tr class="odd gradeX">
+                                                    <c:forEach items="${cart}" var="c">
+                                                        <tr class="odd gradeX">
 
-                                                        <td class="center">${c.id}</td>
-                                                        <td class="center">${c.fullName}</td>
-                                                    <td class="center">${c.phoneNumber}</td>
-                                                    <td class="center">${c.orderDate}</td>
-                                                    <td class="center">${c.totalPrice}</td>
-                                                    <td class="center"><b>${c.status}</b></td>
-                                                    <td class="center">
-                                                        <a href="<c:url value="/admin/changestatusorder/${c.id}" />"" class="btn btn-tbl-edit btn-xs">
-                                                        <i class="fa fa-pencil"></i>
-                                                        </a>                                  
-                                                    </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                            <td class="center">${c.id}</td>
+                                                            <td class="center">${c.fullName}</td>
+                                                            <td class="center">${c.phoneNumber}</td>
+                                                            <td class="center">${c.orderDate}</td>
+                                                            <td class="center">${c.totalPrice}</td>
+                                                            <td class="center"><b>${c.status}</b></td>
+                                                            <td class="center">
+                                                                <a href="<c:url value="/admin/vieworderdetail/${c.id}" />"" class="btn btn-tbl-edit btn-xs">
+                                                                     <i class="fa fa-plus-square"></i>
+                                                            </td>
+                                                            <td class="center">
+                                                                <a href="<c:url value="/admin/changestatusorder/${c.id}" />"" class="btn btn-tbl-edit btn-xs">
+                                                                    <i class="fa fa-pencil"></i>
+                                                                </a>                                  
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>

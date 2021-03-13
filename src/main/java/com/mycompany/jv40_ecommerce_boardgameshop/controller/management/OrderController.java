@@ -92,7 +92,13 @@ public class OrderController {
         OrderExcelExporter excelExporter = new OrderExcelExporter(listCarts);
         
         excelExporter.export(response);
+    }
+    
+    @RequestMapping(value = "/vieworderdetail/{id}")
+    public String viewOrderDetail(Model model, @PathVariable("id") int id){
         
+        model.addAttribute("cart", cartDetailService.getCardDetailInCart(cartService.findCartById(id)));
+        return "admin/orderdetail/orderdetail-viewpage";
     }
 
 }

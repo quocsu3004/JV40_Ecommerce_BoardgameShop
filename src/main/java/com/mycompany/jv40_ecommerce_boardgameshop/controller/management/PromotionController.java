@@ -5,10 +5,13 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.PromotionService;
+import java.util.List;
+import java.util.Set;
 import javax.faces.annotation.RequestMap;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +35,14 @@ public class PromotionController {
 
     @Autowired
     private PromotionService promotionService;
-    
+
     @Autowired
     private ProductService productService;
 
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
         model.addAttribute("promotion", promotionService.viewPromotion());
-        return "admin/promotion/promotion-page";
+   return "admin/promotion/promotion-page";
     }
 
     @RequestMapping("/editpromotion/{id}")
@@ -49,28 +52,56 @@ public class PromotionController {
         model.addAttribute("action", "edit");
         return "admin/promotion/promotion-edit";
     }
-    
-    @RequestMapping(value= "/addpromotion", method = RequestMethod.POST )
-    public String AddPromotion(Model model){
+
+    @RequestMapping(value = "/addpromotion")
+    public String AddPromotion(Model model) {
         model.addAttribute("product", productService.getProduct());
         model.addAttribute("promotion", new Promotion());
+        model.addAttribute("promotionstatus", PromotionStatus.values());
         model.addAttribute("action", "add");
         return "admin/promotion/promotion-add";
     }
 
-    @RequestMapping(value = "promotion/{action}", method = RequestMethod.POST)
+    @RequestMapping(value = "promotion/edit", method = RequestMethod.POST)
     public String resultChangeStatusPromotion(Model model,
             @Valid @ModelAttribute("promotion") Promotion promotion,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("promotion", promotionService.findPromotionById(promotion.getId()));
             model.addAttribute("promotionStatus", PromotionStatus.values());
-            model.addAttribute("action", "{action}");
-            return "admin/promotion-edit";
+            model.addAttribute("action", "edit");
+            return "admin/promotion/promotion-edit";
         } else {
 
             promotion.setStatus(PromotionStatus.valueOf(promotion.getStatus().toString().toUpperCase()));
             promotionService.save(promotion);
+        }
+        return "redirect:/admin/promotion";
+    }
+
+    @RequestMapping(value = "promotion/add", method = RequestMethod.POST)
+    public String resultAddNewPromotion(Model model,
+            @Valid @ModelAttribute("promotion") Promotion promotion,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("product", productService.getProduct());
+            model.addAttribute("promotion", new Promotion());
+            model.addAttribute("promotionstatus", PromotionStatus.values());
+            model.addAttribute("action", "add");
+            return "admin/promotion/promotion-add";
+        } else {
+            //Save Promotion
+            promotion.setStatus(PromotionStatus.valueOf(promotion.getStatus().toString().toUpperCase()));
+            promotionService.save(promotion);
+            
+            // Set price then save product
+            Set<Product> listProducts = promotion.getProduct();
+            for(Product product: listProducts){
+                double price = product.getPrice();
+                double discoutedPrice = price - (promotion.getDiscount() * (price / 100));
+                product.setPrice(discoutedPrice);
+            }
+            
         }
         return "redirect:/admin/promotion";
     }

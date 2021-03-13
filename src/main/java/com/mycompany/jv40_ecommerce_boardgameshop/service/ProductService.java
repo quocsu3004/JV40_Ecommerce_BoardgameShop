@@ -6,11 +6,13 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.ProductReposity;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  *
@@ -37,5 +39,9 @@ public class ProductService {
       }else{
           return new Product();
       }
+    }
+    
+    public Set<Product> findProductByPromotion(Promotion promotion){
+        return productReposity.findByPromotion(promotion);
     }
 }

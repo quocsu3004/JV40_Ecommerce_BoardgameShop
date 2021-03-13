@@ -87,6 +87,9 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
+    
+    @Column(length = 1000)
+    private String description;
 
     public Product() {
     }
@@ -209,6 +212,14 @@ public class Product {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     
     

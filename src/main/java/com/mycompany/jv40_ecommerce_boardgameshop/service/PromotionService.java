@@ -40,7 +40,5 @@ public class PromotionService {
         promotionRepository.save(promotion);
     }
     
-    public List<Product> findProductByPromotionId(int id){
-        return promotionRepository.findByIdLike(id);
-    }
+    
 }

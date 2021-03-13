@@ -80,11 +80,11 @@
                                         <div class="table-scrollable">
 
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
-                                                <thead>
+                                                <thead>                    
                                                     <tr>
                                                         
                                                         <th class="center"> Name </th>
-<!--                                                        <th class="center"> Product Apply </th>-->
+                                                        <th class="center"> Product Apply </th>
                                                         <th class="center"> Discount </th>
                                                         <th class="center"> Start Date </th>
                                                         <th class="center"> End Date </th>
@@ -92,13 +92,13 @@
                                                         <th class="center"> Status </th>
                                                         <th class="center"> Action </th>
                                                     </tr>
-                                                </thead>
+                                                </thead>      
                                                 <tbody>
                                                     <c:forEach items="${promotion}" var="pr">
                                                         <tr class="odd gradeX">
                                                             
                                                             <td class="center">${pr.name}</td>
-<!--                                                            <td class="center"></td>-->
+                                                            <td class="center">${pr.product.name}</td>    
                                                             <td class="center">${pr.discount}%</td>                                                                                   
                                                             <td class="center">${pr.startDate}</td>
                                                             <td class="center">${pr.endDate}</td>                 

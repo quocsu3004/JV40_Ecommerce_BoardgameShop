@@ -7,6 +7,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -65,7 +66,7 @@ public class Promotion {
     @JoinTable(name = "product_promotion",
             joinColumns = {@JoinColumn(name = "promotion_id")},
             inverseJoinColumns = {@JoinColumn(name = "product_id")} )
-    private Set<Product> product;
+    private List<Product> product;
     
     public Promotion() {
     }
@@ -134,11 +135,11 @@ public class Promotion {
         this.description = description;
     }
 
-    public Set<Product> getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(Set<Product> product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
     

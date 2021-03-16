@@ -56,8 +56,8 @@
                                                     </a>
                                                     <ul class="dropdown-menu pull-right">                 
                                                         <li>
-                                                            <a href="#">
-                                                                <i class="fa fa-file-excel-o"></i> Export to Excel </a>
+                                                            <a href="<c:url value="/admin/exportcartdetail/${id}" />">
+                                                                <i class="fa fa-file-excel-o"></i> Export to PDF </a>
                                                         </li>
                                                     </ul>
                                                 </div>

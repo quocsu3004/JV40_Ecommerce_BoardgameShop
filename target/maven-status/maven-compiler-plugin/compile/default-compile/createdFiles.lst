@@ -29,6 +29,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\PromotionService.class
 com\mycompany\jv40_ecommerce_boardgameshop\controller\AdminHomeController.class
+com\mycompany\jv40_ecommerce_boardgameshop\utils\OrderDetailPDFExporter.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Account.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Image.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Payment.class

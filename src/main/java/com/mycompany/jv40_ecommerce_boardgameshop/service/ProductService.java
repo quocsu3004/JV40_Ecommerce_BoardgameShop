@@ -41,7 +41,5 @@ public class ProductService {
       }
     }
     
-    public Set<Product> findProductByPromotion(Promotion promotion){
-        return productReposity.findByPromotion(promotion);
-    }
+  
 }

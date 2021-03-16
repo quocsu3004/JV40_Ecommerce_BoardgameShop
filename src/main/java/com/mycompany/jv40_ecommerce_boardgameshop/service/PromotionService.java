@@ -10,6 +10,7 @@ import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.PromotionRepository;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,5 @@ public class PromotionService {
     public void save(Promotion promotion){
         promotionRepository.save(promotion);
     }
-    
-    
+
 }

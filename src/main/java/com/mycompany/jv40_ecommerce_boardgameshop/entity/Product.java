@@ -78,11 +78,8 @@ public class Product {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "productId")
     private List<Vote> vote;
     
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinTable(name = "product_promotion",
-            joinColumns = {@JoinColumn(name = "product_id")},
-            inverseJoinColumns = {@JoinColumn(name = "promotion_id")} )
-    private Set<Promotion> promotion;
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Promotion> promotion;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -198,11 +195,11 @@ public class Product {
         this.vote = vote;
     }
 
-    public Set<Promotion> getPromotion() {
+    public List<Promotion> getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(Set<Promotion> promotion) {
+    public void setPromotion(List<Promotion> promotion) {
         this.promotion = promotion;
     }
 

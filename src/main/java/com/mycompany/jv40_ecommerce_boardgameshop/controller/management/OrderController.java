@@ -6,10 +6,12 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.CartStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.Gender;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CartDetailService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.CartService;
+import com.mycompany.jv40_ecommerce_boardgameshop.utils.OrderDetailPDFExporter;
 import com.mycompany.jv40_ecommerce_boardgameshop.utils.OrderExcelExporter;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -76,29 +78,46 @@ public class OrderController {
         cartService.save(cart);
         return "redirect:/admin/vieworder";
     }
-    
+
     @RequestMapping("/export/excel")
-    public void exportToExcel(HttpServletResponse response) throws IOException{
+    public void exportToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDate = dateFormat.format(new Date());
-        
+
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=orders_" + currentDate + ".xlsx";
         response.setHeader(headerKey, headerValue);
-        
+
         List<Cart> listCarts = cartService.getListCarts();
-        
+
         OrderExcelExporter excelExporter = new OrderExcelExporter(listCarts);
-        
+
         excelExporter.export(response);
     }
-    
+
     @RequestMapping(value = "/vieworderdetail/{id}")
-    public String viewOrderDetail(Model model, @PathVariable("id") int id){
-        
+    public String viewOrderDetail(Model model, @PathVariable("id") int id) {
+
         model.addAttribute("cart", cartDetailService.getCardDetailInCart(cartService.findCartById(id)));
         return "admin/orderdetail/orderdetail-viewpage";
+    }
+
+    @RequestMapping("/exportcartdetail/{id}")
+    public void exportCartDetailToPDF(HttpServletResponse response, @PathVariable("id") int id) throws IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=CartDetail_" + currentDate + ".pdf";
+        response.setHeader(headerKey, headerValue);
+        
+        List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cartService.findCartById(id));
+        OrderDetailPDFExporter exporter = new OrderDetailPDFExporter(listCartDetail);
+        
+        exporter.export(response);
+        
     }
 
 }

@@ -42,7 +42,7 @@ public class PromotionController {
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
         model.addAttribute("promotion", promotionService.viewPromotion());
-   return "admin/promotion/promotion-page";
+        return "admin/promotion/promotion-page";
     }
 
     @RequestMapping("/editpromotion/{id}")
@@ -62,7 +62,7 @@ public class PromotionController {
         return "admin/promotion/promotion-add";
     }
 
-    @RequestMapping(value = "promotion/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/promotion/edit", method = RequestMethod.POST)
     public String resultChangeStatusPromotion(Model model,
             @Valid @ModelAttribute("promotion") Promotion promotion,
             BindingResult bindingResult) {
@@ -79,30 +79,22 @@ public class PromotionController {
         return "redirect:/admin/promotion";
     }
 
-    @RequestMapping(value = "promotion/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/promotion/add", method = RequestMethod.POST)
     public String resultAddNewPromotion(Model model,
-            @Valid @ModelAttribute("promotion") Promotion promotion,
-            BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("product", productService.getProduct());
-            model.addAttribute("promotion", new Promotion());
-            model.addAttribute("promotionstatus", PromotionStatus.values());
-            model.addAttribute("action", "add");
-            return "admin/promotion/promotion-add";
-        } else {
-            //Save Promotion
-            promotion.setStatus(PromotionStatus.valueOf(promotion.getStatus().toString().toUpperCase()));
-            promotionService.save(promotion);
-            
-            // Set price then save product
-            Set<Product> listProducts = promotion.getProduct();
-            for(Product product: listProducts){
-                double price = product.getPrice();
-                double discoutedPrice = price - (promotion.getDiscount() * (price / 100));
-                product.setPrice(discoutedPrice);
-            }
-            
+            @ModelAttribute("promotion") Promotion promotion
+            ) {
+        //Save Promotion
+        promotionService.save(promotion);
+
+        // Set price then save product
+        List<Product> listProducts = promotion.getProduct();
+        for (Product product : listProducts) {
+            double price = product.getPrice();
+            double discoutedPrice = price - (promotion.getDiscount() / 100 * price);
+            product.setPrice(discoutedPrice);
+            productService.saveProduct(product);
         }
+
         return "redirect:/admin/promotion";
     }
 

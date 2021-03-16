@@ -22,7 +22,7 @@ public class AdminHomeController {
     
     @RequestMapping("/")
     public String adminhomepage(){
-        return "admin/adminhomepage";
+        return "admin/home/adminhomepage";
     }
     
 

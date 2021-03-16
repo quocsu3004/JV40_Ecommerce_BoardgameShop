@@ -19,7 +19,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductReposity extends CrudRepository<Product, Integer>{
     
-  Set<Product> findByPromotion(Promotion promotion);
+ 
    
     
 }

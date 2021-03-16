@@ -97,8 +97,8 @@
                                                     <c:forEach items="${promotion}" var="pr">
                                                         <tr class="odd gradeX">
                                                             
-                                                            <td class="center">${pr.name}</td>
-                                                            <td class="center">${pr.product.name}</td>    
+                                                            <td class="center">${pr.name}</td>  
+                                                            <td class="center">${pr.product.name}</td>                                                 
                                                             <td class="center">${pr.discount}%</td>                                                                                   
                                                             <td class="center">${pr.startDate}</td>
                                                             <td class="center">${pr.endDate}</td>                 

@@ -57,7 +57,7 @@
                                                     <ul class="dropdown-menu pull-right">                 
                                                         <li>
                                                             <a href="<c:url value="/admin/exportcartdetail/${id}" />">
-                                                                <i class="fa fa-file-excel-o"></i> Export to PDF </a>
+                                                                <i class="fa fa-file-excel-o"></i> Export Invoice to PDF </a>
                                                         </li>
                                                     </ul>
                                                 </div>

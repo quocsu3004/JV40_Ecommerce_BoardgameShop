@@ -110,7 +110,7 @@ public class OrderController {
         String currentDate = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=CartDetail_" + currentDate + ".pdf";
+        String headerValue = "attachment; filename=Invoice_" + currentDate + ".pdf";
         response.setHeader(headerKey, headerValue);
         
         List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cartService.findCartById(id));

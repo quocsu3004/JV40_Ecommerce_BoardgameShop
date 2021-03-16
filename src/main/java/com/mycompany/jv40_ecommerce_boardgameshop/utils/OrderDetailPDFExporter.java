@@ -8,6 +8,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.utils;
 import com.lowagie.text.Document;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
+import com.lowagie.text.Image;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
@@ -47,10 +48,13 @@ public class OrderDetailPDFExporter {
         cell.setPhrase(new Phrase("Product", font));
         pdfPTable.addCell(cell);
 
-        cell.setPhrase(new Phrase("Price", font));
+        cell.setPhrase(new Phrase("Price Each", font));
         pdfPTable.addCell(cell);
 
         cell.setPhrase(new Phrase("Quantity", font));
+        pdfPTable.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Price", font));
         pdfPTable.addCell(cell);
 
     }
@@ -59,8 +63,9 @@ public class OrderDetailPDFExporter {
         for (CartDetail cartDetail : listCartDetail) {
             pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getId()));
             pdfPTable.addCell(cartDetail.getProductId().getName());
-            pdfPTable.addCell(String.valueOf(cartDetail.getPrice()));
+            pdfPTable.addCell("$" + String.valueOf(cartDetail.getPrice()));
             pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));
+            pdfPTable.addCell("$" + String.valueOf(cartDetail.getQuantity() * cartDetail.getPrice()) );
 
         }
     }
@@ -74,14 +79,14 @@ public class OrderDetailPDFExporter {
         font.setSize(20);
         font.setColor(Color.BLACK);
         
-        Paragraph p = new Paragraph("Cart Detail", font);
+        Paragraph p = new Paragraph("Invoice", font);
         p.setAlignment(p.ALIGN_JUSTIFIED);
         
         document.add(p);
         
-        PdfPTable pdfPTable = new PdfPTable(4);
+        PdfPTable pdfPTable = new PdfPTable(5);
         pdfPTable.setWidthPercentage(100f);
-        pdfPTable.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f} );
+        pdfPTable.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 3.0f});
         pdfPTable.setSpacingBefore(10);
         
         writeTableHeader(pdfPTable);

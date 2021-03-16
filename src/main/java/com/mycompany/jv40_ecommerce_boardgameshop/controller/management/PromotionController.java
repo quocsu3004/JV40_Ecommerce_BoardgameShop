@@ -42,6 +42,7 @@ public class PromotionController {
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
         model.addAttribute("promotion", promotionService.viewPromotion());
+        model.addAttribute("promotionService", promotionService );
         return "admin/promotion/promotion-page";
     }
 
@@ -84,6 +85,7 @@ public class PromotionController {
             @ModelAttribute("promotion") Promotion promotion
             ) {
         //Save Promotion
+        
         promotionService.save(promotion);
 
         // Set price then save product

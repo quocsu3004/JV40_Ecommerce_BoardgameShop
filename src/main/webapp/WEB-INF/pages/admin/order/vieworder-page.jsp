@@ -55,6 +55,8 @@
                                                     </a>
                                                 </div>
                                             </div>
+
+
                                             <div class="col-md-6 col-sm-6 col-6">
                                                 <div class="btn-group pull-right">
                                                     <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
@@ -69,13 +71,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row p-b-20">
+                                            <div class="col-md-6 col-sm-6 col-6">
+                                                <form action="${pageContext.request.contextPath}/admin/vieworder">
+                                                    <div class="col-lg-6 p-t-20" >  
+                                                        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                            <input name="startDate" type="date" class = "mdl-textfield__input" value="${startDate}" />
+                                                            <label class = "mdl-textfield__label" for="startDate">From</label>
+                                                        </div> 
+                                                        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                            <input name="endDate" type="date" class = "mdl-textfield__input" value="${endDate}" />
+                                                            <label class = "mdl-textfield__label" for="endDate">To</label>
+                                                        </div>   
+                                                    </div>
+
+
+                                                    <div class="col-md-6 col-sm-6 col-6"> 
+                                                        <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Search</button>
+                                                    </div> 
+                                                </form>     
+                                            </div>
+                                        </div>  
                                         <div class="table-scrollable">
 
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
                                                 <thead>
                                                     <tr>
 
-                                                        <th class="center"> Id </th>
+                                                        <th class="center"> Cart Number </th>
                                                         <th class="center"> Customer Name </th>
                                                         <th class="center"> Phone </th>
                                                         <th class="center"> Order Date </th>
@@ -89,7 +112,7 @@
                                                     <c:forEach items="${cart}" var="c">
                                                         <tr class="odd gradeX">
 
-                                                            <td class="center">${c.id}</td>
+                                                            <td class="center">${c.code}</td>
                                                             <td class="center">${c.fullName}</td>
                                                             <td class="center">${c.phoneNumber}</td>
                                                             <td class="center">${c.orderDate}</td>
@@ -97,7 +120,7 @@
                                                             <td class="center"><b>${c.status}</b></td>
                                                             <td class="center">
                                                                 <a href="<c:url value="/admin/vieworderdetail/${c.id}" />"" class="btn btn-tbl-edit btn-xs">
-                                                                     <i class="fa fa-plus-square"></i>
+                                                                    <i class="fa fa-plus-square"></i>
                                                             </td>
                                                             <td class="center">
                                                                 <a href="<c:url value="/admin/changestatusorder/${c.id}" />"" class="btn btn-tbl-edit btn-xs">

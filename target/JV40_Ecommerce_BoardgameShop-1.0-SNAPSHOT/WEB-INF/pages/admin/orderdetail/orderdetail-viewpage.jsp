@@ -69,7 +69,7 @@
                                                 <thead>
                                                     <tr>
 
-                                                        <th class="center"> Cart Id </th>
+                                                        <th class="center"> Cart Number </th>
                                                         <th class="center"> Product </th>
                                                         <th class="center"> Price </th>
                                                         <th class="center"> Quantity </th>
@@ -79,7 +79,7 @@
                                                 <tbody>
                                                     <c:forEach var="c" items="${cart}">
                                                         <tr class="odd gradeX">
-                                                            <td class="center">${c.cartId.id}</td>        
+                                                            <td class="center">${c.cartId.code}</td>        
                                                             <td class="center">${c.productId.name}</td>
                                                             <td class="center">${c.price}</td>
                                                             <td class="center">${c.quantity}</td>
@@ -87,6 +87,11 @@
                                                     </c:forEach>
                                                 </tbody>
                                             </table>
+                                            <div class="col-md-12 col-sm-12 col-12">
+                                                <div class="btn-group pull-right">
+                                                    Total Price: 
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

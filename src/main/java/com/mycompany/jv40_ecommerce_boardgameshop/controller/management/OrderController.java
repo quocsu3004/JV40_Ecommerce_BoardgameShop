@@ -19,9 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -55,8 +58,13 @@ public class OrderController {
     private CartService cartService;
 
     @RequestMapping(value = "/vieworder", method = RequestMethod.GET)
-    public String cartView(Model model) {
-        model.addAttribute("cart", cartService.getListCarts());
+    public String cartView(Model model, @Param("startDate") String startDate,
+            @Param("endDate") String endDate, HttpSession session) {
+        model.addAttribute("cart", cartService.getListCarts(startDate, endDate));
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        session.setAttribute("startDate", startDate);
+        session.setAttribute("endDate", endDate);
         return "admin/order/vieworder-page";
     }
 
@@ -80,7 +88,8 @@ public class OrderController {
     }
 
     @RequestMapping("/export/excel")
-    public void exportToExcel(HttpServletResponse response) throws IOException {
+    public void exportToExcel(HttpServletResponse response, HttpSession session
+    ) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDate = dateFormat.format(new Date());
@@ -89,9 +98,10 @@ public class OrderController {
         String headerValue = "attachment; filename=orders_" + currentDate + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Cart> listCarts = cartService.getListCarts();
-
-        OrderExcelExporter excelExporter = new OrderExcelExporter(listCarts);
+        String startDate = (String) session.getAttribute("startDate");
+        String endDate = (String) session.getAttribute("endDate");
+        
+        OrderExcelExporter excelExporter = new OrderExcelExporter(cartService.getListCarts(startDate, endDate));
 
         excelExporter.export(response);
     }
@@ -112,12 +122,12 @@ public class OrderController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=Invoice_" + currentDate + ".pdf";
         response.setHeader(headerKey, headerValue);
-        
+
         List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cartService.findCartById(id));
         OrderDetailPDFExporter exporter = new OrderDetailPDFExporter(listCartDetail);
-        
+
         exporter.export(response);
-        
+
     }
 
 }

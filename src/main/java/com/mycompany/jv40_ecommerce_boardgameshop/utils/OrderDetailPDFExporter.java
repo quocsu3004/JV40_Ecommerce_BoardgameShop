@@ -27,66 +27,122 @@ import javax.servlet.http.HttpServletResponse;
  * @author Admin
  */
 public class OrderDetailPDFExporter {
-
+    
     private List<CartDetail> listCartDetail;
-
+    
     public OrderDetailPDFExporter(List<CartDetail> listCartDetail) {
         this.listCartDetail = listCartDetail;
     }
-
+    
+    private void writeTableCustomerInfo(PdfPTable pdfPTable1) {
+        PdfPCell cell = new PdfPCell();
+        cell.setBackgroundColor(Color.DARK_GRAY);
+        cell.setPadding(2);
+        
+        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+        font.setColor(Color.BLACK);
+        
+        cell.setPhrase(new Phrase("Customer Name", font));
+        pdfPTable1.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Gender", font));
+        pdfPTable1.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Birth Date", font));
+        pdfPTable1.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Address", font));
+        pdfPTable1.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Phone Number", font));
+        pdfPTable1.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Order Date", font));
+        pdfPTable1.addCell(cell);
+        
+    }
+    
+    private void writeTableCustomerInfoData(PdfPTable pdfPTable1) {
+        for (CartDetail cartDetail : listCartDetail) {
+            pdfPTable1.addCell(cartDetail.getCartId().getFullName());
+            pdfPTable1.addCell(cartDetail.getCartId().getGender().toString());
+            pdfPTable1.addCell(cartDetail.getCartId().getBirthDate().toString());
+            pdfPTable1.addCell(cartDetail.getCartId().getAddress());
+            pdfPTable1.addCell(cartDetail.getCartId().getPhoneNumber());
+            pdfPTable1.addCell(String.valueOf(cartDetail.getCartId().getPhoneNumber()));
+            
+        }
+    }
+    
     private void writeTableHeader(PdfPTable pdfPTable) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.CYAN);
         cell.setPadding(5);
-
+        
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         font.setColor(Color.BLACK);
-
+        
         cell.setPhrase(new Phrase("Cart Id", font));
         pdfPTable.addCell(cell);
-
+        
         cell.setPhrase(new Phrase("Product", font));
         pdfPTable.addCell(cell);
-
+        
         cell.setPhrase(new Phrase("Price Each", font));
         pdfPTable.addCell(cell);
-
+        
         cell.setPhrase(new Phrase("Quantity", font));
         pdfPTable.addCell(cell);
         
         cell.setPhrase(new Phrase("Price", font));
         pdfPTable.addCell(cell);
-
+        
     }
-
+    
     private void writeTableData(PdfPTable pdfPTable) {
         for (CartDetail cartDetail : listCartDetail) {
             pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getId()));
             pdfPTable.addCell(cartDetail.getProductId().getName());
             pdfPTable.addCell("$" + String.valueOf(cartDetail.getPrice()));
             pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));
-            pdfPTable.addCell("$" + String.valueOf(cartDetail.getQuantity() * cartDetail.getPrice()) );
-
+            pdfPTable.addCell("$" + String.valueOf(cartDetail.getQuantity() * cartDetail.getPrice()));
+            
         }
     }
-
+    
     public void export(HttpServletResponse response) throws IOException {
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, response.getOutputStream());
-
+        
         document.open();
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         font.setSize(20);
         font.setColor(Color.BLACK);
         
         Paragraph p = new Paragraph("Invoice", font);
-        p.setAlignment(p.ALIGN_JUSTIFIED);
+        p.setAlignment(p.ALIGN_CENTER);
         
         document.add(p);
         
+        PdfPTable pdfPTable1 = new PdfPTable(6);
+        pdfPTable1.setWidthPercentage(100f);
+        pdfPTable1.setWidths(new float[]{3.0f, 1.5f, 3.0f, 3.0f, 3.0f, 3.0f});
+        pdfPTable1.setSpacingBefore(10);
+        
+        writeTableCustomerInfo(pdfPTable1);
+        writeTableCustomerInfoData(pdfPTable1);
+        
+        document.add(pdfPTable1);
+        
+         Paragraph p1 = new Paragraph("Details", font);
+        p.setAlignment(p.ALIGN_CENTER);
+        
+        document.add(p1);
+        
+        
         PdfPTable pdfPTable = new PdfPTable(5);
         pdfPTable.setWidthPercentage(100f);
-        pdfPTable.setWidths(new float[] {1.5f, 3.5f, 3.0f, 3.0f, 3.0f});
+        pdfPTable.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f, 3.0f});
         pdfPTable.setSpacingBefore(10);
         
         writeTableHeader(pdfPTable);
@@ -95,7 +151,7 @@ public class OrderDetailPDFExporter {
         document.add(pdfPTable);
         
         document.close();
-
+        
     }
-
+    
 }

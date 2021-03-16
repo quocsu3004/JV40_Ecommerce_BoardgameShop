@@ -53,6 +53,7 @@ public class OrderExcelExporter {
         createCell(row, 6, "Order Date", style);
         createCell(row, 7, "Order Status", style);
         createCell(row, 8, "Total Price", style);
+        createCell(row, 9, "Total Quantity", style);
     }
     
     private void writeDataLines(){
@@ -68,13 +69,14 @@ public class OrderExcelExporter {
             
             createCell(row, columnCount++, cart.getId(), style);
             createCell(row, columnCount++, cart.getFullName(), style);
-             createCell(row, columnCount++, cart.getAddress(), style);
+            createCell(row, columnCount++, cart.getAddress(), style);
             createCell(row, columnCount++, cart.getPhoneNumber(), style);
             createCell(row, columnCount++, cart.getGender().toString(), style);
             createCell(row, columnCount++, cart.getBirthDate().toString(), style);
             createCell(row, columnCount++, cart.getOrderDate().toString(), style);
             createCell(row, columnCount++, cart.getStatus().toString(), style);
             createCell(row, columnCount++, cart.getTotalPrice(),style);
+            createCell(row, columnCount++, cart.getTotalQuantity(),style);
         }
                 
     }

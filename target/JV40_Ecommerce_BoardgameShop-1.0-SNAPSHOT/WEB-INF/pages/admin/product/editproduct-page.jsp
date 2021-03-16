@@ -58,7 +58,7 @@
                                                 </c:if>
                                             </div>
                                             
-                                            <div class="col-lg-6 p-t-20" hidden="">  
+                                            <div class="col-lg-6 p-t-20">  
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="createDate" type="datetime" class = "mdl-textfield__input" value="${product.createDate}" />
                                                     <form:errors path="createDate" cssStyle="color:red;" />
@@ -66,7 +66,7 @@
                                                 </div>
                                             </div>
                                             
-                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="name" type="text" class = "mdl-textfield__input" value="${product.name}" />
                                                     <form:errors path="name" cssStyle="color:red;" />
@@ -74,7 +74,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="">
+                                            <div class="col-lg-6 p-t-20" >
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <input class = "mdl-textfield__input" name="price" type="number"
                                                                  value="${product.price}"/>
@@ -86,7 +86,7 @@
 
 
 
-                                            <div class="col-lg-6 p-t-20" hidden="">
+                                            <div class="col-lg-6 p-t-20" >
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <input class = "mdl-textfield__input" name="quantity" type="number"
                                                                  id = "quantity" value="${product.quantity}"/>
@@ -96,7 +96,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="totalPlayer" type="text" class = "mdl-textfield__input"  value="${product.totalPlayer}"/>
                                                     <form:errors path="totalPlayer" cssStyle="color:red;" />
@@ -104,7 +104,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <input class = "mdl-textfield__input"  name="age" type="text" value="${product.age}"/>
                                                     <form:errors path="age" cssStyle="color:red;" />
@@ -112,7 +112,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="">
+                                            <div class="col-lg-6 p-t-20" >
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <label for="publisherId">Publisher</label>
                                                     <select name="publisherId.id" >
@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="">
+                                            <div class="col-lg-6 p-t-20" >
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <label for="file">Product Images: </label> 
                                                     <input type="file" name="file" accept="image/png, image/jpg" multiple class="form-control"/>
@@ -136,7 +136,7 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col-lg-6 p-t-20" hidden="">
+                                                <div class="col-lg-6 p-t-20" >
                                                     <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                         <label>Category</label>
                                                         <select name="categoryId.id" >

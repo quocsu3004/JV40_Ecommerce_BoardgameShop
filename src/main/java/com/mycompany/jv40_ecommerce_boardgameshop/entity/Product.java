@@ -40,7 +40,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    
+      
     @Column(length = 100)
     private String name;
     
@@ -51,7 +51,6 @@ public class Product {
     @Column(name = "total_player")
     private String totalPlayer;
     
-  
     private String age;
     
     @Column(nullable = false)

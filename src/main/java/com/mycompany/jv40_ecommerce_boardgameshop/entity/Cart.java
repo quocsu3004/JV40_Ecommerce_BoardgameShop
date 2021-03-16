@@ -36,6 +36,9 @@ public class Cart extends Personal{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column(length = 7)
+    private String code;
 
     @Column(name = "order_Date")
     @Temporal(TemporalType.DATE)
@@ -58,7 +61,10 @@ public class Cart extends Personal{
     
     @Column(name = "total_price")
     private double totalPrice;
-
+    
+    @Column(name = "total_quantity")
+    private int totalQuantity;
+   
     public Cart() {
     }
     
@@ -118,8 +124,21 @@ public class Cart extends Personal{
         this.totalPrice = totalPrice;
     }
 
-    
-    
-    
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
 
 }

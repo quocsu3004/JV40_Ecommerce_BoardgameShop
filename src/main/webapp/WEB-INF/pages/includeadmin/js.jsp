@@ -8,6 +8,8 @@
 <script src="<c:url value="/resources-management/plugins/bootstrap/js/bootstrap.min.js"/>" ></script>
 <script src="<c:url value="/resources-management/plugins/sparkline/jquery.sparkline.min.js"/>" ></script>
 <script src="<c:url value="/resources-management/js/pages/sparkline/sparkline-data.js"/>" ></script>
+<script src="<c:url value="/resources-management/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"/>" ></script>
+<script src="<c:url value="/resources-management/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker-init.js"/>" ></script>
 <!-- Common js-->
 <script src="<c:url value="/resources-management/js/app.js"/>" ></script>
 <script src="<c:url value="/resources-management/js/layout.js"/>" ></script>

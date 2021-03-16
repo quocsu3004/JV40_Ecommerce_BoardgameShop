@@ -20,9 +20,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PromotionRepository extends CrudRepository<Promotion, Integer> {
 
-    @Query(nativeQuery = true, value = "SELECT *\n"
+    @Query(nativeQuery = true, value = "SELECT p.name\n"
             + "FROM product p \n"
-            + "INNER JOIN  product_promotion pp ON p.id = pp.product_id\n"
-            + "")
-    List<Product> findProduct();
+            + "JOIN  product_promotion pp ON p.id = pp.product_id\n"
+            + "JOiN promotion pr ON pr.id = pp.promotion_id\n"
+            + "WHERE pr.id = ?1")
+    List<String> findProduct(int id);
 }

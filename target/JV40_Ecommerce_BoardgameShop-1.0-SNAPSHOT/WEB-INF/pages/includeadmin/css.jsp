@@ -8,6 +8,7 @@
 	<!--bootstrap -->
         <link href="<c:url value="/resources-management/plugins/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
         <link href="<c:url value="/resources-management/plugins/summernote/summernote.css"/>" rel="stylesheet"/>
+        <link href="<c:url value="/resources-management/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>" rel="stylesheet" media="screen">
 	<!-- morris chart -->
         <link href="<c:url value="/resources-management/plugins/morris/morris.css"/>" rel="stylesheet" type="text/css" />
     <!-- Material Design Lite CSS -->

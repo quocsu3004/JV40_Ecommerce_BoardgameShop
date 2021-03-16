@@ -40,5 +40,8 @@ public class PromotionService {
     public void save(Promotion promotion){
         promotionRepository.save(promotion);
     }
-
+    
+     public List<String> findProductOfPromotion(int id){
+      return promotionRepository.findProduct(id);
+  }
 }

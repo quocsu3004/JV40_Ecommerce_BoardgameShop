@@ -23,7 +23,10 @@ public class CartService  {
     @Autowired
     private CartRepository cartRepository;
     
-    public List<Cart> getListCarts(){
+    public List<Cart> getListCarts(String startDate, String endDate){
+        if(startDate != null && endDate != null){
+            return cartRepository.findCartByDateBetween(startDate, endDate);
+        }
         return (List<Cart>) cartRepository.findAll();
     }
     
@@ -41,6 +44,5 @@ public class CartService  {
         cartRepository.save(cart);
     }
 
-   
-    
+ 
 }

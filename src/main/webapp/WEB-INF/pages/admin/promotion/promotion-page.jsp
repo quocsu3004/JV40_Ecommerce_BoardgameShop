@@ -82,7 +82,7 @@
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
                                                 <thead>                    
                                                     <tr>
-                                                        
+
                                                         <th class="center"> Name </th>
                                                         <th class="center"> Product Apply </th>
                                                         <th class="center"> Discount </th>
@@ -96,13 +96,17 @@
                                                 <tbody>
                                                     <c:forEach items="${promotion}" var="pr">
                                                         <tr class="odd gradeX">
-                                                            
-                                                            <td class="center">${pr.name}</td>  
-                                                            <td class="center">${pr.product.name}</td>                                                 
+
+                                                            <td class="center">${pr.name}</td> 
+                                                            <td class="center">
+                                                                <c:forEach items="${promotionService.findProductOfPromotion(pr.id)}" var="p">
+                                                                    ${p}  <br>
+                                                                </c:forEach>
+                                                            </td>
                                                             <td class="center">${pr.discount}%</td>                                                                                   
                                                             <td class="center">${pr.startDate}</td>
                                                             <td class="center">${pr.endDate}</td>                 
-                                                             <td class="center">${pr.description}</td>
+                                                            <td class="center">${pr.description}</td>
                                                             <td class="center"><b>${pr.status}</b></td>
                                                             <td class="center">
                                                                 <a href="<c:url value="/admin/editpromotion/${pr.id}" />"" class="btn btn-tbl-edit btn-xs">

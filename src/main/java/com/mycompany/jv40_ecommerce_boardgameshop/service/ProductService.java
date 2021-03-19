@@ -41,6 +41,10 @@ public class ProductService {
       }
     }
     
+    
+    public List<Product> findListProductByListId(List<Integer> listProductId){
+        return productReposity.findAllByIdIn(listProductId);
+    }
  
     
     

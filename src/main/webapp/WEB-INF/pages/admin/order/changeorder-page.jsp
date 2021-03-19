@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -125,7 +126,7 @@
 
                                             <div class="col-lg-6 p-t-20" hidden=""> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="totalPrice" type="number" class = "mdl-textfield__input" value="${cart.totalPrice}" />
+                                                     <form:input path="totalPrice" type="number"  class = "mdl-textfield__input"  value="${cart.totalPrice}" /> 
                                                     <label class = "mdl-textfield__label" for="totalPrice">Total Price</label>
                                                 </div>
                                             </div>       

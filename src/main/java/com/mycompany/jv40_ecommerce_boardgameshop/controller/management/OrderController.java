@@ -104,12 +104,13 @@ public class OrderController {
         OrderExcelExporter excelExporter = new OrderExcelExporter(cartService.getListCarts(startDate, endDate));
 
         excelExporter.export(response);
+        session.setMaxInactiveInterval(0);
     }
 
     @RequestMapping(value = "/vieworderdetail/{id}")
     public String viewOrderDetail(Model model, @PathVariable("id") int id) {
-
-        model.addAttribute("cart", cartDetailService.getCardDetailInCart(cartService.findCartById(id)));
+        model.addAttribute("cart", cartService.findCartById(id));
+        model.addAttribute("cartdetail", cartDetailService.getCardDetailInCart(cartService.findCartById(id)));
         return "admin/orderdetail/orderdetail-viewpage";
     }
 
@@ -122,9 +123,10 @@ public class OrderController {
         String headerKey = "Content-Disposition";
         String headerValue = "attachment; filename=Invoice_" + currentDate + ".pdf";
         response.setHeader(headerKey, headerValue);
-
+        
+        Cart cart = cartService.findCartById(id);
         List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cartService.findCartById(id));
-        OrderDetailPDFExporter exporter = new OrderDetailPDFExporter(listCartDetail);
+        OrderDetailPDFExporter exporter = new OrderDetailPDFExporter(listCartDetail, cart);
 
         exporter.export(response);
 

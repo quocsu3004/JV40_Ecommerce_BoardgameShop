@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -86,7 +87,7 @@
                                                         <th class="center"> Name </th>
                                                         <th class="center"> Image </th>
                                                         <th class="center"> Created Date </th>
-                                                        <th class="center"> Price </th>
+                                                        <th class="center"> Price Each </th>
                                                         <th class="center"> Quantity </th>
                                                         <th class="center"> Status </th>
                                                         <th class="center"> Action </th>
@@ -103,7 +104,7 @@
                                                                 </c:forEach>
                                                             </td>
                                                             <td class="center">${p.createDate}</td>
-                                                            <td class="center">${p.price}</td>
+                                                            <td class="center"><fmt:formatNumber value="${p.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
                                                             <td class="center">${p.quantity}</td>
                                                             <td class="center"><b>${p.status}</b></td>
                                                             <td class="center">

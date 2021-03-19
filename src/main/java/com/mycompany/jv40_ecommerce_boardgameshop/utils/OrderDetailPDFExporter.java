@@ -16,6 +16,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfTable;
 import com.lowagie.text.pdf.PdfWriter;
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import java.awt.Color;
 import java.io.IOException;
@@ -30,8 +31,11 @@ public class OrderDetailPDFExporter {
     
     private List<CartDetail> listCartDetail;
     
-    public OrderDetailPDFExporter(List<CartDetail> listCartDetail) {
+    private Cart cart;
+    
+    public OrderDetailPDFExporter(List<CartDetail> listCartDetail, Cart cart) {
         this.listCartDetail = listCartDetail;
+        this.cart = cart;
     }
     
     private void writeTableCustomerInfo(PdfPTable pdfPTable1) {
@@ -40,7 +44,7 @@ public class OrderDetailPDFExporter {
         cell.setPadding(2);
         
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        font.setColor(Color.BLACK);
+        font.setColor(Color.WHITE);
         
         cell.setPhrase(new Phrase("Customer Name", font));
         pdfPTable1.addCell(cell);
@@ -69,7 +73,7 @@ public class OrderDetailPDFExporter {
             pdfPTable1.addCell(cartDetail.getCartId().getBirthDate().toString());
             pdfPTable1.addCell(cartDetail.getCartId().getAddress());
             pdfPTable1.addCell(cartDetail.getCartId().getPhoneNumber());
-            pdfPTable1.addCell(String.valueOf(cartDetail.getCartId().getPhoneNumber()));
+            pdfPTable1.addCell(String.valueOf(cartDetail.getCartId().getOrderDate()));
             
         }
     }
@@ -77,12 +81,13 @@ public class OrderDetailPDFExporter {
     private void writeTableHeader(PdfPTable pdfPTable) {
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(Color.CYAN);
+        
         cell.setPadding(5);
         
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
         font.setColor(Color.BLACK);
         
-        cell.setPhrase(new Phrase("Cart Id", font));
+        cell.setPhrase(new Phrase("Cart Number", font));
         pdfPTable.addCell(cell);
         
         cell.setPhrase(new Phrase("Product", font));
@@ -94,19 +99,16 @@ public class OrderDetailPDFExporter {
         cell.setPhrase(new Phrase("Quantity", font));
         pdfPTable.addCell(cell);
         
-        cell.setPhrase(new Phrase("Price", font));
-        pdfPTable.addCell(cell);
+
         
     }
     
     private void writeTableData(PdfPTable pdfPTable) {
         for (CartDetail cartDetail : listCartDetail) {
-            pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getId()));
+            pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getCode()));
             pdfPTable.addCell(cartDetail.getProductId().getName());
             pdfPTable.addCell("$" + String.valueOf(cartDetail.getPrice()));
-            pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));
-            pdfPTable.addCell("$" + String.valueOf(cartDetail.getQuantity() * cartDetail.getPrice()));
-            
+            pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));       
         }
     }
     
@@ -129,6 +131,7 @@ public class OrderDetailPDFExporter {
         pdfPTable1.setWidths(new float[]{3.0f, 1.5f, 3.0f, 3.0f, 3.0f, 3.0f});
         pdfPTable1.setSpacingBefore(10);
         
+        
         writeTableCustomerInfo(pdfPTable1);
         writeTableCustomerInfoData(pdfPTable1);
         
@@ -140,15 +143,22 @@ public class OrderDetailPDFExporter {
         document.add(p1);
         
         
-        PdfPTable pdfPTable = new PdfPTable(5);
+        PdfPTable pdfPTable = new PdfPTable(4);
         pdfPTable.setWidthPercentage(100f);
-        pdfPTable.setWidths(new float[]{1.5f, 3.5f, 3.0f, 3.0f, 3.0f});
+        pdfPTable.setWidths(new float[]{2f, 3.5f, 3.0f, 3.0f});
         pdfPTable.setSpacingBefore(10);
         
         writeTableHeader(pdfPTable);
         writeTableData(pdfPTable);
         
         document.add(pdfPTable);
+        
+        String totalPrice =  String.valueOf(cart.getTotalPrice());
+        
+        Paragraph p2 = new Paragraph("Total Price: $" + totalPrice, font);
+        p2.setAlignment(p2.ALIGN_RIGHT);
+        
+        document.add(p2);
         
         document.close();
         

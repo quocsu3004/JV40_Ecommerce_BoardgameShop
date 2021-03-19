@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -77,11 +78,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:forEach var="c" items="${cart}">
+                                                    <c:forEach var="c" items="${cartdetail}">
                                                         <tr class="odd gradeX">
                                                             <td class="center">${c.cartId.code}</td>        
                                                             <td class="center">${c.productId.name}</td>
-                                                            <td class="center">${c.price}</td>
+                                                            <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
                                                             <td class="center">${c.quantity}</td>
                                                         </tr>
                                                     </c:forEach>
@@ -89,7 +90,8 @@
                                             </table>
                                             <div class="col-md-12 col-sm-12 col-12">
                                                 <div class="btn-group pull-right">
-                                                    Total Price: 
+                                                    
+                                                    <b> Total Price: <fmt:formatNumber value="${cart.totalPrice}" type="currency" currencySymbol="$" minFractionDigits="0"  />  </b>
                                                 </div>
                                             </div>
                                         </div>

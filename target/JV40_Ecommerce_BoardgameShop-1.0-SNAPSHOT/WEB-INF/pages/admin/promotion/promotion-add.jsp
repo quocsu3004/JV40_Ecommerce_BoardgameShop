@@ -79,8 +79,8 @@
 
                                             <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:label  path="product">Choose Product</form:label>
-                                                        <select name="product" multiple="multiple" >
+                                                    <form:label  path="product">Choose Product</form:label>    
+                                                        <select name="listProductId" multiple="multiple" >
                                                         <c:forEach var="p" items="${product}">                                
                                                             <c:if test="${promotion.product.id == p.id}">
                                                                 <option value="${p.id}" selected="">${p.name}</option>
@@ -89,9 +89,7 @@
                                                                 <option value="${p.id}">${p.name}</option>
                                                             </c:if>
                                                         </c:forEach>
-                                                    </select>                                                                          
-                                                    <form:errors path="product" cssStyle="color:red;" />
-
+                                                    </select>                                                                                                        
                                                 </div>
                                             </div>
 

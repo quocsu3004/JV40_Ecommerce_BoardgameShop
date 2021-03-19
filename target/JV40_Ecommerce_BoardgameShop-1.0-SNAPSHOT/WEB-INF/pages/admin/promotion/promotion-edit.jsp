@@ -51,27 +51,16 @@
                                                 method="POST" modelAttribute="promotion">                                 
 
                                         <div class="card-body row" >
-                                            
+
                                             <div class="col-lg-6 p-t-20" hidden="">
-                                            <c:if test="${action == 'edit'}">
-                                                <form:input path="id" value="${promotion.id}"  />
-                                            </c:if>
-                                            </div>
-                                                
-                                            <div class="col-lg-6 p-t-20">
-                                                <div >
-                                                    <form:label path="status">Promotion Status</form:label>
-                                                    <form:select path="status" class="form-control">  
-                                                        <c:forEach var="s" items="${promotionStatus}">
-
-                                                            <form:option value="${s}"  > ${s} </form:option> 
-
-                                                        </c:forEach> 
-                                                    </form:select>
-                                                </div>
+                                                <c:if test="${action == 'edit'}">
+                                                    <form:input path="id" value="${promotion.id}"  />
+                                                </c:if>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="" > 
+
+
+                                            <div class="col-lg-6 p-t-20"  > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <form:input path="name" class = "mdl-textfield__input" value="${promotion.name}" />
                                                     <form:errors path="name" cssStyle="color:red;" />
@@ -79,37 +68,71 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="" > 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="description" class = "mdl-textfield__input"  value="${promotion.description}" />
+                                                    <form:input path="description" type="textarea" class = "mdl-textfield__input"  value="${promotion.description}" />
                                                     <form:errors path="description" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for="descriptione">Description</label>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="" > 
+
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="discount"  value="${promotion.discount}" />
+                                                    <form:label  path="product">Choose Product</form:label>    
+                                                        <select name="listProductId" multiple="multiple" >
+                                                        <c:forEach var="p" items="${product}">                                
+                                                            <c:if test="${promotion.product.id == p.id}">
+                                                                <option value="${p.id}" selected="">${p.name}</option>
+                                                            </c:if>
+                                                            <c:if test="${promotion.product.id != p.id}">
+                                                                <option value="${p.id}">${p.name}</option>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </select>                                                                                                        
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6 p-t-20" > 
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <label class = "form-group" for="discount">Discount(%)</label>
+                                                    <input name="discount" type="number" value="${promotion.discount}" />
                                                     <form:errors path="discount" cssStyle="color:red;" />
-                                                    <label class = "mdl-textfield__label" for="discount">Discount</label>
+
                                                 </div>
                                             </div>       
 
-                                            <div class="col-lg-6 p-t-20" hidden="" > 
+
+                                            <div class="col-lg-6 p-t-20"  > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="startDate" type="datetime"  value="${promotion.startDate}" />
+                                                    <label class = "form-group" for="startDate">Start Date</label>
+                                                    <input name="startDate" type="date"  value="${promotion.startDate}" />
                                                     <form:errors path="startDate" cssStyle="color:red;" />
-                                                    <label class = "mdl-textfield__label" for="startDate">Start Date</label>
+
                                                 </div>
                                             </div>   
 
-                                            <div class="col-lg-6 p-t-20"  hidden=""> 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="endDate" type="datetime"  value="${promotion.endDate}" />
+                                                    <label class = "form-group" for="endDate">End Date</label>
+                                                    <input name="endDate" type="date"  value="${promotion.endDate}" />
                                                     <form:errors path="startDate" cssStyle="color:red;" />
-                                                    <label class = "mdl-textfield__label" for="endDate">End Date</label>
+
                                                 </div>
-                                            </div>   
+                                            </div> 
+
+                                            <div class="col-lg-6 p-t-20">
+                                                <div >
+                                                    <form:label path="status">Promotion Status</form:label>
+                                                    <form:select path="status" class="form-control">  
+                                                        <c:forEach var="s" items="${promotionstatus}">
+
+                                                            <form:option value="${s}"  > ${s} </form:option> 
+
+                                                        </c:forEach> 
+                                                    </form:select>
+                                                </div>
+                                            </div>
 
                                             <div class="col-lg-12 p-t-20 text-center"> 
                                                 <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>

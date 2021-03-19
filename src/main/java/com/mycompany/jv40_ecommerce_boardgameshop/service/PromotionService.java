@@ -44,4 +44,8 @@ public class PromotionService {
      public List<String> findProductOfPromotion(int id){
       return promotionRepository.findProduct(id);
   }
+     
+      public List<String> findListProductInPromotion(int id){
+      return promotionRepository.findListProductIdInPromotion(id);
+  }
 }

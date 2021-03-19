@@ -83,7 +83,7 @@
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
                                                 <thead>
                                                     <tr>
-                                                        
+
                                                         <th class="center"> Name </th>
                                                         <th class="center"> Image </th>
                                                         <th class="center"> Created Date </th>
@@ -96,11 +96,15 @@
                                                 <tbody>
                                                     <c:forEach items="${product}" var="p">
                                                         <tr class="odd gradeX">
-                                                            
+
                                                             <td class="center">${p.name}</td>
                                                             <td class="center">
                                                                 <c:forEach items="${p.image}" var="i">
-                                                                    <img width="100" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
+                                                                    <img width="80" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
+                                                                    <a href="<c:url value="/admin/deletesingleimage/${i.id}" />"" class="btn btn-tbl-edit btn-xs">
+                                                                        <i class="fa fa-times"></i>
+                                                                    </a>                                  
+                                                                    <br>
                                                                 </c:forEach>
                                                             </td>
                                                             <td class="center">${p.createDate}</td>

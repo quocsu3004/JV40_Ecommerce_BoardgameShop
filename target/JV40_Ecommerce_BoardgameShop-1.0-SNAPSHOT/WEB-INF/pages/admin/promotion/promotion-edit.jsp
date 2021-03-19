@@ -81,13 +81,12 @@
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <form:label  path="product">Choose Product</form:label>    
                                                         <select name="listProductId" multiple="multiple" >
-                                                        <c:forEach var="p" items="${product}">                                
-                                                            <c:if test="${promotion.product.id == p.id}">
-                                                                <option value="${p.id}" selected="">${p.name}</option>
-                                                            </c:if>
-                                                            <c:if test="${promotion.product.id != p.id}">
-                                                                <option value="${p.id}">${p.name}</option>
-                                                            </c:if>
+                                                        <c:forEach var="p" items="${product}">  
+                                                            <c:forEach items="${promotionService.findListProductInPromotion(promotion.id)}" var="pr">
+                                                                <c:if test="${pr == p.id}">
+                                                                    <option value="${p.id}" selected="">${p.name}</option>
+                                                                </c:if>                        
+                                                            </c:forEach>
                                                         </c:forEach>
                                                     </select>                                                                                                        
                                                 </div>
@@ -125,8 +124,8 @@
                                                 <div >
                                                     <form:label path="status">Promotion Status</form:label>
                                                     <form:select path="status" class="form-control">  
-                                                        <c:forEach var="s" items="${promotionstatus}">
-
+                                                        <c:forEach var="s" items="${promotionStatus}">
+                                                            
                                                             <form:option value="${s}"  > ${s} </form:option> 
 
                                                         </c:forEach> 

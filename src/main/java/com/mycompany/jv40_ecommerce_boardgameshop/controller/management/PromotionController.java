@@ -53,6 +53,7 @@ public class PromotionController {
     public String changeStatusPromotion(Model model, @PathVariable("id") int id) {
         model.addAttribute("promotion", promotionService.findPromotionById(id));
         model.addAttribute("product", productService.getProduct());
+        model.addAttribute("promotionService", promotionService);
         model.addAttribute("promotionStatus", PromotionStatus.values());
         model.addAttribute("action", "edit");
         return "admin/promotion/promotion-edit";
@@ -62,7 +63,7 @@ public class PromotionController {
     public String AddPromotion(Model model) {
         model.addAttribute("product", productService.getProduct());
         model.addAttribute("promotion", new Promotion());
-        model.addAttribute("promotionstatus", PromotionStatus.values());
+        model.addAttribute("promotionstatus", PromotionStatus.UNACTIVE);
         model.addAttribute("action", "add");
         return "admin/promotion/promotion-add";
     }
@@ -70,16 +71,32 @@ public class PromotionController {
     @RequestMapping(value = "/promotion/edit", method = RequestMethod.POST)
     public String resultChangeStatusPromotion(Model model,
             @Valid @ModelAttribute("promotion") Promotion promotion,
-            BindingResult bindingResult
+            BindingResult bindingResult,
+            @RequestParam(value = "listProductId", required = false) List<Integer> listProductId,
+            @RequestParam(value = "discount", required = false) int discount
     ) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("promotion", promotionService.findPromotionById(promotion.getId()));
-            model.addAttribute("promotionStatus", PromotionStatus.values());
-            model.addAttribute("action", "edit");
-            return "admin/promotion/promotion-edit";
-        } else {
+        promotionService.save(promotion);
+        ZoneId defaultZoneId = ZoneId.systemDefault();
 
-            promotion.setStatus(PromotionStatus.valueOf(promotion.getStatus().toString().toUpperCase()));
+        // Set price then save product
+        List<Product> listProducts = productService.findListProductByListId(listProductId);
+        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
+        Date startDate = promotion.getStartDate();
+        Date endDate = promotion.getEndDate();
+        boolean checkDate = checkDateBetween(today, startDate, endDate);
+
+        if (promotion.getStatus().values().equals("ACTIVE") && checkDate == true) {
+            for (int i = 0; i < listProducts.size(); i++) {
+                double price = listProducts.get(i).getPrice();
+                double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, discount));
+                listProducts.get(i).setPrice(discoutedPrice);
+                productService.saveProduct(listProducts.get(i));
+
+            }
+            promotion.setProduct(listProducts);
+            promotionService.save(promotion);
+        } else {
+            promotion.setProduct(listProducts);
             promotionService.save(promotion);
         }
         return "redirect:/admin/promotion";
@@ -102,41 +119,24 @@ public class PromotionController {
         } else {
 
             //Save Promotion
+            promotion.setStatus(PromotionStatus.UNACTIVE);
             promotionService.save(promotion);
-            ZoneId defaultZoneId = ZoneId.systemDefault();
 
             // Set price then save product
             List<Product> listProducts = productService.findListProductByListId(listProductId);
-            Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
-            Date startDate = promotion.getStartDate();
-            Date endDate = promotion.getEndDate();
-            boolean checkDate = checkDateBetween(today, startDate, endDate);
-
-            if (promotion.getStatus().values().equals("ACTIVE") && checkDate == true) {
-                for (int i = 0; i < listProducts.size(); i++) {
-                    double price = listProducts.get(i).getPrice();
-                    double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, discount));
-                    listProducts.get(i).setPrice(discoutedPrice);
-                    productService.saveProduct(listProducts.get(i));
-
-                }
-                promotion.setProduct(listProducts);
-                promotionService.save(promotion);
-            } else {
                 promotion.setProduct(listProducts);
                 promotionService.save(promotion);
             }
-
             return "redirect:/admin/promotion";
         }
-    }
+    
 
     private float caculatePriceWhenDiscount(double price, int discount) {
         return (float) (price - (discount * price / 100));
     }
 
     private boolean checkDateBetween(Date today, Date startDate, Date endDate) {
-        if(today.after(startDate) && today.before(endDate)) {
+        if(today.after(startDate) && today.before(endDate)){
             return true;
         } else {
             return false;

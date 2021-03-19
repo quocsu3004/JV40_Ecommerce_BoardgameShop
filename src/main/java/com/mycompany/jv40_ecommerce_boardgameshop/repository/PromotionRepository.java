@@ -26,4 +26,12 @@ public interface PromotionRepository extends CrudRepository<Promotion, Integer> 
             + "JOiN promotion pr ON pr.id = pp.promotion_id\n"
             + "WHERE pr.id = ?1")
     List<String> findProduct(int id);
+
+    @Query(nativeQuery = true, value = "SELECT p.id\n"
+            + "FROM product p \n"
+            + "JOIN  product_promotion pp ON p.id = pp.product_id\n"
+            + "JOiN promotion pr ON pr.id = pp.promotion_id\n"
+            + "WHERE pr.id = ?1")
+    List<String> findListProductIdInPromotion(int id);
+
 }

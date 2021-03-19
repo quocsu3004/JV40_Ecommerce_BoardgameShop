@@ -125,11 +125,9 @@
                                                 <div >
                                                     <form:label path="status">Promotion Status</form:label>
                                                     <form:select path="status" class="form-control">  
-                                                        <c:forEach var="s" items="${promotionstatus}">
-
-                                                            <form:option value="${s}"  > ${s} </form:option> 
-
-                                                        </c:forEach> 
+                                                       
+                                                            <form:option value="${promotionstatus}"  > ${promotionstatus} </form:option> 
+       
                                                     </form:select>
                                                 </div>
                                             </div>

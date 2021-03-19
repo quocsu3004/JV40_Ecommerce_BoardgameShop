@@ -28,4 +28,8 @@ public class ImageService {
     public List<Image> getListImageName(String name){
         return imageRepository.findByNameLike(name);
     }
+    
+    public void deleteSingleImage(Image image){
+        imageRepository.delete(image);
+    }
 }

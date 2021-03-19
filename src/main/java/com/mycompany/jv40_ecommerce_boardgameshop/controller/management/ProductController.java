@@ -220,5 +220,12 @@ public class ProductController {
             }
         return "redirect:/admin/viewproduct";
     }
+    
+    @RequestMapping(value = "/deletesingleimage/{id}")
+    public String resultDeleteSingleImageProduct(Model model, @PathVariable("id") int id){
+       
+        
+        return "redirect:/admin/viewproduct";
+    }
 
 }

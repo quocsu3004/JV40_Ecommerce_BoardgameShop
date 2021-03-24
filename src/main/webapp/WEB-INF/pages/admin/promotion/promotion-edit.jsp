@@ -80,7 +80,7 @@
                                             <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <form:label  path="product">Choose Product</form:label>    
-                                                        <select name="listProductId" multiple="multiple" >
+                                                        <select name="listProductId" multiple="multiple" id="multiple" class="form-control select2-multiple" >
                                                         <c:forEach var="p" items="${product}">  
                                                             <c:forEach items="${promotionService.findListProductInPromotion(promotion.id)}" var="pr">
                                                                 <c:if test="${pr == p.id}">
@@ -95,7 +95,7 @@
                                             <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <label class = "form-group" for="discount">Discount(%)</label>
-                                                    <input name="discount" type="number" value="${promotion.discount}" />
+                                                    <input name="discount" type="number" value="${promotion.discount}" max="100" min="1"/>
                                                     <form:errors path="discount" cssStyle="color:red;" />
 
                                                 </div>
@@ -105,7 +105,7 @@
                                             <div class="col-lg-6 p-t-20"  > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <label class = "form-group" for="startDate">Start Date</label>
-                                                    <input name="startDate" type="date"  value="${promotion.startDate}" />
+                                                    <input name="startDate" type="date"  value="${promotion.startDate}"  />
                                                     <form:errors path="startDate" cssStyle="color:red;" />
 
                                                 </div>

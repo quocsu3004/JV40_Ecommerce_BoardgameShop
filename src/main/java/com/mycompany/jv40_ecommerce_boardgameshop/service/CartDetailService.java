@@ -7,6 +7,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.CartDetailRepository;
 import java.util.List;
 import java.util.Optional;
@@ -19,24 +20,37 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CartDetailService {
-    
+
     @Autowired
     private CartDetailRepository cartDetailRepository;
-    
-    public List<CartDetail> getAllCartDetail(){
+
+    public List<CartDetail> getAllCartDetail() {
         return (List<CartDetail>) cartDetailRepository.findAll();
     }
-    
-    public CartDetail getCartDetailInCart(int id){
+
+    public CartDetail getCartDetailInCart(int id) {
         Optional<CartDetail> opt = cartDetailRepository.findById(id);
-        if(opt.isPresent()){
-           return opt.get();
-        }else{
+        if (opt.isPresent()) {
+            return opt.get();
+        } else {
             return new CartDetail();
         }
     }
-    
-     public List<CartDetail> getCardDetailInCart(Cart cart){
+
+    public List<CartDetail> getCardDetailInCart(Cart cart) {
         return cartDetailRepository.findByCartIdLike(cart);
+    }
+
+    public List<CartDetail> getProductInCart(List<Product> listProducts) {
+        return cartDetailRepository.findByProductIdIn(listProducts);
+    }
+
+    public void save(CartDetail cartDetail) {
+        cartDetailRepository.save(cartDetail);
+    }
+
+    public List<CartDetail> findListCartDetailByListId(List<Product> listProduct) {
+        return cartDetailRepository.findAllByProductIdIn(listProduct);
+
     }
 }

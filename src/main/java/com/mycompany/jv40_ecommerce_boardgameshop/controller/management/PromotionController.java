@@ -5,9 +5,12 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PromotionStatus;
+import com.mycompany.jv40_ecommerce_boardgameshop.service.CartDetailService;
+import com.mycompany.jv40_ecommerce_boardgameshop.service.CartService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.ProductService;
 import com.mycompany.jv40_ecommerce_boardgameshop.service.PromotionService;
 import java.time.LocalDate;
@@ -18,6 +21,7 @@ import java.util.Set;
 import javax.faces.annotation.RequestMap;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +45,12 @@ public class PromotionController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private CartDetailService cartDetailService;
+
+    @Autowired
+    private CartService cartService;
 
     @RequestMapping(value = "/promotion", method = RequestMethod.GET)
     public String showPromotion(Model model) {
@@ -76,29 +86,14 @@ public class PromotionController {
             @RequestParam(value = "discount", required = false) int discount
     ) {
         promotionService.save(promotion);
-        ZoneId defaultZoneId = ZoneId.systemDefault();
 
         // Set price then save product
+        List<CartDetail> listCartDetail = cartDetailService.findListCartDetailByListId(productService.findListProductByListId(listProductId));
+
         List<Product> listProducts = productService.findListProductByListId(listProductId);
-        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
-        Date startDate = promotion.getStartDate();
-        Date endDate = promotion.getEndDate();
-        boolean checkDate = checkDateBetween(today, startDate, endDate);
+        promotion.setProduct(listProducts);
+        promotionService.save(promotion);
 
-        if (promotion.getStatus().values().equals("ACTIVE") && checkDate == true) {
-            for (int i = 0; i < listProducts.size(); i++) {
-                double price = listProducts.get(i).getPrice();
-                double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, discount));
-                listProducts.get(i).setPrice(discoutedPrice);
-                productService.saveProduct(listProducts.get(i));
-
-            }
-            promotion.setProduct(listProducts);
-            promotionService.save(promotion);
-        } else {
-            promotion.setProduct(listProducts);
-            promotionService.save(promotion);
-        }
         return "redirect:/admin/promotion";
     }
 
@@ -124,22 +119,57 @@ public class PromotionController {
 
             // Set price then save product
             List<Product> listProducts = productService.findListProductByListId(listProductId);
-                promotion.setProduct(listProducts);
-                promotionService.save(promotion);
-            }
-            return "redirect:/admin/promotion";
+            promotion.setProduct(listProducts);
+            promotionService.save(promotion);
         }
-    
+        return "redirect:/admin/promotion";
+    }
+
+    //Delay 1000 = 1s
+//    @Scheduled(initialDelay = 3*1000, fixedDelay = 5*1000 )
+    @RequestMapping(value = "/checkpromotion")
+    public String checkPromotionAutoRun() {
+        List<Promotion> listpromotion = promotionService.viewPromotion();
+        List<CartDetail> listCartDetail = cartDetailService.getAllCartDetail();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
+        for (Promotion promotion : listpromotion) {
+            for (CartDetail cartDetail : listCartDetail) {
+                Date startDate = promotion.getStartDate();
+                Date endDate = promotion.getEndDate();
+                boolean checkDate = checkDateBetween(today, startDate, endDate);
+
+                if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscountPrice() == 0) {
+                    double price = cartDetail.getPrice();
+                    double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
+                    cartDetail.setDiscountPrice(discoutedPrice);
+                    cartDetailService.save(cartDetail);
+                }
+                if (cartDetail.getDiscountPrice() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
+                    double price = cartDetail.getPrice();
+                    double discoutedPrice = 0;
+                    cartDetail.setDiscountPrice(discoutedPrice);
+                    cartDetailService.save(cartDetail);
+                }
+            }
+        }
+        return "redirect:/admin/promotion";
+    }
 
     private float caculatePriceWhenDiscount(double price, int discount) {
         return (float) (price - (discount * price / 100));
     }
 
+    private float returnCaculatePriceWhenDiscount(double discountedprice, int discount) {
+        return (float) (discountedprice / (1 - discount / 100));
+    }
+
     private boolean checkDateBetween(Date today, Date startDate, Date endDate) {
-        if(today.after(startDate) && today.before(endDate)){
+        if (today.after(startDate) && today.before(endDate)) {
             return true;
         } else {
             return false;
         }
     }
+
 }

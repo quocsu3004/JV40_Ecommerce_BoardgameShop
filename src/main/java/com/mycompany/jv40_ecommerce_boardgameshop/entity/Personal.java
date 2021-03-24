@@ -45,7 +45,7 @@ public class Personal {
     
     @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-DD")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
     
     @Column(nullable = false)

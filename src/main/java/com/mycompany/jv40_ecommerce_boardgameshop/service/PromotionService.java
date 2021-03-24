@@ -48,4 +48,6 @@ public class PromotionService {
       public List<String> findListProductInPromotion(int id){
       return promotionRepository.findListProductIdInPromotion(id);
   }
+      
+      
 }

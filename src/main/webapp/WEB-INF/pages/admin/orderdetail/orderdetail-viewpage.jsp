@@ -64,34 +64,65 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-scrollable">
+                                        <div class="row p-b-20">
+                                            <div class="col-lg-6">
+                                                <div class="btn-group pull-left">
+                                                    Order Date: ${cart.orderDate}
+                                                    <br>
+                                                    Order Number: ${cart.code}
+                                                    <br>
 
-                                            <table class="table table-hover table-checkable order-column full-width" id="example4">
-                                                <thead>
-                                                    <tr>
+                                                </div>
 
-                                                        <th class="center"> Cart Number </th>
-                                                        <th class="center"> Product </th>
-                                                        <th class="center"> Price </th>
-                                                        <th class="center"> Quantity </th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="c" items="${cartdetail}">
-                                                        <tr class="odd gradeX">
-                                                            <td class="center">${c.cartId.code}</td>        
-                                                            <td class="center">${c.productId.name}</td>
-                                                            <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
-                                                            <td class="center">${c.quantity}</td>
-                                                        </tr>
-                                                    </c:forEach>
-                                                </tbody>
-                                            </table>
-                                            <div class="col-md-12 col-sm-12 col-12">
                                                 <div class="btn-group pull-right">
-                                                    
-                                                    <b> Total Price: <fmt:formatNumber value="${cart.totalPrice}" type="currency" currencySymbol="$" minFractionDigits="0"  />  </b>
+                                                    Customer Name: ${cart.fullName}
+                                                    <br>
+                                                    Address: ${cart.address}
+                                                    <br>
+                                                    Birth Date: ${cart.birthDate}
+                                                    <br>
+                                                    Phone Number: ${cart.phoneNumber}
+                                                    <br>  
+                                                    Gender: ${cart.gender}
+                                                </div>
+                                            </div>
+
+                                            <div class="table-scrollable">
+
+                                                <table class="table table-hover table-checkable order-column full-width" id="example4">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th class="center"> Cart Number </th>                             
+                                                            <th class="center"> Product </th>
+                                                            <th class="center"> Image </th>
+                                                            <th class="center"> Price </th>
+                                                            <th class="center"> Quantity </th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <c:forEach var="c" items="${cartdetail}">
+                                                            <tr class="odd gradeX">
+                                                                <td class="center">${c.cartId.code}</td>        
+                                                                <td class="center">${c.productId.name}</td>
+                                                                <td class="center">
+                                                                <c:forEach items="${c.productId.image}" var="i">
+                                                                    <img width="140" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
+                                                                   
+                                                                </c:forEach>
+                                                            </td>
+                                                                <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
+                                                                <td class="center">${c.quantity}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </tbody>
+                                                </table>
+                                                <div class="col-md-12 col-sm-12 col-12">
+                                                    <div class="btn-group pull-right">
+
+                                                        <h3>  <b> Total Price: <fmt:formatNumber value="${cart.totalPrice}" type="currency" currencySymbol="$" minFractionDigits="0"  />  </b> </h3>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,16 +131,15 @@
                             </div>
                         </div>
                     </div>
+                    <!-- start footer -->
+                    <jsp:include page="../../includeadmin/footer.jsp" />
+                    <!-- end footer -->
                 </div>
-                <!-- start footer -->
-                <jsp:include page="../../includeadmin/footer.jsp" />
-                <!-- end footer -->
-            </div>
-            <!-- end page content -->
+                <!-- end page content -->
 
 
-            <!-- start js include path -->
-            <jsp:include page="../../includeadmin/js.jsp" />
-            <!-- end js include path -->
-    </body>
-</html>
+                <!-- start js include path -->
+                <jsp:include page="../../includeadmin/js.jsp" />
+                <!-- end js include path -->
+                </body>
+                </html>

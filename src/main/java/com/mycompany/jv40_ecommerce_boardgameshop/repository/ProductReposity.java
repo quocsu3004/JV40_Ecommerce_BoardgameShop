@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.repository;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Image;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
@@ -22,5 +23,6 @@ public interface ProductReposity extends CrudRepository<Product, Integer>{
     
     List<Product> findAllByIdIn(List<Integer> listProductId);
    
+    
     
 }

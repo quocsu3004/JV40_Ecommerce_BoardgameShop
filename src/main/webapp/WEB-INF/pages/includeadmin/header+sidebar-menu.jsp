@@ -306,20 +306,7 @@
                         
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link nav-toggle">
-                        <i class="material-icons">group</i>
-                        <span class="title">Customer</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item">
-                            <a href="add_staff.html" class="nav-link ">
-                                <span class="title">View Customer Details</span>
-                            </a>
-                        </li>                    
-                    </ul>
-                </li>
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
                         <i class="material-icons">star_border</i>
@@ -342,25 +329,21 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
                         <i class="material-icons">person_outline</i>
-                        <span class="title">Staff</span>
+                        <span class="title">Account</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item">
-                            <a href="add_staff.html" class="nav-link ">
-                                <span class="title">Add Staff Details</span>
+                            <a href="<c:url value="/admin/addnewaccount"/>" class="nav-link ">
+                                <span class="title">Add Account</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a href="all_staffs.html" class="nav-link ">
-                                <span class="title">View All Staffs</span>
+                            <a href="<c:url value="/admin/account" />" class="nav-link ">
+                                <span class="title">View All Account</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="edit_staff.html" class="nav-link ">
-                                <span class="title">Edit Staff Details</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
             </ul>

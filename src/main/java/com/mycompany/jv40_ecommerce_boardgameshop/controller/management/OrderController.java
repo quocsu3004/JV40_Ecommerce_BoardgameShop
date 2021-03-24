@@ -20,12 +20,14 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,10 +47,7 @@ public class OrderController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         StringTrimmerEditor stringTrimerEditor = new StringTrimmerEditor(true);
-        binder.registerCustomEditor(String.class, stringTrimerEditor);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        sdf.setLenient(true);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+        binder.registerCustomEditor(String.class, stringTrimerEditor);    
     }
 
     @Autowired
@@ -79,10 +78,10 @@ public class OrderController {
 
     @RequestMapping(value = "/order/changestatus", method = RequestMethod.POST)
     public String resultChangeOrderStatus(Model model,
-            @ModelAttribute("cart") Cart cart
+            @Valid @ModelAttribute("cart") Cart cart, 
+            BindingResult result
     ) {
-        cart.setStatus(CartStatus.valueOf(cart.getStatus().toString().toUpperCase()));
-        cart.setGender(Gender.valueOf(cart.getGender().toString().toUpperCase()));
+        
         cartService.save(cart);
         return "redirect:/admin/vieworder";
     }

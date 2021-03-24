@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.service;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
 import java.util.List;
@@ -20,32 +21,32 @@ import java.util.Set;
  */
 @Service
 public class ProductService {
-    
+
     @Autowired
     private ProductReposity productReposity;
-    
-    public List<Product> getProduct(){
+
+    public List<Product> getProduct() {
         return (List<Product>) productReposity.findAll();
     }
-    
-    public void saveProduct(Product product){
+
+    public void saveProduct(Product product) {
         productReposity.save(product);
     }
-    
-    public Product findProductById(int id){
-      Optional<Product> opt =  productReposity.findById(id);
-      if(opt.isPresent()){
-          return opt.get();
-      }else{
-          return new Product();
-      }
+
+    public Product findProductById(int id) {
+        Optional<Product> opt = productReposity.findById(id);
+        if (opt.isPresent()) {
+            return opt.get();
+        } else {
+            return new Product();
+        }
     }
-    
-    
-    public List<Product> findListProductByListId(List<Integer> listProductId){
+
+    public List<Product> findListProductByListId(List<Integer> listProductId) {
         return productReposity.findAllByIdIn(listProductId);
     }
+
  
-    
+ 
     
 }

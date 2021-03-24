@@ -31,13 +31,12 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table
-public class Cart extends Personal{
+public class Cart extends Personal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @Column(length = 7)
+
     private String code;
 
     @Column(name = "order_Date")
@@ -48,26 +47,26 @@ public class Cart extends Personal{
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CartStatus status;
-    
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "cartId")
+
+    @Column(name = "total_price")
+    private double totalPrice;
+
+    @Column(name = "total_quantity")
+    private int totalQuantity;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "cartId")
     private Set<Payment> payment;
-    
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "cartId")
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "cartId")
     private Set<CartDetail> cartDetail;
-    
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account accountId;
-    
-    @Column(name = "total_price")
-    private double totalPrice;
-    
-    @Column(name = "total_quantity")
-    private int totalQuantity;
-   
+
     public Cart() {
     }
-    
+
     public int getId() {
         return id;
     }
@@ -139,6 +138,5 @@ public class Cart extends Personal{
     public void setCode(String code) {
         this.code = code;
     }
-
 
 }

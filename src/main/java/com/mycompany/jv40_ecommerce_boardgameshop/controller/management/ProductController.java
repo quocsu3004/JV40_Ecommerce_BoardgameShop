@@ -223,7 +223,7 @@ public class ProductController {
     
     @RequestMapping(value = "/deletesingleimage/{id}")
     public String resultDeleteSingleImageProduct(Model model, @PathVariable("id") int id){
-       
+       imageService.deleteSingleImage(id);
         
         return "redirect:/admin/viewproduct";
     }

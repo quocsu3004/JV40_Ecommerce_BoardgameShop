@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.ColumnDefault;
 
 /**
  *
@@ -27,7 +29,8 @@ public class CartDetail  {
     
     private double price;
     
-    private double discount;
+    @Column(name = "discount_price",nullable = true )
+    private double discountPrice;
     
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -58,14 +61,15 @@ public class CartDetail  {
         this.price = price;
     }
 
-    public double getDiscount() {
-        return discount;
+    public double getDiscountPrice() {
+        return discountPrice;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void setDiscountPrice(double discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
+    
     public Product getProductId() {
         return productId;
     }

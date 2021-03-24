@@ -33,4 +33,7 @@
 <script src="<c:url value="/resources-management/plugins/datatables/jquery.dataTables.min.js"/>" ></script>
 <script src="<c:url value="/resources-management/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js"/>" ></script>
 <script src="<c:url value="/resources-management/js/pages/table/table_data.js"/>" ></script>
+<!--select2-->
+<script src="<c:url value="/resources-management/plugins/select2/js/select2.js"/>" ></script>
+<script src="<c:url value="/resources-management/js/pages/select2/select2-init.js"/>" ></script>
 <!-- end js include path -->

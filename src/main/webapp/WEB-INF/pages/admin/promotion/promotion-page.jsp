@@ -62,8 +62,8 @@
                                                     </a>
                                                     <ul class="dropdown-menu pull-right">
                                                         <li>
-                                                            <a href="javascript:;">
-                                                                <i class="fa fa-print"></i> Print </a>
+                                                            <a href="<c:url value="/admin/checkpromotion" />"">
+                                                                <i class="fa fa-print"></i> Check </a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:;">
@@ -100,7 +100,8 @@
                                                             <td class="center">${pr.name}</td> 
                                                             <td class="center">
                                                                 <c:forEach items="${promotionService.findProductOfPromotion(pr.id)}" var="p">
-                                                                    ${p}  <br>
+                                                                    <br> ${p}
+                                                                   
                                                                 </c:forEach>
                                                             </td>
                                                             <td class="center">${pr.discount}%</td>                                                                                   

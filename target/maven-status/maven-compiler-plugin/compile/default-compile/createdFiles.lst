@@ -14,6 +14,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\repository\CartRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\CategoryService.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityConfig.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\ProductStatus.class
+com\mycompany\jv40_ecommerce_boardgameshop\service\AccountRoleService.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\CartDetailService.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\CartDetail.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\PaymentStatus.class
@@ -24,6 +25,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\service\ImageService.class
 com\mycompany\jv40_ecommerce_boardgameshop\controller\management\ProductController.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.class
+com\mycompany\jv40_ecommerce_boardgameshop\service\AccountService.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\AccountRole.class
 com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.class
@@ -38,9 +40,12 @@ com\mycompany\jv40_ecommerce_boardgameshop\repository\PromotionRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\CreditCard.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountRoleStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\PublisherService.class
+com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRepository.class
+com\mycompany\jv40_ecommerce_boardgameshop\controller\management\AccountController.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\ProductService.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\CartStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityWebApplicationInitializer.class
+com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRoleRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Publisher.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\CartService.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\PromotionStatus.class

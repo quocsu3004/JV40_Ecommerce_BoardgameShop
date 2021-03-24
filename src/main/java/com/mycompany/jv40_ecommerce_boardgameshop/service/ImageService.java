@@ -29,7 +29,7 @@ public class ImageService {
         return imageRepository.findByNameLike(name);
     }
     
-    public void deleteSingleImage(Image image){
-        imageRepository.delete(image);
+    public void deleteSingleImage(int id){
+        imageRepository.deleteById(id);
     }
 }

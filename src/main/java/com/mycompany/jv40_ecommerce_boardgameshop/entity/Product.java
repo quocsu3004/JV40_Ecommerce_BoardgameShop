@@ -61,7 +61,7 @@ public class Product {
     @JoinColumn(name = "publisher_id") 
     private Publisher publisherId;
     
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "productId")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, mappedBy = "productId")
     private Set<Image> image;
     
     @ManyToOne

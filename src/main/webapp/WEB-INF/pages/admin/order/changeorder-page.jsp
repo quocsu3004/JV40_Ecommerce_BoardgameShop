@@ -55,78 +55,91 @@
 
                                             <div class="col-lg-6 p-t-20" hidden="" >
                                                 <c:if test="${action == 'changestatus'}">
-                                                    <form:input path="id" value="${cart.id}"   />
+                                                    <input name="id" value="${cart.id}"   />
                                                 </c:if>
-                                                
+
                                             </div>
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div >
                                                     <form:label path="status">Order Status</form:label>
-                                                    <form:select path="status" class="form-control">  
+                                                    <select name="status" class="form-control">  
                                                         <c:forEach var="c" items="${cartStatus}">
                                                             <c:if test="${cart.status == c}" >
-                                                                <form:option value="${c}" selected="" > ${c} </form:option> 
+                                                                <option value="${c}" selected="" > ${c} </option> 
                                                             </c:if>
                                                             <c:if test="${cart.status != c}" >
-                                                                <form:option value="${c}" selected="" > ${c} </form:option> 
+                                                                <option value="${c}" selected="" > ${c} </option> 
                                                             </c:if>
                                                         </c:forEach> 
-                                                    </form:select>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20" hidden="">
                                                 <div >
                                                     <form:label path="gender" >Gender</form:label>
-                                                    <form:select path="gender" class="form-control">  
+                                                    <select name="gender" class="form-control">  
                                                         <c:forEach var="g" items="${gender}">
                                                             <c:if test="${cart.gender == g}" >
-                                                                <form:option value="${g}" selected=""  > ${g} </form:option> 
+                                                                <option value="${g}" selected=""  > ${g} </option> 
                                                             </c:if>
                                                         </c:forEach> 
-                                                    </form:select>
+                                                    </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20" hidden="" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="fullName" type="text" class = "mdl-textfield__input" value="${cart.fullName}" />
+                                                    <input name="fullName" type="text" class = "mdl-textfield__input" value="${cart.fullName}" />
                                                     <label class = "mdl-textfield__label" for="name">Customer Name</label>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-6 p-t-20" hidden="" > 
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <input name="code" type="text" class = "mdl-textfield__input" value="${cart.code}" />
+                                                    <label class = "mdl-textfield__label" for="name">Cart Number</label>
+                                                </div>
+                                            </div>
+                                                    <div class="col-lg-6 p-t-20" hidden="" > 
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
+                                                    <input name="totalQuantity" type="number" class = "mdl-textfield__input" value="${cart.totalQuantity}" />
+                                                    <label class = "mdl-textfield__label" for="name">Total Quantity</label>
+                                                </div>
+                                            </div>
+
 
                                             <div class="col-lg-6 p-t-20" hidden=""> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="phoneNumber" type="text" class = "mdl-textfield__input" value="${cart.phoneNumber}" />
+                                                    <input name="phoneNumber" type="text" class = "mdl-textfield__input" value="${cart.phoneNumber}" />
                                                     <label class = "mdl-textfield__label" for="name">Customer Phone</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20" hidden="" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="address" type="text" class = "mdl-textfield__input" value="${cart.address}" />
+                                                    <input name="address" type="text" class = "mdl-textfield__input" value="${cart.address}" />
                                                     <label class = "mdl-textfield__label" for="address">Address</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20"  hidden=""> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="birthDate" type="date" class = "mdl-textfield__input" value="${cart.birthDate}" />
+                                                    <input name="birthDate" type="date" class = "mdl-textfield__input" value="${cart.birthDate}" />
                                                     <label class = "mdl-textfield__label" for="birthDate">Birth Date</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20" hidden="" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <form:input path="orderDate" type="date" class = "mdl-textfield__input" value="${cart.orderDate}" />
+                                                    <input name="orderDate" type="date" class = "mdl-textfield__input" value="${cart.orderDate}" />
                                                     <label class = "mdl-textfield__label" for="orderDate">Order Date</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 p-t-20" hidden=""> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                     <form:input path="totalPrice" type="number"  class = "mdl-textfield__input"  value="${cart.totalPrice}" /> 
+                                                    <input name="totalPrice" type="number"  class = "mdl-textfield__input"  value="${cart.totalPrice}" /> 
                                                     <label class = "mdl-textfield__label" for="totalPrice">Total Price</label>
                                                 </div>
                                             </div>       

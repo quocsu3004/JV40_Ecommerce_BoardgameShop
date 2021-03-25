@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.entity;
 
 import com.mycompany.jv40_ecommerce_boardgameshop.enums.PaymentStatus;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table
-public class Payment {
+public class Payment implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

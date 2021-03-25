@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.controller.management;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Cart;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.CartDetail;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Product;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.Promotion;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 import javax.faces.annotation.RequestMap;
 import javax.validation.Valid;
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -126,10 +128,10 @@ public class PromotionController {
     }
 
     //Delay 1000 = 1s
-//    @Scheduled(initialDelay = 3*1000, fixedDelay = 5*1000 )
-    @RequestMapping(value = "/checkpromotion")
-    public String checkPromotionAutoRun() {
+//    @Scheduled(fixedDelay = 300 * 1000)
+    public void checkPromotionAutoRun() {
         List<Promotion> listpromotion = promotionService.viewPromotion();
+      
         List<CartDetail> listCartDetail = cartDetailService.getAllCartDetail();
         ZoneId defaultZoneId = ZoneId.systemDefault();
         Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
@@ -142,26 +144,53 @@ public class PromotionController {
                 if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscountPrice() == 0) {
                     double price = cartDetail.getPrice();
                     double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
-                    cartDetail.setDiscountPrice(discoutedPrice);
+                    cartDetail.setPrice(discoutedPrice);
+                    cartDetail.setDiscountPrice(promotion.getDiscount());
                     cartDetailService.save(cartDetail);
                 }
                 if (cartDetail.getDiscountPrice() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
                     double price = cartDetail.getPrice();
-                    double discoutedPrice = 0;
-                    cartDetail.setDiscountPrice(discoutedPrice);
+                    double discoutedPrice = Math.round(returnCaculatePriceWhenDiscount((float) price, (float) cartDetail.getDiscountPrice()));;
+                    cartDetail.setPrice(discoutedPrice);
+                    cartDetail.setDiscountPrice(0);
                     cartDetailService.save(cartDetail);
                 }
             }
         }
-        return "redirect:/admin/promotion";
     }
+
+    @Scheduled(fixedDelay = 300 * 1000)
+    public void checkPromotionStatus() {
+        List<Promotion> listpromotion = promotionService.viewPromotion();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
+        for (Promotion promotion : listpromotion) {
+            Date startDate = promotion.getStartDate();
+            Date endDate = promotion.getEndDate();
+            if (today.after(startDate) && today.before(endDate)) {
+                promotion.setStatus(PromotionStatus.ACTIVE);
+                promotionService.save(promotion);
+            }
+            if (today.before(startDate)) {
+                promotion.setStatus(PromotionStatus.INQUEUE);
+                promotionService.save(promotion);
+            }
+            if (today.after(endDate)) {
+                promotion.setStatus(PromotionStatus.OVERDUE);
+                promotionService.save(promotion);
+            }
+        }
+    }
+    
+    
 
     private float caculatePriceWhenDiscount(double price, int discount) {
         return (float) (price - (discount * price / 100));
     }
 
-    private float returnCaculatePriceWhenDiscount(double discountedprice, int discount) {
-        return (float) (discountedprice / (1 - discount / 100));
+    private float returnCaculatePriceWhenDiscount(float discountedprice, float discount) {
+        float discountNumber = 1 - (discount / 100);
+        return (float) (discountedprice / discountNumber);
     }
 
     private boolean checkDateBetween(Date today, Date startDate, Date endDate) {

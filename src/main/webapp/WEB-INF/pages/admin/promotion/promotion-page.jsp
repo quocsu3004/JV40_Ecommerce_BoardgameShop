@@ -62,7 +62,7 @@
                                                     </a>
                                                     <ul class="dropdown-menu pull-right">
                                                         <li>
-                                                            <a href="<c:url value="/admin/checkpromotion" />"">
+                                                            <a href="javascript:;" />"">
                                                                 <i class="fa fa-print"></i> Check </a>
                                                         </li>
                                                         <li>

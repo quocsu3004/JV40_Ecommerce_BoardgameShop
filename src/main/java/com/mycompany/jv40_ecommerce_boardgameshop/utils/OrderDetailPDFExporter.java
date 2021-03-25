@@ -94,6 +94,9 @@ public class OrderDetailPDFExporter {
 
         cell.setPhrase(new Phrase("Price Each", font));
         pdfPTable.addCell(cell);
+        
+        cell.setPhrase(new Phrase("Discounted", font));
+        pdfPTable.addCell(cell);
 
         cell.setPhrase(new Phrase("Quantity", font));
         pdfPTable.addCell(cell);
@@ -105,6 +108,7 @@ public class OrderDetailPDFExporter {
             pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getCode()));
             pdfPTable.addCell(cartDetail.getProductId().getName());
             pdfPTable.addCell("$" + String.valueOf(cartDetail.getPrice()));
+            pdfPTable.addCell( String.valueOf(cartDetail.getDiscountPrice())+ "%");
             pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));
         }
     }
@@ -121,8 +125,12 @@ public class OrderDetailPDFExporter {
         Font font1 = FontFactory.getFont(FontFactory.TIMES);
         font1.setSize(14);
         font1.setColor(Color.BLACK);
+        
+        Font font2 = FontFactory.getFont(FontFactory.TIMES);
+        font2.setSize(25);
+        font2.setColor(Color.BLUE);
 
-        Paragraph p = new Paragraph("Invoice", font1);
+        Paragraph p = new Paragraph("Invoice From Hippo Mepplo", font2);
         p.setAlignment(p.ALIGN_CENTER);
 
         document.add(p);
@@ -165,9 +173,9 @@ public class OrderDetailPDFExporter {
 
         document.add(p1);
 
-        PdfPTable pdfPTable = new PdfPTable(4);
+        PdfPTable pdfPTable = new PdfPTable(5);
         pdfPTable.setWidthPercentage(100f);
-        pdfPTable.setWidths(new float[]{2f, 3.5f, 3.0f, 3.0f});
+        pdfPTable.setWidths(new float[]{2f, 3.5f, 3.0f,2f,3.0f});
         pdfPTable.setSpacingBefore(10);
 
         writeTableHeader(pdfPTable);

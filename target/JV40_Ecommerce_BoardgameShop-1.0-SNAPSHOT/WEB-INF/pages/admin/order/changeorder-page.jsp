@@ -91,7 +91,7 @@
 
                                             <div class="col-lg-6 p-t-20" hidden="" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                    <input name="fullName" type="text" class = "mdl-textfield__input" value="${cart.fullName}" />
+                                                    <input name="fullName" type="text" class = "mdl-textfield__input" value="${cart.fullName}"  />
                                                     <label class = "mdl-textfield__label" for="name">Customer Name</label>
                                                 </div>
                                             </div>

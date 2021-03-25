@@ -97,6 +97,7 @@
                                                             <th class="center"> Product </th>
                                                             <th class="center"> Image </th>
                                                             <th class="center"> Price </th>
+                                                            <th class="center"> Discounted </th>
                                                             <th class="center"> Quantity </th>
 
                                                         </tr>
@@ -107,12 +108,14 @@
                                                                 <td class="center">${c.cartId.code}</td>        
                                                                 <td class="center">${c.productId.name}</td>
                                                                 <td class="center">
-                                                                <c:forEach items="${c.productId.image}" var="i">
-                                                                    <img width="140" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
-                                                                   
-                                                                </c:forEach>
-                                                            </td>
+                                                                    <c:forEach items="${c.productId.image}" var="i">
+                                                                        <img width="140" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
+
+                                                                    </c:forEach>
+                                                                </td>
                                                                 <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
+                                                                <td class="center"><fmt:formatNumber value="${c.discountPrice}"  type="percent"   minFractionDigits="0" /></td>
+
                                                                 <td class="center">${c.quantity}</td>
                                                             </tr>
                                                         </c:forEach>

@@ -12,6 +12,7 @@ package com.mycompany.jv40_ecommerce_boardgameshop.enums;
 public enum PromotionStatus {
     ACTIVE,
     UNACTIVE,
-    INQUEUE;
+    INQUEUE,
+    OVERDUE;
     
 }

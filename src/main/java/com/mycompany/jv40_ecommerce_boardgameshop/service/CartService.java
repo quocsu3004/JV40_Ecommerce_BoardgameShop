@@ -18,31 +18,33 @@ import org.springframework.stereotype.Service;
  * @author Admin
  */
 @Service
-public class CartService  {
-    
+public class CartService {
+
     @Autowired
     private CartRepository cartRepository;
-    
-    public List<Cart> getListCarts(String startDate, String endDate){
-        if(startDate != null && endDate != null){
+
+    public List<Cart> getListCarts(String startDate, String endDate) {
+        if (startDate != null && endDate != null) {
             return cartRepository.findCartByDateBetween(startDate, endDate);
         }
         return (List<Cart>) cartRepository.findAll();
     }
-    
-    public Cart findCartById(int id){
+
+    public List<Cart> getListCartsOnly() {
+        return (List<Cart>) cartRepository.findAll();
+    }
+
+    public Cart findCartById(int id) {
         Optional<Cart> opt = cartRepository.findById(id);
-        if(opt.isPresent()){
-          return  opt.get();
-        }else{
+        if (opt.isPresent()) {
+            return opt.get();
+        } else {
             return new Cart();
         }
     }
-    
-    
-    public void save(Cart cart){
+
+    public void save(Cart cart) {
         cartRepository.save(cart);
     }
 
- 
 }

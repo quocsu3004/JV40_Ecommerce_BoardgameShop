@@ -37,3 +37,7 @@
 <script src="<c:url value="/resources-management/plugins/select2/js/select2.js"/>" ></script>
 <script src="<c:url value="/resources-management/js/pages/select2/select2-init.js"/>" ></script>
 <!-- end js include path -->
+<!--DateTime picker-->
+<script src="<c:url value="/resources-management/datepicker/js/bootstrap-datepicker.js"/>" /></script>
+<!--Validate-->
+<script src="<c:url value="/resources-management/validate/jquery.validate.min.js" />"></script>

@@ -30,6 +30,7 @@ public class AdminHomeController {
         List<Cart> listCart = cartService.getListCartsOnly();
         model.addAttribute("totalCart", countTotalCart(listCart));
          model.addAttribute("totalEarning", countTotalEarning(listCart));
+         model.addAttribute("newCustomer", countNewCustomer(listCart));
         return "admin/home/adminhomepage";
     }
 
@@ -45,6 +46,20 @@ public class AdminHomeController {
          int count = 0;
         for(int i = 0; i < listCart.size(); i++){
             count += listCart.get(i).getTotalPrice();
+        }
+        return count;
+    }
+    
+    public int countNewCustomer(List<Cart> listCart){
+        int count = 0;
+        for(Cart cart: listCart){
+            String customerName = cart.getFullName();
+            String phoneNumber = cart.getPhoneNumber();
+            for(Cart cartCheck: listCart){
+                if(!cartCheck.getFullName().equalsIgnoreCase(customerName) || !cartCheck.getPhoneNumber().equalsIgnoreCase(phoneNumber) ){
+                    count+=1;
+                }
+            }
         }
         return count;
     }

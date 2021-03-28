@@ -18,6 +18,7 @@
         <meta name="author" content="SmartUniversity" />
         <title>Hippo Meeple Store |Add New Product</title>
         <jsp:include page="../../includeadmin/css.jsp" />
+        
     </head>
     <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
         <div class="page-wrapper">  
@@ -48,16 +49,16 @@
                                         <header>Add New Product</header>
                                     </div>
                                     <form:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/product/${action} "
-                                               method="POST" modelAttribute="product">                                 
+                                               method="POST" modelAttribute="product" id="demoForm">                                 
 
                                         <div class="card-body row">
-                                            
+
                                             <div class="col-lg-6 p-t-20" hidden=""> 
                                                 <c:if test="${action == 'edit'}">
-                                                <form:input path="id" value="${product.id}" />
+                                                    <form:input path="id" value="${product.id}" />
                                                 </c:if>
                                             </div>
-                                            
+
                                             <div class="col-lg-6 p-t-20" hidden="">  
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="createDate" type="datetime" class = "mdl-textfield__input" value="${product.createDate}" />
@@ -65,7 +66,7 @@
                                                     <label class = "mdl-textfield__label" for="createDate">Create Date</label>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="name" type="text" class = "mdl-textfield__input" value="${product.name}" />
@@ -76,11 +77,11 @@
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" name="price" type="number"
-                                                                 value="${product.price}"/>
+                                                    <input  class = "mdl-textfield__input" name="price" type="number"
+                                                            value="${product.price}"/>
                                                     <form:errors path="price" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for = "price">Price</label>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -88,11 +89,11 @@
 
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                    <input class = "mdl-textfield__input" name="quantity" type="number"
-                                                                 id = "quantity" value="${product.quantity}"/>
+                                                    <input  class = "mdl-textfield__input" name="quantity" type="number"
+                                                            id = "quantity" value="${product.quantity}"/>
                                                     <form:errors path="quantity" cssStyle="color:red;" />
                                                     <label class = "mdl-textfield__label" for = "quantity">Quantity</label>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -136,26 +137,26 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col-lg-6 p-t-20">
-                                                    <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
-                                                        <label>Category</label>
-                                                        <select name="categoryId.id" >
-                                                            <c:forEach var="c" items="${category}">                                
-                                                                <c:if test="${product.categoryId.id == c.id}">
-                                                                    <option value="${c.id}" selected="">${c.name}</option>
-                                                                </c:if>
-                                                                <c:if test="${product.categoryId.id != c.id}">
-                                                                    <option value="${c.id}">${c.name}</option>
-                                                                </c:if>
-                                                            </c:forEach>
-                                                        </select>
-                                                    </div>
+                                            <div class="col-lg-6 p-t-20">
+                                                <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
+                                                    <label>Category</label>
+                                                    <select name="categoryId.id" >
+                                                        <c:forEach var="c" items="${category}">                                
+                                                            <c:if test="${product.categoryId.id == c.id}">
+                                                                <option value="${c.id}" selected="">${c.name}</option>
+                                                            </c:if>
+                                                            <c:if test="${product.categoryId.id != c.id}">
+                                                                <option value="${c.id}">${c.name}</option>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
-                                                
-                                                <div class="col-lg-6 p-t-20">
+                                            </div>
+
+                                            <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <form:label path="status">Product Status</form:label>
-                                                    <select name="status" class="form-control">  
+                                                        <select name="status" class="form-control">  
                                                         <c:forEach var="s" items="${productStatus}">
 
                                                             <option value="${s}"  > ${s} </option> 
@@ -165,28 +166,30 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col-lg-12 p-t-20 text-center"> 
-                                                    <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
-                                                    <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
-                                                </div> 
+                                            <div class="col-lg-12 p-t-20 text-center"> 
+                                                <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Submit</button>
+                                                <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 btn-default">Reset</button>
+                                            </div> 
 
-                                            </div>
-                                        </form:form> 
-                                    </div>
+                                        </div>
+                                    </form:form> 
                                 </div>
-                            </div> 
-                        </div>
+                            </div>
+                        </div> 
                     </div>
                 </div>
-
-                <!-- start footer -->
-                <jsp:include page="../../includeadmin/footer.jsp" />
-                <!-- end footer -->
             </div>
 
-            <!-- end page content -->
-            <!-- start js include path -->
-            <jsp:include page="../../includeadmin/js.jsp" />
-            <!-- end js include path -->
+            <!-- start footer -->
+            <jsp:include page="../../includeadmin/footer.jsp" />
+            <!-- end footer -->
+        </div>
+
+        <!-- end page content -->
+        <!-- start js include path -->
+        <jsp:include page="../../includeadmin/js.jsp" />
+        <jsp:include page="../../includeadmin/validate add-product.jsp" />
+        <
+        <!-- end js include path -->
     </body>
 </html>

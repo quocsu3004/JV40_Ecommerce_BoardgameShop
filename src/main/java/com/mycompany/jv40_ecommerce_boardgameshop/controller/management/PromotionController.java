@@ -128,18 +128,35 @@ public class PromotionController {
     }
 
     //Delay 1000 = 1s
-    @Scheduled(fixedDelay = 20 * 1000)
+    @Scheduled(fixedDelay = 30000 * 1000)
     public void checkPromotionAutoRun() {
         List<Promotion> listpromotion = promotionService.viewPromotion();
         List<Cart> listCart = cartService.getListCartsOnly();
 
         ZoneId defaultZoneId = ZoneId.systemDefault();
         Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
+
         for (Promotion promotion : listpromotion) {
+            Date startDate = promotion.getStartDate();
+            Date endDate = promotion.getEndDate();
+            // Check promotion status
+            if (today.after(startDate) && today.before(endDate)) {
+                promotion.setStatus(PromotionStatus.ACTIVE);
+                promotionService.save(promotion);
+            }
+            if (today.before(startDate)) {
+                promotion.setStatus(PromotionStatus.INQUEUE);
+                promotionService.save(promotion);
+            }
+            if (today.after(endDate)) {
+                promotion.setStatus(PromotionStatus.OVERDUE);
+                promotionService.save(promotion);
+            }
+            
+            // Set price car detail
             for (Cart cart : listCart) {
                 List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cart);
-                Date startDate = promotion.getStartDate();
-                Date endDate = promotion.getEndDate();
+
                 boolean checkDate = checkDateBetween(today, startDate, endDate);
 
                 //Find cartDetail in Cart
@@ -164,30 +181,8 @@ public class PromotionController {
                 cartService.save(cart);
             }
         }
-    }
+    }               
 
-    @Scheduled(fixedDelay = 20 * 1000)
-    public void checkPromotionStatus() {
-        List<Promotion> listpromotion = promotionService.viewPromotion();
-        ZoneId defaultZoneId = ZoneId.systemDefault();
-        Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
-        for (Promotion promotion : listpromotion) {
-            Date startDate = promotion.getStartDate();
-            Date endDate = promotion.getEndDate();
-            if (today.after(startDate) && today.before(endDate)) {
-                promotion.setStatus(PromotionStatus.ACTIVE);
-                promotionService.save(promotion);
-            }
-            if (today.before(startDate)) {
-                promotion.setStatus(PromotionStatus.INQUEUE);
-                promotionService.save(promotion);
-            }
-            if (today.after(endDate)) {
-                promotion.setStatus(PromotionStatus.OVERDUE);
-                promotionService.save(promotion);
-            }
-        }
-    }
 
     private float caculatePriceWhenDiscount(double price, int discount) {
         return (float) (price - (discount * price / 100));
@@ -205,11 +200,11 @@ public class PromotionController {
             return false;
         }
     }
-    
-    public double calculateTotalPrice(List<CartDetail> listCartDetail){
+
+    public double calculateTotalPrice(List<CartDetail> listCartDetail) {
         double total = 0;
-        for(int i = 0; i < listCartDetail.size(); i++){
-            total += listCartDetail.get(i).getPrice() *  listCartDetail.get(i).getQuantity();
+        for (int i = 0; i < listCartDetail.size(); i++) {
+            total += listCartDetail.get(i).getPrice() * listCartDetail.get(i).getQuantity();
         }
         return total;
     }

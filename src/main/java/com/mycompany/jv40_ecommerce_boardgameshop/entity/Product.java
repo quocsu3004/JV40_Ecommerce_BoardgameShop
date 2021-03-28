@@ -28,6 +28,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.br.CNPJ;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -80,11 +81,11 @@ public class Product {
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "product")
     private List<Promotion> promotion;
     
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
     
-    @Column(length = 1000)
     private String description;
 
     public Product() {

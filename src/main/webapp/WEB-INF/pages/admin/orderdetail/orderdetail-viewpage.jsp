@@ -24,109 +24,94 @@
             <div class="page-container">
                 <!-- start header + sidebar menu -->    
                 <jsp:include page="../../includeadmin/header+sidebar-menu.jsp" />
+                <!-- start page content -->
                 <div class="page-content-wrapper">
                     <div class="page-content">
                         <div class="page-bar">
                             <div class="page-title-breadcrumb">
                                 <div class=" pull-left">
-                                    <div class="page-title">All Orders</div>
+                                    <div class="page-title">Invoice</div>
                                 </div>
                                 <ol class="breadcrumb page-breadcrumb pull-right">
-                                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="<c:url value="/admin/" />">Home</a>&nbsp;<i class="fa fa-angle-right"></i>     
-                                    <li class="active"> Order Detail</li>
+                                    <li><i class="fa fa-home"></i>&nbsp;<a class="parent-item" href="index.html">Home</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                    <li><a class="parent-item" href="">Extra</a>&nbsp;<i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li class="active">Invoice</li>
                                 </ol>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-box">
-                                    <div class="card-head">
-                                        <header>Order Detail</header>
-                                        <div class="tools">
-                                            <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                                            <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                                        </div>
-                                    </div>
-                                    <div class="card-body ">
-                                        <div class="row p-b-20">
-
-                                            <div class="col-md-12 col-sm-12 col-12">
-                                                <div class="btn-group pull-right">
-                                                    <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">                 
-                                                        <li>
-                                                            <a href="<c:url value="/admin/exportcartdetail/${id}" />">
-                                                                <i class="fa fa-file-excel-o"></i> Export Invoice to PDF </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                <div class="white-box">
+                                    <h3><b>INVOICE</b> <span class="pull-right">#${cart.code}</span></h3>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="pull-left">
+                                                <address>
+                                                    <img src="<c:url value="/resources-management/img/logo.png" />" alt="logo" class="logo-default" />
+                                                    <p class="text-muted m-l-5">
+                                                        Hippo Meeple <br> 59 Loseby <br>
+                                                        0982.06.7777   <br> Đa Nang 
+                                                    </p>
+                                                </address>
+                                            </div>
+                                            <div class="pull-right text-right">
+                                                <address>
+                                                    <p class="addr-font-h3">To,</p>
+                                                    <p class="font-bold addr-font-h4">${cart.fullName}</p>
+                                                    <p class="text-muted m-l-30">
+                                                        ${cart.address} <br> ${cart.phoneNumber} <br>
+                                                        ${cart.gender} <br> Status: ${cart.status}
+                                                    </p>
+                                                    <p class="m-t-30">
+                                                        <b>Order Date :</b> <i class="fa fa-calendar"></i> ${cart.orderDate}
+                                                    </p>
+                                                </address>
                                             </div>
                                         </div>
-                                        <div class="row p-b-20">
-                                            <div class="col-lg-6">
-                                                <div class="btn-group pull-left">
-                                                    Order Date: ${cart.orderDate}
-                                                    <br>
-                                                    Order Number: ${cart.code}
-                                                    <br>
-
-                                                </div>
-
-                                                <div class="btn-group pull-right">
-                                                    Customer Name: ${cart.fullName}
-                                                    <br>
-                                                    Address: ${cart.address}
-                                                    <br>
-                                                    Birth Date: ${cart.birthDate}
-                                                    <br>
-                                                    Phone Number: ${cart.phoneNumber}
-                                                    <br>  
-                                                    Gender: ${cart.gender}
-                                                </div>
-                                            </div>
-
-                                            <div class="table-scrollable">
-
-                                                <table class="table table-hover table-checkable order-column full-width" id="example4">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive m-t-40">
+                                                <table class="table table-hover">
                                                     <thead>
-                                                        <tr>
 
-                                                            <th class="center"> Cart Number </th>                             
+                                                        <tr>                           
                                                             <th class="center"> Product </th>
                                                             <th class="center"> Image </th>
-                                                            <th class="center"> Price </th>
-                                                            <th class="center"> Discounted </th>
                                                             <th class="center"> Quantity </th>
-
+                                                            <th class="center"> Discounted On Each </th>
+                                                            <th class="text-right"> Price Each </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <c:forEach var="c" items="${cartdetail}">
-                                                            <tr class="odd gradeX">
-                                                                <td class="center">${c.cartId.code}</td>        
+                                                            <tr>
                                                                 <td class="center">${c.productId.name}</td>
                                                                 <td class="center">
                                                                     <c:forEach items="${c.productId.image}" var="i">
-                                                                        <img width="140" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
+                                                                        <img width="150" a src="<c:url value="/resources-management/img/product-img/${i.name}"/>" >
 
                                                                     </c:forEach>
                                                                 </td>
-                                                                <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
-                                                                <td class="center"> ${c.discount}%  </td>
-
                                                                 <td class="center">${c.quantity}</td>
+                                                                <td class="center"> <fmt:formatNumber value="${c.discount}"    minFractionDigits="0" /> % </td>
+
+                                                                <td class="text-right"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
                                                             </tr>
                                                         </c:forEach>
                                                     </tbody>
                                                 </table>
-                                                <div class="col-md-12 col-sm-12 col-12">
-                                                    <div class="btn-group pull-right">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="pull-right m-t-30 text-right">
 
-                                                        <h3>  <b> Total Price: <fmt:formatNumber value="${cart.totalPrice}" type="currency" currencySymbol="$" minFractionDigits="0"  />  </b> </h3>
-                                                    </div>
-                                                </div>
+                                                <h3><b>Total Price: </b><fmt:formatNumber value="${cart.totalPrice}"  type="currency" currencySymbol="$" minFractionDigits="0" /></h3> </div>
+                                            <div class="clearfix"></div>
+                                            <hr>
+                                            <div class="text-right">
+
+                                                <button onclick="javascript:window.print();" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                                             </div>
                                         </div>
                                     </div>
@@ -134,15 +119,24 @@
                             </div>
                         </div>
                     </div>
-                    <!-- start footer -->
-                    <jsp:include page="../../includeadmin/footer.jsp" />
-                    <!-- end footer -->
                 </div>
                 <!-- end page content -->
+                <!-- start chat sidebar -->
+
+                <!-- Start Doctor Chat --> 
+
+                <!-- End Doctor Chat --> 
+
+                <!-- end page container -->
+                <!-- start footer -->
+                <jsp:include page="../../includeadmin/footer.jsp" />
+                <!-- end footer -->
+            </div>
+            <!-- end page content -->
 
 
-                <!-- start js include path -->
-                <jsp:include page="../../includeadmin/js.jsp" />
-                <!-- end js include path -->
-                </body>
-                </html>
+            <!-- start js include path -->
+            <jsp:include page="../../includeadmin/js.jsp" />
+            <!-- end js include path -->
+    </body>
+</html>

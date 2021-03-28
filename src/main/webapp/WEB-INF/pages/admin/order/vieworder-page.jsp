@@ -1,7 +1,7 @@
- <%-- 
-    Document   : vieworder-page
-    Created on : Mar 10, 2021, 10:20:27 PM
-    Author     : Admin
+<%-- 
+   Document   : vieworder-page
+   Created on : Mar 10, 2021, 10:20:27 PM
+   Author     : Admin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,6 +17,7 @@
         <meta name="author" content="Maru" />
         <title>Board game Shop</title>
         <jsp:include page="../../includeadmin/css.jsp" />
+
     </head>
     <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
         <div class="page-wrapper">  
@@ -75,28 +76,31 @@
                                         <div class="row p-b-20">
                                             <div class="col-md-6 col-sm-6 col-6">
                                                 <form action="${pageContext.request.contextPath}/admin/vieworder">
-                                                    <div class="col-lg-6 p-t-20" >  
+                                                    <div class="col-lg-6" >  
                                                         <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                            <input name="startDate" type="date" class = "mdl-textfield__input" value="${startDate}" />
+                                                            <input  name="startDate" type="date" class = "mdl-textfield__input" value="${startDate}"  />
                                                             <label class = "mdl-textfield__label" for="startDate">From</label>
                                                         </div> 
+                                                    </div>
+                                                    <div class="col-lg-6" > 
                                                         <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                            <input name="endDate" type="date" class = "mdl-textfield__input" value="${endDate}" />
+                                                            <input  name="endDate" type="date" class = "mdl-textfield__input" value="${endDate}"  />
                                                             <label class = "mdl-textfield__label" for="endDate">To</label>
                                                         </div>   
                                                     </div>
 
 
-                                                    <div class="col-md-6 col-sm-6 col-6"> 
+                                                    <div class="col-lg-3"> 
                                                         <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Search</button>
                                                     </div> 
-                                                </form>     
+                                                </form> 
                                             </div>
                                         </div>  
                                         <div class="table-scrollable">
 
                                             <table class="table table-hover table-checkable order-column full-width" id="example4">
                                                 <thead>
+
                                                     <tr>
 
                                                         <th class="center"> Cart Number </th>
@@ -148,6 +152,8 @@
 
             <!-- start js include path -->
             <jsp:include page="../../includeadmin/js.jsp" />
+            <jsp:include page="../../includeadmin/datepicker.jsp" />
+
             <!-- end js include path -->
     </body>
 </html>

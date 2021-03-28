@@ -53,7 +53,7 @@
                                                 <div class="progress-bar "></div>
                                             </div>
                                             <span class="progress-description">
-                                               
+
                                             </span>
                                         </div>
                                         <!-- /.info-box-content -->
@@ -77,7 +77,27 @@
                                                 <div class="progress-bar "></div>
                                             </div>
                                             <span class="progress-description">
-                                               
+
+                                            </span>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+
+                                <div class="col-xl-4 col-md-6 col-12">
+                                    <div class="info-box bg-b-pink">
+                                        <span class="info-box-icon push-bottom"><i class="material-icons">fiber_new</i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">New Customers</span>
+                                            <span class="info-box-number"><fmt:formatNumber  value="${newCustomer}"  minFractionDigits="0"/></span><span></span>
+
+                                            </span>
+                                            <div class="progress">
+                                                <div class="progress-bar "></div>
+                                            </div>
+                                            <span class="progress-description">
+
                                             </span>
                                         </div>
                                         <!-- /.info-box-content -->

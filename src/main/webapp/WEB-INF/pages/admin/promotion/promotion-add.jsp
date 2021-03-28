@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <form:form  action="${pageContext.request.contextPath}/admin/promotion/${action}"
-                                                method="POST" modelAttribute="promotion">                                 
+                                                method="POST" modelAttribute="promotion" id="demoForm">                                 
 
                                         <div class="card-body row" >
 
@@ -154,6 +154,8 @@
         <!-- end page content -->
         <!-- start js include path -->
         <jsp:include page="../../includeadmin/js.jsp" />
+        <jsp:include page="../../includeadmin/validate add new promotion.jsp" />
+
         <!-- end js include path -->
     </body>
 </html>

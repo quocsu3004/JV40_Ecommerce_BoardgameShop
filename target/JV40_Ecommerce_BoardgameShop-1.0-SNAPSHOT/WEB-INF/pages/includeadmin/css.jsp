@@ -32,3 +32,7 @@
 <!--select2-->
 <link href="<c:url value="/resources-management/plugins/select2/css/select2.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources-management/plugins/select2/css/select2-bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
+<!--DateTime picker-->
+<link href="<c:url value="/resources-management/datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css" />
+<!--Error shwo red-->
+

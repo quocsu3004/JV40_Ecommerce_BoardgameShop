@@ -108,7 +108,7 @@ public class OrderDetailPDFExporter {
             pdfPTable.addCell(String.valueOf(cartDetail.getCartId().getCode()));
             pdfPTable.addCell(cartDetail.getProductId().getName());
             pdfPTable.addCell("$" + String.valueOf(cartDetail.getPrice()));
-            pdfPTable.addCell( String.valueOf(cartDetail.getDiscountPrice())+ "%");
+            pdfPTable.addCell( String.valueOf(cartDetail.getDiscount())+ "%");
             pdfPTable.addCell(String.valueOf(cartDetail.getQuantity()));
         }
     }

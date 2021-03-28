@@ -114,7 +114,7 @@
                                                                     </c:forEach>
                                                                 </td>
                                                                 <td class="center"><fmt:formatNumber value="${c.price}"  type="currency" currencySymbol="$" minFractionDigits="0" /></td>
-                                                                <td class="center"><fmt:formatNumber value="${c.discountPrice}"  type="percent"   minFractionDigits="0" /></td>
+                                                                <td class="center"> ${c.discount}%  </td>
 
                                                                 <td class="center">${c.quantity}</td>
                                                             </tr>

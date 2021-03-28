@@ -29,8 +29,8 @@ public class CartDetail  {
     
     private double price;
     
-    @Column(name = "discount_price",nullable = true )
-    private double discountPrice;
+    
+    private double discount;
     
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -61,12 +61,12 @@ public class CartDetail  {
         this.price = price;
     }
 
-    public double getDiscountPrice() {
-        return discountPrice;
+    public double getDiscount() {
+        return discount;
     }
 
-    public void setDiscountPrice(double discountPrice) {
-        this.discountPrice = discountPrice;
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 
     

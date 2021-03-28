@@ -128,38 +128,45 @@ public class PromotionController {
     }
 
     //Delay 1000 = 1s
-//    @Scheduled(fixedDelay = 300 * 1000)
+    @Scheduled(fixedDelay = 20 * 1000)
     public void checkPromotionAutoRun() {
         List<Promotion> listpromotion = promotionService.viewPromotion();
-      
-        List<CartDetail> listCartDetail = cartDetailService.getAllCartDetail();
+        List<Cart> listCart = cartService.getListCartsOnly();
+
         ZoneId defaultZoneId = ZoneId.systemDefault();
         Date today = Date.from(LocalDate.now().atStartOfDay(defaultZoneId).toInstant());
         for (Promotion promotion : listpromotion) {
-            for (CartDetail cartDetail : listCartDetail) {
+            for (Cart cart : listCart) {
+                List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cart);
                 Date startDate = promotion.getStartDate();
                 Date endDate = promotion.getEndDate();
                 boolean checkDate = checkDateBetween(today, startDate, endDate);
 
-                if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscountPrice() == 0) {
-                    double price = cartDetail.getPrice();
-                    double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
-                    cartDetail.setPrice(discoutedPrice);
-                    cartDetail.setDiscountPrice(promotion.getDiscount());
-                    cartDetailService.save(cartDetail);
+                //Find cartDetail in Cart
+                for (CartDetail cartDetail : listCartDetail) {
+                    if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscount() == 0) {
+                        double price = cartDetail.getPrice();
+                        double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
+                        cartDetail.setPrice(discoutedPrice);
+                        cartDetail.setDiscount(promotion.getDiscount());
+                        cartDetailService.save(cartDetail);
+
+                    }
+                    if (cartDetail.getDiscount() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
+                        double price = cartDetail.getPrice();
+                        double discoutedPrice = Math.round(returnCaculatePriceWhenDiscount((float) price, (float) cartDetail.getDiscount()));;
+                        cartDetail.setPrice(discoutedPrice);
+                        cartDetail.setDiscount(0);
+                        cartDetailService.save(cartDetail);
+                    }
                 }
-                if (cartDetail.getDiscountPrice() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
-                    double price = cartDetail.getPrice();
-                    double discoutedPrice = Math.round(returnCaculatePriceWhenDiscount((float) price, (float) cartDetail.getDiscountPrice()));;
-                    cartDetail.setPrice(discoutedPrice);
-                    cartDetail.setDiscountPrice(0);
-                    cartDetailService.save(cartDetail);
-                }
+                cart.setTotalPrice(calculateTotalPrice(listCartDetail));
+                cartService.save(cart);
             }
         }
     }
 
-    @Scheduled(fixedDelay = 300 * 1000)
+    @Scheduled(fixedDelay = 20 * 1000)
     public void checkPromotionStatus() {
         List<Promotion> listpromotion = promotionService.viewPromotion();
         ZoneId defaultZoneId = ZoneId.systemDefault();
@@ -181,8 +188,6 @@ public class PromotionController {
             }
         }
     }
-    
-    
 
     private float caculatePriceWhenDiscount(double price, int discount) {
         return (float) (price - (discount * price / 100));
@@ -200,5 +205,12 @@ public class PromotionController {
             return false;
         }
     }
-
+    
+    public double calculateTotalPrice(List<CartDetail> listCartDetail){
+        double total = 0;
+        for(int i = 0; i < listCartDetail.size(); i++){
+            total += listCartDetail.get(i).getPrice() *  listCartDetail.get(i).getQuantity();
+        }
+        return total;
+    }
 }

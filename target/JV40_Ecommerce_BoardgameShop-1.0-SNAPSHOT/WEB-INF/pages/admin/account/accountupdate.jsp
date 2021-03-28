@@ -68,7 +68,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                            <div class="col-lg-6 p-t-20"> 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <form:input path="password" type="textarea" class = "mdl-textfield__input"  value="${account.password}" />
                                                     <form:errors path="password" cssStyle="color:red;" />
@@ -76,18 +76,25 @@
                                                 </div>
                                             </div>
 
-
+                                            <% boolean exist = false;%> 
                                             <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <form:label  path="accountRole">Choose Roles</form:label>    
                                                         <select name="listaccountRoleId" multiple="multiple" id="multiple" class="form-control select2-multiple" >
                                                         <c:forEach var="acr" items="${accountrole}">  
                                                             <c:forEach items="${accountService.findListAccountRoleid(account.id)}" var="ac">
-                                                                <c:if test="${acr.id == ac}">
-                                                                    <option value="${acr.id}" selected="">${acr.role}</option>
-                                                                </c:if>  
-                                                                
+                                                                <c:if test="${ac == acr.id}">
+                                                                    <% exist = true;%>
+                                                                </c:if>   
                                                             </c:forEach>
+
+                                                            <% if (exist == true) {%>
+                                                            <option value="${acr.id}" selected>${acr.role}</option>
+                                                            <% } %>
+                                                            <% if (exist == false) {%>
+                                                            <option value="${acr.id}">${acr.role}</option>
+                                                            <%}%>
+                                                            <% exist = false;%>
                                                         </c:forEach>
                                                     </select>                                                                                                        
                                                 </div>
@@ -108,7 +115,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20"hidden="" >
+                                            <div class="col-lg-6 p-t-20" >
                                                 <div >
                                                     <form:label path="gender" >Gender</form:label>
                                                         <select name="gender"  multiple="multiple" id="multiple" class="form-control select2-multiple">  
@@ -121,28 +128,28 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden="" > 
+                                            <div class="col-lg-6 p-t-20"  > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="fullName" type="text" class = "mdl-textfield__input" value="${account.fullName}" />
                                                     <label class = "mdl-textfield__label" for="name">Customer Name</label>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20" hidden=""> 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="phoneNumber" type="text" class = "mdl-textfield__input" value="${account.phoneNumber}" />
                                                     <label class = "mdl-textfield__label" for="name">Customer Phone</label>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20"hidden="" > 
+                                            <div class="col-lg-6 p-t-20" > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="address" type="text" class = "mdl-textfield__input" value="${account.address}" />
                                                     <label class = "mdl-textfield__label" for="address">Address</label>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 p-t-20"  hidden=""> 
+                                            <div class="col-lg-6 p-t-20"  > 
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
                                                     <input name="birthDate" type="date" class = "mdl-textfield__input" value="${account.birthDate}" />
                                                     <label class = "mdl-textfield__label" for="birthDate">Birth Date</label>

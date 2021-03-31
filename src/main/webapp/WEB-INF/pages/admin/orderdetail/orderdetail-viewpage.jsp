@@ -17,6 +17,21 @@
         <meta name="author" content="Maru" />
         <title>Board game Shop</title>
         <jsp:include page="../../includeadmin/css.jsp" />
+        <style>.printMe {
+                display: none;
+            }
+            @media print {
+                .no-printme {
+                    display: none;
+                }
+                .printable {
+                    visibility: hidden
+
+                        .printme  {
+                        display: block;
+                    }
+                }
+            }</style>
     </head>
     <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
         <div class="page-wrapper">  
@@ -111,7 +126,7 @@
                                             <hr>
                                             <div class="text-right">
 
-                                                <button onclick="javascript:window.print();" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                                                <button  onclick="javascript:window.print();" class="btn btn-default btn-outline no-printme" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                                             </div>
                                         </div>
                                     </div>

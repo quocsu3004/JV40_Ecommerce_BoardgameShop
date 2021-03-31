@@ -31,4 +31,6 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
             + "JOIN account ac ON acar.account_id = ac.id\n"
             + "WHERE ac.id = ?1")
     List<Integer> findAccountRoleId(int id);
+    
+    Account findByEmail(String email);
 }

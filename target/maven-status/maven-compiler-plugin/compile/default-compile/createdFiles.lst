@@ -39,6 +39,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\entity\Vote.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\PromotionRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\CreditCard.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountRoleStatus.class
+com\mycompany\jv40_ecommerce_boardgameshop\repository\email.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\PublisherService.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\controller\management\AccountController.class

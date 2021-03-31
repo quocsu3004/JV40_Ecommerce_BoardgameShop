@@ -76,23 +76,12 @@
                                         <div class="row p-b-20">
                                             <div class="col-md-6 col-sm-6 col-6">
                                                 <form action="${pageContext.request.contextPath}/admin/vieworder">
-                                                    <div class="col-lg-6" >  
-                                                        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                            <input  name="startDate" type="date" class = "mdl-textfield__input" value="${startDate}"  />
-                                                            <label class = "mdl-textfield__label" for="startDate">From</label>
-                                                        </div> 
-                                                    </div>
-                                                    <div class="col-lg-6" > 
-                                                        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">              
-                                                            <input  name="endDate" type="date" class = "mdl-textfield__input" value="${endDate}"  />
-                                                            <label class = "mdl-textfield__label" for="endDate">To</label>
-                                                        </div>   
-                                                    </div>
 
-
-                                                    <div class="col-lg-3"> 
-                                                        <button type="submit"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect m-b-10 m-r-20 btn-pink">Search</button>
-                                                    </div> 
+                                                    <label style="position: absolute; left: 110px; top: 7px; font-size: 15px; font-weight: bold">From</label>
+                                                    <input name="startDate"  type="date" class="form-control" style="position: absolute; left: 160px; top: 5px; width: 40%" >
+                                                    <label style="position: absolute; left: 380px; top: 7px; font-size: 15px; font-weight: bold">To</label>
+                                                    <input name="endDate" type="date" class="form-control" style="position: absolute; left: 410px; top: 5px; width: 40%" >
+                                                    <button type="submit" class="btn btn-warning" style="position: absolute; left: 650px; top: 5px">Search</button>
                                                 </form> 
                                             </div>
                                         </div>  

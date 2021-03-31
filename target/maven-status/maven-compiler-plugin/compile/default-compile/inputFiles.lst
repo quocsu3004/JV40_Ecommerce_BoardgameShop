@@ -3,6 +3,8 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Category.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\ImageService.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\ProductService.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\HomeController.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\UserEntity.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\CategoryService.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\PromotionStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\PublisherRepository.java
@@ -18,8 +20,10 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\AppInitializer.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CartRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\configuration\JPAConfig.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\main\main.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\Gender.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\UserDetailsServiceImpl.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\AccountService.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\Role.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\ProductStatus.java
@@ -29,6 +33,7 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\PaymentStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CartDetailRepository.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\UserStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRoleRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\CartDetail.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\ProductReposity.java
@@ -42,12 +47,14 @@ C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommer
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Cart.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\management\AccountController.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\CartDetailService.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\email.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Publisher.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\repository\CategoryRepository.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\controller\management\PromotionController.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Comment.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\PromotionService.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\service\CartService.java
+C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\UserRoleEntity.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\enums\CreditCardStatus.java
 C:\Project\JV40_Ecommerce_BoardgameShop\src\main\java\com\mycompany\jv40_ecommerce_boardgameshop\entity\Vote.java

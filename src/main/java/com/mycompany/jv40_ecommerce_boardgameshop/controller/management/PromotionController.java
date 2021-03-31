@@ -154,32 +154,32 @@ public class PromotionController {
             }
             
             // Set price car detail
-            for (Cart cart : listCart) {
-                List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cart);
-
-                boolean checkDate = checkDateBetween(today, startDate, endDate);
-
-                //Find cartDetail in Cart
-                for (CartDetail cartDetail : listCartDetail) {
-                    if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscount() == 0) {
-                        double price = cartDetail.getPrice();
-                        double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
-                        cartDetail.setPrice(discoutedPrice);
-                        cartDetail.setDiscount(promotion.getDiscount());
-                        cartDetailService.save(cartDetail);
-
-                    }
-                    if (cartDetail.getDiscount() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
-                        double price = cartDetail.getPrice();
-                        double discoutedPrice = Math.round(returnCaculatePriceWhenDiscount((float) price, (float) cartDetail.getDiscount()));;
-                        cartDetail.setPrice(discoutedPrice);
-                        cartDetail.setDiscount(0);
-                        cartDetailService.save(cartDetail);
-                    }
-                }
-                cart.setTotalPrice(calculateTotalPrice(listCartDetail));
-                cartService.save(cart);
-            }
+//            for (Cart cart : listCart) {
+//                List<CartDetail> listCartDetail = cartDetailService.getCardDetailInCart(cart);
+//
+//                boolean checkDate = checkDateBetween(today, startDate, endDate);
+//
+//                //Find cartDetail in Cart
+//                for (CartDetail cartDetail : listCartDetail) {
+//                    if (promotion.getStatus().toString().equals("ACTIVE") && checkDate == true && cartDetail.getDiscount() == 0) {
+//                        double price = cartDetail.getPrice();
+//                        double discoutedPrice = Math.round(caculatePriceWhenDiscount(price, promotion.getDiscount()));
+//                        cartDetail.setPrice(discoutedPrice);
+//                        cartDetail.setDiscount(promotion.getDiscount());
+//                        cartDetailService.save(cartDetail);
+//
+//                    }
+//                    if (cartDetail.getDiscount() != 0 && !promotion.getStatus().toString().equals("ACTIVE") || checkDate == false) {
+//                        double price = cartDetail.getPrice();
+//                        double discoutedPrice = Math.round(returnCaculatePriceWhenDiscount((float) price, (float) cartDetail.getDiscount()));;
+//                        cartDetail.setPrice(discoutedPrice);
+//                        cartDetail.setDiscount(0);
+//                        cartDetailService.save(cartDetail);
+//                    }
+//                }
+//                cart.setTotalPrice(calculateTotalPrice(listCartDetail));
+//                cartService.save(cart);
+//            }
         }
     }               
 

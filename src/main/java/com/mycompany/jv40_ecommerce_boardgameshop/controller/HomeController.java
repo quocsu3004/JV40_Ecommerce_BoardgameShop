@@ -25,7 +25,7 @@ public class HomeController {
         List<String> roles = SecurityUtils.getRolesOfUser();
         if (!CollectionUtils.isEmpty(roles) && (roles.contains("ROLE_ADMIN")
                 || roles.contains("ROLE_SELLER") || roles.contains("ROLE_MANAGER"))) {
-            return "redirect:/admin/home";
+            return "redirect:/admin/";
         }
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         System.out.println(bCryptPasswordEncoder.encode("123456"));

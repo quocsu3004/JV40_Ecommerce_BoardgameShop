@@ -10,11 +10,13 @@ com\mycompany\jv40_ecommerce_boardgameshop\entity\Product.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\ImageRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\AppInitializer.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\Role.class
+com\mycompany\jv40_ecommerce_boardgameshop\enums\UserStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\CartRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\CategoryService.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\SecurityConfig.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\ProductStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\AccountRoleService.class
+com\mycompany\jv40_ecommerce_boardgameshop\controller\HomeController.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\CartDetailService.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\CartDetail.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\PaymentStatus.class
@@ -26,7 +28,9 @@ com\mycompany\jv40_ecommerce_boardgameshop\controller\management\ProductControll
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\configuration\MvcConfig.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\AccountService.class
+com\mycompany\jv40_ecommerce_boardgameshop\main\main.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\AccountRole.class
+com\mycompany\jv40_ecommerce_boardgameshop\entity\UserEntity.class
 com\mycompany\jv40_ecommerce_boardgameshop\utils\SecurityUtils.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\Promotion.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\PromotionService.class
@@ -39,6 +43,7 @@ com\mycompany\jv40_ecommerce_boardgameshop\entity\Vote.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\PromotionRepository.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\CreditCard.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\AccountRoleStatus.class
+com\mycompany\jv40_ecommerce_boardgameshop\service\UserDetailsServiceImpl.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\email.class
 com\mycompany\jv40_ecommerce_boardgameshop\service\PublisherService.class
 com\mycompany\jv40_ecommerce_boardgameshop\repository\AccountRepository.class
@@ -52,5 +57,6 @@ com\mycompany\jv40_ecommerce_boardgameshop\service\CartService.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\PromotionStatus.class
 com\mycompany\jv40_ecommerce_boardgameshop\entity\ImageSingle.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\CreditCardStatus.class
+com\mycompany\jv40_ecommerce_boardgameshop\entity\UserRoleEntity.class
 com\mycompany\jv40_ecommerce_boardgameshop\enums\Gender.class
 com\mycompany\jv40_ecommerce_boardgameshop\controller\management\PromotionController.class

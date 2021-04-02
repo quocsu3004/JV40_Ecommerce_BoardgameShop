@@ -5,6 +5,7 @@
  */
 package com.mycompany.jv40_ecommerce_boardgameshop.repository;
 
+import com.mycompany.jv40_ecommerce_boardgameshop.entity.Account;
 import com.mycompany.jv40_ecommerce_boardgameshop.entity.AccountRole;
 import java.util.List;
 import java.util.Set;
@@ -19,4 +20,6 @@ import org.springframework.stereotype.Repository;
 public interface AccountRoleRepository extends CrudRepository<AccountRole, Integer>{
     
    Set<AccountRole> findAllByIdIn(List<Integer> listaccountRoleId);
+   
+    Set<AccountRole> findAllByAccount(Account account);
 }

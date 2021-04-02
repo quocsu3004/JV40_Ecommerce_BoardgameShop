@@ -42,12 +42,7 @@ public class AccountRole {
     @Enumerated(EnumType.STRING)
     private AccountRoleStatus status;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "account_accountrole",
-            joinColumns = {
-                @JoinColumn(name = "accountrole_id")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "account_id")})
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "accountRole")  
     private Set<Account> account;
 
     public AccountRole() {

@@ -128,7 +128,7 @@ public class PromotionController {
     }
 
     //Delay 1000 = 1s
-    @Scheduled(fixedDelay = 30000 * 1000)
+    @Scheduled(fixedDelay = 15 * 1000)
     public void checkPromotionAutoRun() {
         List<Promotion> listpromotion = promotionService.viewPromotion();
         List<Cart> listCart = cartService.getListCartsOnly();

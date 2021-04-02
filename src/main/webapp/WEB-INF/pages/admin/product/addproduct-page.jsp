@@ -132,7 +132,7 @@
                                             <div class="col-lg-6 p-t-20">
                                                 <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label txt-full-width">
                                                     <label for="file">Product Images: </label> 
-                                                    <input type="file" name="file" accept="image/png, image/jpg" multiple class="form-control"/>
+                                                    <input type="file" name="file" accept="jpg,.png,.jpeg" multiple class="form-control"/>
 
                                                 </div>
                                             </div>

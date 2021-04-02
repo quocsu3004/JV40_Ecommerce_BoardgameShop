@@ -15,6 +15,7 @@ import com.mycompany.jv40_ecommerce_boardgameshop.enums.UserStatus;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.AccountRepository;
 import com.mycompany.jv40_ecommerce_boardgameshop.repository.AccountRoleRepository;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -37,7 +38,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-         System.err.println(email);
         Account account = accountRepository.findByEmail(email);
        
         if (account == null || account.getStatus() != AccountStatus.ACTIVE) {
@@ -45,7 +45,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        Set<AccountRole> roles = account.getAccountRole();
+        Set<AccountRole> roles = accountRoleRepository.findAllByAccount(account);
         for (AccountRole role : roles) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRole().toString()));
         }

@@ -50,16 +50,10 @@
                                     </div>
                                     <div class="card-body ">
                                         <div class="row p-b-20">
-                                            <div class="col-md-6 col-sm-6 col-6">
-                                                <div class="btn-group">
-                                                    <a href="<c:url value="/admin/addproduct" />" id="addRow" class="btn btn-info">
-                                                        Add New Product <i class="fa fa-plus"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                           
 
 
-                                            <div class="col-md-6 col-sm-6 col-6">
+                                            <div class="col-md-12 col-sm-12 col-12">
                                                 <div class="btn-group pull-right">
                                                     <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                                         <i class="fa fa-angle-down"></i>
@@ -77,11 +71,11 @@
                                             <div class="col-md-6 col-sm-6 col-6">
                                                 <form action="${pageContext.request.contextPath}/admin/vieworder">
 
-                                                    <label style="position: absolute; left: 110px; top: 7px; font-size: 15px; font-weight: bold">From</label>
-                                                    <input name="startDate"  type="date" class="form-control" style="position: absolute; left: 160px; top: 5px; width: 40%" >
-                                                    <label style="position: absolute; left: 380px; top: 7px; font-size: 15px; font-weight: bold">To</label>
-                                                    <input name="endDate" type="date" class="form-control" style="position: absolute; left: 410px; top: 5px; width: 40%" >
-                                                    <button type="submit" class="btn btn-warning" style="position: absolute; left: 650px; top: 5px">Search</button>
+                                                    <label style="position: absolute; left: 110px; top: 1px; font-size: 15px; font-weight: bold">From</label>
+                                                    <input name="startDate"  type="date" class="form-control" style="position: absolute; left: 160px; top: -6px; width: 40%" >
+                                                    <label style="position: absolute; left: 380px; top: 1px; font-size: 15px; font-weight: bold">To</label>
+                                                    <input name="endDate" type="date" class="form-control" style="position: absolute; left: 410px; top: -6px; width: 40%" >
+                                                    <button type="submit" class="btn btn-warning" style="position: absolute; left: 650px; top: -6px">Search</button>
                                                 </form> 
                                             </div>
                                         </div>  

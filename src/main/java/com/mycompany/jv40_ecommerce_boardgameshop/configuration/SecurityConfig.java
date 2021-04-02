@@ -6,6 +6,7 @@
 package com.mycompany.jv40_ecommerce_boardgameshop.configuration;
 
 
+import com.mycompany.jv40_ecommerce_boardgameshop.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -39,12 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/home","/admin").permitAll();
+        http.authorizeRequests().antMatchers("/", "/login", "/logout", "/home", "/admin").permitAll();
 
         http.authorizeRequests().antMatchers("/user/*").access("hasAnyRole('ROLE_ADMIN,ROLE_USER')");
 //                .antMatchers("/admin/*").access("hasRole('ROLE_ADMIN')");
 
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
@@ -52,8 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/home")
                 .failureUrl("/login?error=true")
                 .usernameParameter("username")
-                .passwordParameter("password")
-                .and().logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/home").deleteCookies("JSESSIONID");
+                .passwordParameter("password");
+
+        http.authorizeRequests().and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID");
     }
 }
